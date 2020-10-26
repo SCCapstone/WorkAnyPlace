@@ -24,9 +24,11 @@ $ ionic serve
 # Deployment
 
 
-
 # Testing
-We will contribute to testing our code here.
+
+
+We will contribute to testing our code here with writing tests.
+Host the app on Firebase.
 
 ## Testing Technology
 
@@ -37,3 +39,4 @@ We will contribute to testing our code here.
 # Authors
 Janki Patel: janki@email.sc.edu
 Anthony Castellano: castela@email.sc.edu
+Nick Rabena: nrabena@email.sc.edu
