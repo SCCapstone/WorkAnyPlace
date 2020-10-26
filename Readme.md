@@ -25,7 +25,7 @@ $ ionic serve
 
 
 # Testing
-We will contribute to testing our code here.
+Host the app on Firebase.
 
 ## Testing Technology
 
