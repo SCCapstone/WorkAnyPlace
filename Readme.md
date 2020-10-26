@@ -36,3 +36,4 @@ We will contribute to testing our code here.
 
 # Authors
 Janki Patel: janki@email.sc.edu
+Anthony Castellano: castela@email.sc.edu
