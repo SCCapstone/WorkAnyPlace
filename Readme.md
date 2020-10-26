@@ -26,7 +26,7 @@ $ ionic serve
 
 
 # Testing
-We will contribute to testing our code here.
+We will contribute to testing our code here with writing tests.
 
 ## Testing Technology
 
