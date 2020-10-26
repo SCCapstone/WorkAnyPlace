@@ -38,4 +38,5 @@ Host the app on Firebase.
 
 # Authors
 Janki Patel: janki@email.sc.edu
+Anthony Castellano: castela@email.sc.edu
 Nick Rabena: nrabena@email.sc.edu
