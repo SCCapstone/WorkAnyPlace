@@ -17,7 +17,13 @@ import {AngularFireAuthModule} from '@angular/fire/auth'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(firebaseConfig), AngularFireAuthModule],
+  imports: [BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    ReactiveFormsModule,
+    FormsModule,     
+    AngularFireModule.initializeApp(firebaseConfig), 
+    AngularFireAuthModule],
   providers: [
     FormsModule,
     ReactiveFormsModule,

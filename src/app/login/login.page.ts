@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
+import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 import firebase from 'firebase';
 
 
@@ -9,34 +14,42 @@ import firebase from 'firebase';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  username: string = ""
-  password: string = ""
+  
 
-  constructor(public auth: AngularFireAuth) { }
+  new_product_form: FormGroup;
+
+
+  constructor(public afAuth: AngularFireAuth, private router: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
-  }
 
-  async login() {
-    const { username, password } = this
+    this.new_product_form = this.formBuilder.group({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+  } 
 
-    try {
-      const res = await this.auth.signInWithEmailAndPassword(username,password)
-       var user = firebase.app().auth().currentUser;
-        //this.itemService.uid = user.uid;
-            console.log("login succeeded");
-            console.log(user.uid);
-      
-    }catch(err) {
-      console.log(err);
-      if (err === 'auth/wrong-password') {
-        alert('Wrong password.');
-      } else if (err === 'auth/user-not-found'){
-        alert("User does not exist");
-      } 
-      
-}
+  async login(item) {
+
+    const user = await this.afAuth.signInWithEmailAndPassword(
+      item.email,
+      item.password
+    ).catch((error) => {
+      alert(error.message);
+    });;
+
+    console.log(user);
     
+
+    this.router.navigate(['/jobs']);
+    this.router.navigate(['/tabs']);
+}
+
+signup() {
+  this.router.navigate(['/signup']);
+}
+
+
   }
 
-}
+

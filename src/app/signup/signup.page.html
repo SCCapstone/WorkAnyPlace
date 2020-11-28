@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>signup</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="new_product_form" (submit)="createAccount(new_product_form.value)">
+  <ion-item>
+    <ion-label color="primary" position="floating">email</ion-label>
+    <ion-input type="text" formControlName="email" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">password</ion-label>
+    <ion-input type="text" formControlName="password" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">Username</ion-label>
+    <ion-input type="text" formControlName="username" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">Skill</ion-label>
+    <ion-input type="text" formControlName="group" required></ion-input>
+  </ion-item>
 
+  <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_product_form.valid">Create Account</ion-button>
+</form>
 </ion-content>

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupPage } from './signup.page';
 
 describe('SignupPage', () => {
@@ -10,7 +10,10 @@ describe('SignupPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SignupPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(),
+        FormsModule,
+        ReactiveFormsModule
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignupPage);
