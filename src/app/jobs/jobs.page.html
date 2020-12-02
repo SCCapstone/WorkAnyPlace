@@ -27,6 +27,10 @@
     <ion-card-content>
       {{ post.description }}
     </ion-card-content>
+
+    <center><ion-button (click)="removeJob(post.title,post.pay,post.category,post.description)">
+      Delete
+    </ion-button></center>
     
   </ion-card>
 

@@ -20,4 +20,17 @@ export class JobsService {
       'description': description
     }); 
   }
+
+  removeJob(title,pay,category,description){
+    const job = {
+      'title': title,
+      'pay' : pay,
+      'Category': category,
+      'description': description
+    };
+    this.posts.forEach((element,index)=> {
+      if(element.title==job.title) this.posts.splice(index,1);
+    });
+    this.posts.forEach(object => console.log(object.title));
+  }
 } 
