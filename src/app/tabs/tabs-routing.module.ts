@@ -19,15 +19,30 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        children: [
+          {
+          path: '',
+          loadChildren: () => import('../my-jobs/my-jobs.module').then(m => m.MyJobsPageModule)
+          }
+        ]
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        children: [
+          {
+          path: '',
+          loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule)
+          }
+        ]
       },
       {
         path: 'tab4',
-        loadChildren: () => import('../tab4/tab4.module').then(m => m.Tab4PageModule)
+        children: [
+          {
+          path: '',
+          loadChildren: () => import('../stats/stats.module').then(m => m.StatsPageModule)
+          }
+        ]
       },
       {
         path: '',
