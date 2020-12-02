@@ -9,7 +9,8 @@ export class JobsService {
 
    }
 
-   posts:Array<any>=[{"title":"Lawn Care","pay":7.99,"category":"Yard Work", "description":"I need help cutting my grass."}];
+   posts:Array<any>=[{"title":"Lawn Care","pay":7.99,"category":"Yard Work", "description":"I need help cutting my grass."},{"title":"Dog Sitting","pay":50.00,"category":"Pet Sitting", "description":"I need someone to takeout my Dog twice a day on Monday"}];
+   // posts:Array<any>=[{"title":"Dog Sitting","pay":50.00,"category":"Pet Sitting", "description":"I need someone to takeout my Dog twice a day on Monday"}];
 
 
    postJob(title,pay,category,description){

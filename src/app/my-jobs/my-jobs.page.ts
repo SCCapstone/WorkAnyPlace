@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { JobsService } from '../jobs.service';
 
 @Component({
   selector: 'app-my-jobs',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyJobsPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,public jobsService: JobsService) { }
+
+  posts = [];
 
   ngOnInit() {
+    this.posts = this.jobsService.posts;
   }
-
+  removeJob(title,pay,category,description){
+    this.jobsService.removeJob(title,pay,category,description);
+  }
 }

@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>my-jobs</ion-title>
+    <ion-title><center>My Jobs</center></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+    
+    <ion-card>
+  
+      <ion-card-header>
+        <ion-card-title>{{ post.title }}</ion-card-title>
+        <ion-card-subtitle>{{ post.category }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ post.pay }}</ion-card-subtitle>  
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{ post.description }}
+      </ion-card-content>
+  
+      <center><ion-button (click)="removeJob(post.title,post.pay,post.category,post.description)">
+        Unaccept Job
+      </ion-button></center>
+      
+    </ion-card>
+  
+  </ion-item>
+  </ion-list>
 </ion-content>
