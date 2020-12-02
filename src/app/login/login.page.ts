@@ -30,16 +30,20 @@ export class LoginPage implements OnInit {
   } 
 
   async login(item) {
-
+    let success: boolean = true;
     const user = await this.afAuth.signInWithEmailAndPassword(
       item.email,
       item.password
     ).catch((error) => {
       alert(error.message);
+      success = false;
     });;
 
     console.log(user);
     
+    if (!success) {
+      return;
+    }
 
     this.router.navigate(['/jobs']);
     this.router.navigate(['/tabs']);
