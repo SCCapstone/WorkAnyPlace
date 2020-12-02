@@ -22,5 +22,9 @@ export class JobsPage implements OnInit {
     
     this.router.navigate(['/create-job']);
   }
+
+  removeJob(title,pay,category,description){
+    this.jobsService.removeJob(title,pay,category,description);
+  }
 } 
 
