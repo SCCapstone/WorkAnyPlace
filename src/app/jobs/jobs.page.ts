@@ -26,5 +26,9 @@ export class JobsPage implements OnInit {
   removeJob(title,pay,category,description){
     this.jobsService.removeJob(title,pay,category,description);
   }
+
+  addToMyJobs(post){
+    this.jobsService.addAcceptedJob(post);
+  }
 } 
 
