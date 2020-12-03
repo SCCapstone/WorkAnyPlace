@@ -15,6 +15,7 @@ export class JobsService {
    posts:Array<any>=[{"title":"Lawn Care","pay":7.99,"category":"Yard Work", "description":"I need help cutting my grass."},{"title":"JOB 2","pay":7.20,"category":"Yard Work", "description":"I need help cutting my grass."}];
 
 
+
    postJob(title,pay,category,description){
     this.posts.push({
       'title': title,

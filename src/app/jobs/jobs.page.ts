@@ -28,6 +28,7 @@ export class JobsPage implements OnInit {
     this.router.navigate(['/create-job']);
   }
 
+
   refresh() {
     this.getPostedJobs();   
   }
@@ -79,6 +80,13 @@ export class JobsPage implements OnInit {
        console.log("Error getting document:", error);
      }); 
      this.posts = jobs;
+
+  logout() {
+    
+    this.router.navigate(['/login']);
+  }
+
+
   }
 } 
 

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-my-jobs',
@@ -10,10 +15,11 @@ import 'firebase/firestore';
 })
 export class MyJobsPage implements OnInit {
 
+
   acceptedJobs;
   db = firebase.firestore();
   user = firebase.auth().currentUser;
-  constructor(public jobsService: JobsService) { }
+  constructor(public jobsService: JobsService, private router: Router,) { }
 
   ngOnInit() {
     this.getAcceptedJobs();
@@ -40,6 +46,13 @@ export class MyJobsPage implements OnInit {
  }
  
 
+
+
+
+  logout() {
+    
+    this.router.navigate(['/login']);
+  }
 
 }
 
