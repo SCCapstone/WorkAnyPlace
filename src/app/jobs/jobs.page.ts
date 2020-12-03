@@ -80,6 +80,7 @@ export class JobsPage implements OnInit {
        console.log("Error getting document:", error);
      }); 
      this.posts = jobs;
+    }
 
   logout() {
     
@@ -87,6 +88,6 @@ export class JobsPage implements OnInit {
   }
 
 
-  }
+
 } 
 
