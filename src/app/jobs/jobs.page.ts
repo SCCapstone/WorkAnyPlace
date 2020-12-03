@@ -23,6 +23,11 @@ export class JobsPage implements OnInit {
     this.router.navigate(['/create-job']);
   }
 
+  logout() {
+    
+    this.router.navigate(['/login']);
+  }
+
   removeJob(title,pay,category,description){
     this.jobsService.removeJob(title,pay,category,description);
   }
