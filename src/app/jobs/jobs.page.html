@@ -31,18 +31,19 @@
   <ion-card>
 
     <ion-card-header>
-      <ion-card-title>{{ post.title }}</ion-card-title>
-      <ion-card-subtitle>{{ post.category }}</ion-card-subtitle>
-      <ion-card-subtitle>{{ post.pay }}</ion-card-subtitle>  
+      <ion-card-title color="secondary">{{ post.title }}</ion-card-title>
+      <ion-card-subtitle color="tertiary">{{ post.category }}</ion-card-subtitle>
+      <ion-card-subtitle color="tertiary">{{ post.pay }}</ion-card-subtitle>  
     </ion-card-header>
   
     <ion-card-content>
-      {{ post.description }}
+      <p style="color:#101010">{{ post.description }}</p>
     </ion-card-content>
-    <ion-button (click)="addToMyJobs(post)"> 
+
+    <ion-button style="--background:#1f1f1f" (click)="addToMyJobs(post)"> 
       Accept Job
     </ion-button>
-    <ion-button  (click)="removeJob(post)">
+    <ion-button style="--background:#1f1f1f" (click)="removeJob(post)">
       Delete
     </ion-button>
     
