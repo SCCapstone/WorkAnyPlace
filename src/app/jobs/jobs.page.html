@@ -5,6 +5,9 @@
       <ion-button (click)="openCreateJob()">
         <ion-icon slot="icon-only" name="add-circle"></ion-icon>
       </ion-button> 
+      <ion-button slot="start" (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="start">
@@ -33,10 +36,12 @@
     <ion-card-content>
       {{ post.description }}
     </ion-card-content>
-
-    <center><ion-button (click)="removeJob(post.title,post.pay,post.category,post.description)">
+    <ion-button (click)="addToMyJobs(post)"> 
+      Accept Job
+    </ion-button>
+    <ion-button  (click)="removeJob(post)">
       Delete
-    </ion-button></center>
+    </ion-button>
     
   </ion-card>
 
