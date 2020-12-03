@@ -19,7 +19,10 @@ export class MyJobsPage implements OnInit {
     this.getAcceptedJobs();
   }
 
-  
+  refresh() {
+    this.getAcceptedJobs();
+  }
+
   async getAcceptedJobs() {
     var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
        if (doc.exists) {

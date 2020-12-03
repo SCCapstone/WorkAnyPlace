@@ -113,7 +113,7 @@ addPostedJobs(job) {
           group: doc.data().group,
           hoursWorked: doc.data().hoursWorked,
           jobsCompleted: doc.data().jobsCompleted,
-          jobsCreated: doc.data().jobsCreated,
+          jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
           username: doc.data().username,

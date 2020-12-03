@@ -20,21 +20,50 @@ export class JobsPage implements OnInit {
   
 
   ngOnInit() {
-    this.getPostedJobs();
-    
+
+    this.getPostedJobs();   
   }
 
   openCreateJob() {
-    
     this.router.navigate(['/create-job']);
   }
 
-  removeJob(title,pay,category,description){
-    this.jobsService.removeJob(title,pay,category,description);
+  refresh() {
+    this.getPostedJobs();   
   }
 
+  removeJob(post){
+    if (post.uid == this.user.uid) {
+      this.db.collection('users').doc(this.user.uid).update({
+        postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
+      });
+      
+    
+      this.db.collection('postedJobs').doc('jobs').update({
+       postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
+      });
+
+
+    //this.jobsService.removeJob(title,pay,category,description);
+      this.getPostedJobs();
+   } else {
+      alert("This is not your post");
+   }
+
+  }
+
+  // removeJobFromPostedJobs() {
+  //   this.db.collection('postedJobs').doc('jobs').set({
+  //     postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
+  //    });
+  // }
   addToMyJobs(post){
     this.jobsService.addAcceptedJob(post);
+    this.db.collection('postedJobs').doc('jobs').update({
+      postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
+     });
+     this.refresh();
+
   }
 
   async getPostedJobs() {
