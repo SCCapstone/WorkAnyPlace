@@ -1,11 +1,23 @@
 <ion-header>
 
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
     <ion-buttons slot="end">
       <ion-button (click)="openCreateJob()">
         <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-      </ion-button> 
-    </ion-buttons>
+      </ion-button>
+    </ion-buttons> 
 
     <ion-title><center>Find Jobs</center></ion-title>
   </ion-toolbar>
@@ -15,7 +27,7 @@
 
 <ion-list>
   <ion-item *ngFor="let post of posts">
-  
+  <div tabindex="0"></div>
   <ion-card>
 
     <ion-card-header>
@@ -28,9 +40,12 @@
       <p style="color:#101010">{{ post.description }}</p>
     </ion-card-content>
 
-    <center><ion-button style="--background:#1f1f1f" (click)="removeJob(post.title,post.pay,post.category,post.description)">
+    <ion-button style="--background:#1f1f1f" (click)="addToMyJobs(post)"> 
+      Accept Job
+    </ion-button>
+    <ion-button style="--background:#1f1f1f" (click)="removeJob(post)">
       Delete
-    </ion-button></center>
+    </ion-button>
     
   </ion-card>
 

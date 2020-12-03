@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+//Scroll
+import { Component, ViewChild } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -18,3 +21,5 @@ import { JobsPage } from './jobs.page';
   declarations: [JobsPage]
 })
 export class JobsPageModule {}
+
+

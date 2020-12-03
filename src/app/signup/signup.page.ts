@@ -37,6 +37,8 @@ export class SignupPage implements OnInit {
     ).then(function() {
       var db = firebase.firestore();
       db.collection("users").doc(firebase.auth().currentUser.uid).set({
+        acceptedJobs: [],
+        postedJobs: [],
         email: item.email,
         group: item.group,
         hoursWorked: 0,
