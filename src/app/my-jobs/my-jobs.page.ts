@@ -13,6 +13,11 @@ export class MyJobsPage implements OnInit {
 
   posts = [];
 
+  logout() {
+    
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit() {
     this.posts = this.jobsService.posts;
   }
