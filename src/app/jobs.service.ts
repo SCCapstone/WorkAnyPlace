@@ -67,12 +67,78 @@ addAcceptedJob(post) {
 }).catch(function(error) {
     console.log("Error getting document:", error);
 });
-
-//   this.db.collection('users').doc(this.user.uid).set({
-//     acceptedJobs: post,
-   
-// }, { merge: true });
-
 }
+
+// async getAcceptedJobs() {
+//    var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+//       if (doc.exists) {
+//          console.log("Document data:", doc.data());
+//          return doc.data().acceptedJobs;
+//         } else {
+//           // doc.data() will be undefined in this case
+//          console.log("No such document!");
+//       }
+//     }).catch(function(error) {
+//       console.log("Error getting document:", error);
+//     }); 
+
+//     return jobs;
+// }
+
+// async getPostedJobs() {
+//   var jobs = await this.db.collection('postedJobs').doc('jobs').get().then(function(doc) {
+//      if (doc.exists) {
+//         console.log("Document data:", doc.data());
+//         return doc.data().postedJobs;
+//        } else {
+//          // doc.data() will be undefined in this case
+//         console.log("No such document!");
+//      }
+//    }).catch(function(error) {
+//      console.log("Error getting document:", error);
+//    }); 
+
+//    return jobs;
+// }
+
+addPostedJobs(job) {
+  this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+        var db = firebase.firestore();
+        var user = firebase.auth().currentUser;
+
+        db.collection('users').doc(user.uid).set({
+          email: doc.data().email,
+          group: doc.data().group,
+          hoursWorked: doc.data().hoursWorked,
+          jobsCompleted: doc.data().jobsCompleted,
+          jobsCreated: doc.data().jobsCreated,
+          moneyMade: doc.data().moneyMade,
+          starRating: doc.data().starRating,
+          username: doc.data().username,
+          acceptedJobs: doc.data().acceptedJobs,
+          postedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+         
+      }, { merge: true });
+
+     db.collection('postedJobs').doc('jobs').set({
+        postedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+      }, { merge: true });
+
+        
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+
+  
+}
+
+
+
 
 }
