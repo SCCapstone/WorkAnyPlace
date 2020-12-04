@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+
+    <ion-buttons slot="end">
+      <ion-button (click)="backToStats()">
+        <ion-back-button></ion-back-button>
+        <ion-icon slot="icon-only" name = "ios-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+    <ion-title><center>Account Settings</center></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+  <ion-list-header>
+    Name:
+  </ion-list-header>
+  <ion-item>
+    <ion-avatar slot="start">
+    </ion-avatar>
+    <ion-label position = "floating"></ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-list-header>
+    Username:
+  </ion-list-header>
+  <ion-item>
+    <ion-avatar slot="start">
+    </ion-avatar>
+    <ion-label position = "floating"></ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+
+  <ion-list-header>
+    Email:
+  </ion-list-header>
+  <ion-item>
+    <ion-avatar slot="start">
+    </ion-avatar>
+    <ion-label position = "floating"></ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-list-header>
+    Group:
+  </ion-list-header>
+  <ion-item>
+    <ion-avatar slot="start">
+    </ion-avatar>
+    <ion-label position = "floating"></ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+
+  </ion-list>
+
+  <ion-buttons>
+    <ion-button (click)="backToStats()" fill="solid" slot="center">
+      Save
+    </ion-button>
+  </ion-buttons> 
+<ion-content>
+
