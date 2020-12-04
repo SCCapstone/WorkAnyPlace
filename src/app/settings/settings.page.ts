@@ -13,15 +13,6 @@ export class SettingsPage implements OnInit {
 
   constructor(private router: Router) { }
 
-  logout() {
-      
-    this.router.navigate(['/login']);
-  }
-
-  backToStats() {
-    this.router.navigate(['/stats']);
-  }
-
   ngOnInit() {
   }
 
