@@ -32,13 +32,13 @@
     <ion-card>
   
       <ion-card-header>
-        <ion-card-title>{{ job.title }}</ion-card-title>
-        <ion-card-subtitle>{{ job.category }}</ion-card-subtitle>
-        <ion-card-subtitle>{{ job.pay }}</ion-card-subtitle>  
+        <ion-card-title color="secondary">{{ job.title }}</ion-card-title>
+        <ion-card-subtitle color="tertiary">{{ job.category }}</ion-card-subtitle>
+        <ion-card-subtitle color="tertiary">{{ job.pay }}</ion-card-subtitle>  
       </ion-card-header>
     
       <ion-card-content>
-        {{ job.description }}
+        <p style="color:#101010">{{ job.description }}</p>
       </ion-card-content>
       <!-- <ion-button (click)="addToMyJobs(post)"> 
         Accept Job
