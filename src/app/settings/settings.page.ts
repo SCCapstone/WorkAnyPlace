@@ -16,4 +16,9 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
+  backToStats() {
+    this.router.navigate(['/stats']);
+  }
 }
+
+
