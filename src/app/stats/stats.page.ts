@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.page.html',
