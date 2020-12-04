@@ -5,21 +5,21 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 @Component({
-  selector: 'app-stats',
-  templateUrl: './stats.page.html',
-  styleUrls: ['./stats.page.scss'],
+  selector: 'app-settings',
+  templateUrl: './settings.page.html',
+  styleUrls: ['./settings.page.scss'],
 })
-export class StatsPage implements OnInit {
+export class SettingsPage implements OnInit {
 
   constructor(private router: Router) { }
 
   logout() {
-    
+      
     this.router.navigate(['/login']);
   }
 
-  openSettings() {
-    this.router.navigate(['/settings']);
+  backToStats() {
+    this.router.navigate(['/stats']);
   }
 
   ngOnInit() {
