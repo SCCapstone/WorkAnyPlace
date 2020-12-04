@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title><center>Login</center></ion-title>
+    <ion-title class="ion-text-center">Login</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
 <br>
-<center><img src="../assets/img/work_any_place_logo.png" alt="logo" width="500" height="80"></center>
+<div style="text-align: center;">
+  <img src="../assets/img/work_any_place_logo.png" alt="logo" width="500" height="80">
+</div>
 <br>
 
 <form [formGroup]="new_product_form" (submit)="login(new_product_form.value)">
@@ -20,11 +22,11 @@
 
     <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_product_form.valid">Login</ion-button>
 </form>
-
-<center><ion-button (click)="signup()">
-  Create Account
-</ion-button>
-</center>
+<div style="text-align: center;">
+  <ion-button (click)="signup()">
+    Create Account
+  </ion-button>
+</div>
 
 
 
