@@ -31,10 +31,10 @@ We will contribute to testing our code here with writing tests.
 Host the app on Firebase.
 
 ## Testing Technology
-
+For unit testing we used Jasmine, and for behavioral testing we use selenium IDE.
 
 ## Running Tests
-
+In order to run the Unit test, you must access the project directory and run the command line "ng test".  The test will then open the karma browerser to see the results of your tests.
 
 # Authors
 Janki Patel: janki@email.sc.edu
