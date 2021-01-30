@@ -31,12 +31,9 @@ export class CreateJobPage implements OnInit {
   }
 
   createJob(value) {
-
-    //this.jobsService.postJob(value.title,value.pay,value.category,value.description);
-
-    
     this.jobsService.addPostedJobs(value);
     this.router.navigate(['../jobs']);
     this.router.navigate(['../tabs']);
   }
+
 }
