@@ -34,7 +34,7 @@ Host the app on Firebase.
 For unit testing we used Jasmine, and for behavioral testing we use selenium IDE.
 
 ## Running Tests
-In order to run the Unit test, you must access the project directory, WorkAnyPlace/src/tests and run the command line "ng test".  The test will then open the karma browerser to see the results of your tests. 
+In order to run the Unit test, you must access the project directory, WorkAnyPlace/src/tests and run the command line "npm test".  The test will then open the karma browerser to see the results of your tests. 
 
 # Authors
 Janki Patel: janki@email.sc.edu
