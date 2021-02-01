@@ -1,0 +1,585 @@
+{
+  "id": "eb8d7dc0-49f1-4e01-8284-59795148ee2a",
+  "version": "2.0",
+  "name": "WorkAnyPlace",
+  "url": "https://workanyplace-62a66.web.app",
+  "tests": [{
+    "id": "84dcd558-1525-4ca2-83ec-a978387fab43",
+    "name": "Login/Logout",
+    "commands": [{
+      "id": "4276107e-fe74-458c-b052-c86c3a768ff4",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bfc03ffa-9ab1-42fd-a4c9-3c0ceebc7e7e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "973x863",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b1074486-edbe-4860-9663-7995df84c0a3",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2d5a530c-d3f4-46c1-9eaa-c6d765a4c8d6",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test123@email123.com"
+    }, {
+      "id": "7061b084-5359-4917-bc37-6524ab9040d8",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ccc69b6-4d68-4c69-8b20-9e58f1a37386",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "TESTaccount123"
+    }, {
+      "id": "db7185cd-440a-486a-a7b3-d001b7121bfd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-btn",
+      "targets": [
+        ["css=.submit-btn", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
+        ["xpath=//ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "22f3bd9a-dead-4dfb-8054-0ed857b348eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-buttons/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "cb937df5-8cbd-401f-bfc4-49e0c27134c0",
+    "name": "Create Job",
+    "commands": [{
+      "id": "bcd12f69-5363-4c4d-bf0a-cc26148ddeb4",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "09406072-8f9a-46be-86b1-b5368719db54",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "973x863",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "53d28b44-1774-42f6-9d1b-b81ddfb4357f",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a7e76d8-7506-410b-98ab-e412806e6748",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test123@email123.com"
+    }, {
+      "id": "b5af881e-3808-438a-bd80-c37cd32772cc",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb91f7f3-d237-4fbb-8189-6a88965eaad2",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "TESTaccount123"
+    }, {
+      "id": "8290072f-5cc9-48be-9e72-d1f0aa480ee9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-btn",
+      "targets": [
+        ["css=.submit-btn", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
+        ["xpath=//ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "22647413-cf49-4da1-9df9-97d2deac3a4f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-buttons[3]/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c53b5c31-2dd5-4da4-b76b-82c91d722644",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-2",
+      "targets": [
+        ["name=ion-input-2", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-2']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7946b14e-95f0-432e-a052-8f89cbcb689b",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-2",
+      "targets": [
+        ["name=ion-input-2", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-2']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item/ion-input/input", "xpath:position"]
+      ],
+      "value": "Selenium Test"
+    }, {
+      "id": "d73268b5-db77-43ed-842e-8c724d81938e",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-3",
+      "targets": [
+        ["name=ion-input-3", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-3']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b25ccd0-6273-4cf2-b8fa-d71146428fad",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-3",
+      "targets": [
+        ["name=ion-input-3", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-3']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "802136af-73b6-4a04-bfc1-efac7fcff089",
+      "comment": "",
+      "command": "click",
+      "target": "css=.item-has-focus",
+      "targets": [
+        ["css=.item-has-focus", "css:finder"],
+        ["xpath=//form/ion-item[3]", "xpath:position"],
+        ["xpath=//ion-item[contains(.,'Category')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "78ae36d5-91a7-48ac-9405-7faaec3d2022",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-4",
+      "targets": [
+        ["name=ion-input-4", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-4']", "xpath:attributes"],
+        ["xpath=//ion-item[3]/ion-input/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "e2bcf2ee-7097-4f5a-b5cf-ab9ca809b242",
+      "comment": "",
+      "command": "click",
+      "target": "css=.item-has-focus",
+      "targets": [
+        ["css=.item-has-focus", "css:finder"],
+        ["xpath=//form/ion-item[4]", "xpath:position"],
+        ["xpath=//ion-item[contains(.,'Description')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ad7afde-3b68-4296-9621-7c4e4c7402fe",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-5",
+      "targets": [
+        ["name=ion-input-5", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-5']", "xpath:attributes"],
+        ["xpath=//ion-item[4]/ion-input/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "87e98e5e-5e36-4c2e-a447-1c9303df1d8d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=(//ion-button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1053e1e-e611-4df6-8e2c-bc921ec7bd9c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-buttons[2]/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "4a149b3f-5b7c-4dae-a887-379bfe66163d",
+    "name": "Accept/Delete Job",
+    "commands": [{
+      "id": "28dbded2-2bb3-4518-97b9-cbb4bb392277",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dc086e92-beab-49fa-ad27-6ee3c99baef4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "973x863",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb701d7c-5eac-416c-85fb-737fda5d2ebb",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f9ac93c-2292-47be-b5b8-3c609c0c0447",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test123@email123.com"
+    }, {
+      "id": "bda5f9f1-28a0-49c1-bc8f-984554b4a0bf",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e16e80d2-fa1f-4d8f-a20f-95fdb362a12e",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "TESTaccount123"
+    }, {
+      "id": "d150e961-d0a2-4366-8787-ff777e8b5e84",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-btn",
+      "targets": [
+        ["css=.submit-btn", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
+        ["xpath=//ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "90f540ab-9951-4688-9582-917b4bb68a00",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-card/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b814ae1-3929-4da5-9ee9-63d7f1447dff",
+      "comment": "",
+      "command": "click",
+      "target": "id=tab-button-tab2",
+      "targets": [
+        ["id=tab-button-tab2", "id"],
+        ["css=#tab-button-tab2", "css:finder"],
+        ["xpath=//ion-tab-button[@id='tab-button-tab2']", "xpath:attributes"],
+        ["xpath=//ion-tab-button[2]", "xpath:position"],
+        ["xpath=//ion-tab-button[contains(.,'My Jobs')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bc4cbc5-bbad-45e1-902a-40a97743b315",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//app-my-jobs/ion-header/ion-toolbar/ion-buttons[2]/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd12c670-f532-44b9-af68-65436d1c0e6a",
+      "comment": "",
+      "command": "click",
+      "target": "id=tab-button-tab1",
+      "targets": [
+        ["id=tab-button-tab1", "id"],
+        ["css=#tab-button-tab1", "css:finder"],
+        ["xpath=//ion-tab-button[@id='tab-button-tab1']", "xpath:attributes"],
+        ["xpath=//ion-tab-button", "xpath:position"],
+        ["xpath=//ion-tab-button[contains(.,'Find Jobs')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c041dde2-ca94-4822-8621-622a0850648e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-item[4]/ion-card/ion-button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c2bd92fd-e8e8-454e-baf7-6ac6b40de9e8",
+    "name": "Navigate",
+    "commands": [{
+      "id": "3160a192-b004-4922-89da-fe30c174b93e",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7bb33fd1-082b-474f-b658-a9dc675b0dad",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "973x863",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec8ba05d-d961-4079-b3d2-f67233b3871e",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac9a5b9f-b5b8-4165-9369-fdd8f130fd4a",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test123@email123.com"
+    }, {
+      "id": "bf05e946-c3c6-44fc-be0a-e8d66eb96b10",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ffae7ad-36af-4d56-b88b-5527caa353a9",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "TESTaccount123"
+    }, {
+      "id": "217ea63b-c271-4058-8370-7a7a33919221",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-btn",
+      "targets": [
+        ["css=.submit-btn", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
+        ["xpath=//ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75e53cb5-52b0-4b2a-ac92-9e7a6828ad7b",
+      "comment": "",
+      "command": "click",
+      "target": "id=tab-button-tab2",
+      "targets": [
+        ["id=tab-button-tab2", "id"],
+        ["css=#tab-button-tab2", "css:finder"],
+        ["xpath=//ion-tab-button[@id='tab-button-tab2']", "xpath:attributes"],
+        ["xpath=//ion-tab-button[2]", "xpath:position"],
+        ["xpath=//ion-tab-button[contains(.,'My Jobs')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f1e9641-3ab0-444b-98cb-35d8f8564f46",
+      "comment": "",
+      "command": "click",
+      "target": "css=#tab-button-tab3 > .sc-ion-label-md-h",
+      "targets": [
+        ["css=#tab-button-tab3 > .sc-ion-label-md-h", "css:finder"],
+        ["xpath=//ion-tab-button[@id='tab-button-tab3']/ion-label", "xpath:idRelative"],
+        ["xpath=//ion-tab-button[3]/ion-label", "xpath:position"],
+        ["xpath=//ion-label[contains(.,'Messages')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a72d1a1e-2d36-40fa-a67f-1213129e8871",
+      "comment": "",
+      "command": "click",
+      "target": "css=#tab-button-tab4 > .sc-ion-label-md-h",
+      "targets": [
+        ["css=#tab-button-tab4 > .sc-ion-label-md-h", "css:finder"],
+        ["xpath=//ion-tab-button[@id='tab-button-tab4']/ion-label", "xpath:idRelative"],
+        ["xpath=//ion-tab-button[4]/ion-label", "xpath:position"],
+        ["xpath=//ion-label[contains(.,'Stats')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b37d859-a8bb-480e-b96f-2b15b6598904",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//app-stats/ion-header/ion-toolbar/ion-buttons[2]/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db4f0cf7-d796-4c2c-ab81-fa1e6850cb4b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.back-button-has-icon-only",
+      "targets": [
+        ["css=.back-button-has-icon-only", "css:finder"],
+        ["xpath=//ion-back-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c68b8cb7-32ff-4ad7-b72a-39db75b6a5b8",
+      "comment": "",
+      "command": "click",
+      "target": "css=#tab-button-tab1 > .md:nth-child(1)",
+      "targets": [
+        ["css=#tab-button-tab1 > .md:nth-child(1)", "css:finder"],
+        ["xpath=//ion-icon[@name='hammer-outline']", "xpath:attributes"],
+        ["xpath=//ion-tab-button[@id='tab-button-tab1']/ion-icon", "xpath:idRelative"],
+        ["xpath=//ion-tab-button/ion-icon", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "39a1c496-f783-4288-a313-5103243654bc",
+    "name": "WorkAnyPlace Behavioral Test",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4a149b3f-5b7c-4dae-a887-379bfe66163d", "cb937df5-8cbd-401f-bfc4-49e0c27134c0", "84dcd558-1525-4ca2-83ec-a978387fab43", "c2bd92fd-e8e8-454e-baf7-6ac6b40de9e8"]
+  }],
+  "urls": ["https://workanyplace-62a66.web.app/"],
+  "plugins": []
+}
