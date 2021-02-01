@@ -43,3 +43,4 @@ Janki Patel: janki@email.sc.edu
 Anthony Castellano: castela@email.sc.edu
 Nick Rabena: nrabena@email.sc.edu
 Caleb Ulch: culch@email.sc.edu
+Brandon Race: barace@email.sc.edu
