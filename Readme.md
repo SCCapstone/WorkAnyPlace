@@ -36,7 +36,7 @@ For unit testing we used Jasmine, and for behavioral testing we use selenium IDE
 ## Running Tests
 In order to run the Unit test, you must access the project directory, WorkAnyPlace/src/tests and run the command line "npm test".  The test will then open the karma browerser to see the results of your tests. 
 
-In order to run the Behavioral test, you must access the project directory, WorkAnyPlace/src/tests/BehavioralTest and run the command selenium-side-runner WorkAnyPlaceBehavioralTest.side. In order for this test to work the selenium-side-runner must be installed using the command: npm install -g selenium-side-runner. Also, a browser driver must be installed, for chrome use the command: npm install -g chromedriver. If having trouble view link: https://www.selenium.dev/selenium-ide/docs/en/introduction/command-line-runner. I had a problem of not having the right permissions to download the driver so I had to use the command: sudo npm install -g chromedriver --unsafe-perm=true --allow-root.
+In order to run the Behavioral test, you must access the project directory, WorkAnyPlace/src/tests/BehavioralTest and run the command selenium-side-runner WorkAnyPlaceBehavioralTest.side. In order for this test to work the selenium-side-runner must be installed using the command: sudo npm install -g selenium-side-runner. Also, a browser driver must be installed, for chrome use the command: sudo npm install -g chromedriver. If having trouble view link: https://www.selenium.dev/selenium-ide/docs/en/introduction/command-line-runner. I had a problem of not having the right permissions to download the driver so I had to use the command: sudo npm install -g chromedriver --unsafe-perm=true --allow-root.
 
 # Authors
 Janki Patel: janki@email.sc.edu
