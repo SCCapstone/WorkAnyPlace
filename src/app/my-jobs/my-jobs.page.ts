@@ -32,7 +32,7 @@ export class MyJobsPage implements OnInit {
   async getAcceptedJobs() {
     var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
        if (doc.exists) {
-          console.log("Document data:", doc.data());
+          console.log("Document data:", doc.data().acceptedJobs);
           return doc.data().acceptedJobs;
          } else {
            // doc.data() will be undefined in this case
@@ -43,6 +43,12 @@ export class MyJobsPage implements OnInit {
      }); 
  
      this.acceptedJobs = jobs;
+ }
+
+ removeJob(job) {
+
+  this.jobsService.removeJob(job)
+  this.refresh()
  }
  
 

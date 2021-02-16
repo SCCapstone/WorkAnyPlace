@@ -27,17 +27,28 @@ export class JobsService {
     }); 
   }
 
-  removeJob(title,pay,category,description){
-    const job = {
-      'title': title,
-      'pay' : pay,
-      'Category': category,
-      'description': description
-    };
-    this.posts.forEach((element,index)=> {
-      if(element.title==job.title) this.posts.splice(index,1);
+  removeJob(job){
+  
+   
+
+  //Removes Job Locally
+
+    /** 
+     * 
+     * this.posts.forEach((element,index)=> {
+     *  if(element.title==job.title) this.posts.splice(index,1);
+     * });
+     * this.posts.forEach(object => console.log(object.title));
+     *
+     */
+
+  // Removes Job from Firestore 
+
+  
+    this.db.collection('users').doc(this.user.uid).update({
+      acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
     });
-    this.posts.forEach(object => console.log(object.title));
+
   }
 
 
