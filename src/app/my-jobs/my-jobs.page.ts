@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 import { Router } from '@angular/router';
-
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -19,7 +19,12 @@ export class MyJobsPage implements OnInit {
   acceptedJobs;
   db = firebase.firestore();
   user = firebase.auth().currentUser;
-  constructor(public jobsService: JobsService, private router: Router,) { }
+  constructor(
+    public jobsService: JobsService, 
+    private router: Router, 
+    public alertController: AlertController
+    
+    ) { }
 
   ngOnInit() {
     this.getAcceptedJobs();
@@ -52,7 +57,30 @@ export class MyJobsPage implements OnInit {
  }
  
 
-
+ removeJobConfirm(job) {
+  this.alertController.create({
+    header: 'Are  you sure?',
+    subHeader: 'Are you sure you want to cancel job?',
+    message: 'Job will be removed from your jobs and the owner will be notified',
+    buttons: [
+      
+      {
+        text: 'Yes',
+        handler: () => {
+          this.removeJob(job)
+        }
+      },
+      {
+        text: 'No',
+        handler: () => {
+          
+        }
+      }
+    ]
+  }).then(res => {
+    res.present();
+  });
+}
 
 
   logout() {
