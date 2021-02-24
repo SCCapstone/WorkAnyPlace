@@ -53,6 +53,8 @@ signup() {
   this.router.navigate(['/signup']);
 }
 
+
+
 resetPassword() {
 
 var auth = firebase.auth();
