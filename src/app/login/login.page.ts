@@ -68,11 +68,10 @@ auth.sendPasswordResetEmail(emailAddress).then(function() {
   // An error happened.
 
 */
-});
+};
 
 }
 
 
-  }
 
 
