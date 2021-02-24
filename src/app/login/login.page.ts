@@ -60,18 +60,12 @@ resetPassword() {
   this.router.navigate(['/reset-password']);
 /*
 var auth = firebase.auth();
-var emailAddress = "barace@email.sc.edu";
 
 auth.sendPasswordResetEmail(emailAddress).then(function() {
   // Email sent.
 }).catch(function(error) {
   // An error happened.
-
 */
-};
-
 }
 
-
-
-
+}

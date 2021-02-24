@@ -15,16 +15,25 @@ import 'firebase/firestore';
 })
 export class ResetPasswordPage implements OnInit {
 
-  new_product_form: FormGroup;
+  reset_password_email: FormGroup;
   db = firebase.firestore();
 
   constructor(public afAuth: AngularFireAuth, private router: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     var auth = firebase.auth();
-    this.new_product_form = this.formBuilder.group({
+    this.reset_password_email = this.formBuilder.group({
       email: new FormControl('', Validators.required),
       });
+  }
+
+  resetPassword(email) {
+    var auth = firebase.auth();
+    auth.sendPasswordResetEmail(email).then(function() {
+      // Email sent.
+    }).catch(function(error) {
+      // An error happened.
+    });
   }
 
   back() {
