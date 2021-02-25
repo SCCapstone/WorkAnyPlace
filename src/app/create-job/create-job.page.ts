@@ -31,7 +31,7 @@ export class CreateJobPage implements OnInit {
   }
 
   createJob(value) {
-    this.jobsService.addPostedJobs(value);
+    this.jobsService.addNewPostedJob(value);
     this.router.navigate(['../jobs']);
     this.router.navigate(['../tabs']);
   }

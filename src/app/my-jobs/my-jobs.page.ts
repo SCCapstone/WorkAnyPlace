@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 import { Router } from '@angular/router';
-
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -15,11 +15,15 @@ import { Router } from '@angular/router';
 })
 export class MyJobsPage implements OnInit {
 
-
-  acceptedJobs;
   db = firebase.firestore();
   user = firebase.auth().currentUser;
-  constructor(public jobsService: JobsService, private router: Router,) { }
+
+  constructor(
+    public jobsService: JobsService, 
+    private router: Router, 
+    public alertController: AlertController
+    
+    ) { }
 
   ngOnInit() {
     this.getAcceptedJobs();
@@ -29,29 +33,43 @@ export class MyJobsPage implements OnInit {
     this.getAcceptedJobs();
   }
 
-  async getAcceptedJobs() {
-    var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
-       if (doc.exists) {
-          console.log("Document data:", doc.data());
-          return doc.data().acceptedJobs;
-         } else {
-           // doc.data() will be undefined in this case
-          console.log("No such document!");
-       }
-     }).catch(function(error) {
-       console.log("Error getting document:", error);
-     }); 
- 
-     this.acceptedJobs = jobs;
+  getAcceptedJobs() {
+    this.jobsService.getMyJobs()
+  }
+
+ async cancelJob(job) {
+  await this.jobsService.cancelMyJob(job)
+  this.jobsService.getPostedJobs()
+  this.refresh()
  }
  
 
+ removeJobConfirm(job) {
+  this.alertController.create({
+    header: 'Are  you sure?',
+    subHeader: 'Are you sure you want to cancel job?',
+    message: 'Job will be removed from your jobs and the owner will be notified',
+    buttons: [  
+      {
+        text: 'Yes',
+        handler: () => {
+          this.cancelJob(job)
+        }
+      },
+      {
+        text: 'No',
+        handler: () => {
+          
+        }
+      }
+    ]
+  }).then(res => {
+    res.present();
+  });
+}
 
-
-
-  logout() {
-    
-    this.router.navigate(['/login']);
+  logout() {   
+   this.router.navigate(['/login']);
   }
 
 }
