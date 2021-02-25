@@ -16,7 +16,7 @@ import { CreateJobPage } from './create-job.page';
     IonicModule,
     CreateJobPageRoutingModule, 
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [CreateJobPage]
 })

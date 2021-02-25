@@ -15,10 +15,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class MyJobsPage implements OnInit {
 
-
-  acceptedJobs;
   db = firebase.firestore();
   user = firebase.auth().currentUser;
+
   constructor(
     public jobsService: JobsService, 
     private router: Router, 
@@ -34,25 +33,13 @@ export class MyJobsPage implements OnInit {
     this.getAcceptedJobs();
   }
 
-  async getAcceptedJobs() {
-    var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
-       if (doc.exists) {
-          console.log("Document data:", doc.data().acceptedJobs);
-          return doc.data().acceptedJobs;
-         } else {
-           // doc.data() will be undefined in this case
-          console.log("No such document!");
-       }
-     }).catch(function(error) {
-       console.log("Error getting document:", error);
-     }); 
- 
-     this.acceptedJobs = jobs;
- }
+  getAcceptedJobs() {
+    this.jobsService.getMyJobs()
+  }
 
- removeJob(job) {
-
-  this.jobsService.removeJob(job)
+ async cancelJob(job) {
+  await this.jobsService.cancelMyJob(job)
+  this.jobsService.getPostedJobs()
   this.refresh()
  }
  
@@ -62,12 +49,11 @@ export class MyJobsPage implements OnInit {
     header: 'Are  you sure?',
     subHeader: 'Are you sure you want to cancel job?',
     message: 'Job will be removed from your jobs and the owner will be notified',
-    buttons: [
-      
+    buttons: [  
       {
         text: 'Yes',
         handler: () => {
-          this.removeJob(job)
+          this.cancelJob(job)
         }
       },
       {
@@ -82,10 +68,8 @@ export class MyJobsPage implements OnInit {
   });
 }
 
-
-  logout() {
-    
-    this.router.navigate(['/login']);
+  logout() {   
+   this.router.navigate(['/login']);
   }
 
 }

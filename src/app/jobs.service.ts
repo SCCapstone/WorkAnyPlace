@@ -1,61 +1,68 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class JobsService {
 
   constructor() {
-
-   }
-   db = firebase.firestore();
-   user = firebase.auth().currentUser;
-
-   posts:Array<any>=[{"title":"Lawn Care","pay":7.99,"category":"Yard Work", "description":"I need help cutting my grass."},{"title":"JOB 2","pay":7.20,"category":"Yard Work", "description":"I need help cutting my grass."}];
-
-   getPosts() {
-     return 'real value';
+    this.getPostedJobs()
    }
 
-   postJob(title,pay,category,description){
-    this.posts.push({
-      'title': title,
-      'pay': pay,
-      'Category': category,
-      'description': description
-    }); 
+
+/*************************************************************/
+/* Service Varibles */
+  db = firebase.firestore();
+  user = firebase.auth().currentUser;
+
+/* Varibles used accross components */
+  posts
+  myjobs
+//////////////////////////////////////////////////////////////
+
+
+/* Retrieve from Firestore and uppdate variables *///////////////////////////////////////////////////////////
+  async getPostedJobs() {
+    var jobs = await this.db.collection('postedJobs').doc('jobs').get().then(function(doc) {
+       if (doc.exists) {
+          console.log("Document data:", doc.data());
+          return doc.data().postedJobs;
+         } else {
+           // doc.data() will be undefined in this case
+          console.log("No such document!");
+       }
+     }).catch(function(error) {
+       console.log("Error getting document:", error);
+     }); 
+     this.posts = jobs;
   }
 
-  removeJob(job){
+  async getMyJobs() {
+    var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+       if (doc.exists) {
+          console.log("Document data:", doc.data().acceptedJobs);
+          return doc.data().acceptedJobs;
+         } else {
+           // doc.data() will be undefined in this case
+          console.log("No such document!");
+       }
+     }).catch(function(error) {
+       console.log("Error getting document:", error);
+     }); 
+     this.myjobs = jobs
+ }
+
+
+/* Push to Firestore *////////////////////////////////////////////////////////////////////////
+
+/* Add to users accepted Jobs */
+  addAcceptedJob(post) {
   
-   
-
-  //Removes Job Locally
-
-    /** 
-     * 
-     * this.posts.forEach((element,index)=> {
-     *  if(element.title==job.title) this.posts.splice(index,1);
-     * });
-     * this.posts.forEach(object => console.log(object.title));
-     *
-     */
-
-  // Removes Job from Firestore 
-
-  
-    this.db.collection('users').doc(this.user.uid).update({
-      acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
-    });
-
-  }
-
-
-addAcceptedJob(post) {
-  
-  this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
-    if (doc.exists) {
+    this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+      if (doc.exists) {
         console.log("Document data:", doc.data());
         var db = firebase.firestore();
         var user = firebase.auth().currentUser;
@@ -69,6 +76,7 @@ addAcceptedJob(post) {
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
           username: doc.data().username,
+          postedJobs: doc.data().postedJobs,
           acceptedJobs: firebase.firestore.FieldValue.arrayUnion(post)
          
       }, { merge: true });
@@ -78,46 +86,15 @@ addAcceptedJob(post) {
         // doc.data() will be undefined in this case
         console.log("No such document!");
     }
-}).catch(function(error) {
+  }).catch(function(error) {
     console.log("Error getting document:", error);
-});
-}
+  });
+  }
 
-// async getAcceptedJobs() {
-//    var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
-//       if (doc.exists) {
-//          console.log("Document data:", doc.data());
-//          return doc.data().acceptedJobs;
-//         } else {
-//           // doc.data() will be undefined in this case
-//          console.log("No such document!");
-//       }
-//     }).catch(function(error) {
-//       console.log("Error getting document:", error);
-//     }); 
-
-//     return jobs;
-// }
-
-// async getPostedJobs() {
-//   var jobs = await this.db.collection('postedJobs').doc('jobs').get().then(function(doc) {
-//      if (doc.exists) {
-//         console.log("Document data:", doc.data());
-//         return doc.data().postedJobs;
-//        } else {
-//          // doc.data() will be undefined in this case
-//         console.log("No such document!");
-//      }
-//    }).catch(function(error) {
-//      console.log("Error getting document:", error);
-//    }); 
-
-//    return jobs;
-// }
-
-addPostedJobs(job) {
-  this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
-    if (doc.exists) {
+/* Use this function when adding a newly created Job */
+  addNewPostedJob(job) {
+    this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+      if (doc.exists) {
         console.log("Document data:", doc.data());
         var db = firebase.firestore();
         var user = firebase.auth().currentUser;
@@ -145,14 +122,45 @@ addPostedJobs(job) {
         // doc.data() will be undefined in this case
         console.log("No such document!");
     }
-}).catch(function(error) {
+    }).catch(function(error) {
     console.log("Error getting document:", error);
-});
+    });
+  }
 
-  
-}
+/* Use this function when adding an already existing job back to posted jobs
+   Example: someone cancels job so it needs to be added back to posted jobs */
+  addBackToPostedJobs(post) {
+    this.db.collection('postedJobs').doc('jobs').update({
+      postedJobs: firebase.firestore.FieldValue.arrayUnion(post)
+    });
+    this.getPostedJobs();
+  }
 
+/* removes from accepted Jobs */
+  async cancelMyJob(job) {
+  //Removes Job Locally
 
+    /*
+     * 
+     * this.posts.forEach((element,index)=> {
+     *  if(element.title==job.title) this.posts.splice(index,1);
+     * });
+     * this.posts.forEach(object => console.log(object.title));
+     *
+     */
 
+    
+    // Removes Job from Firestore from users acceptedJobs array  
+    await this.db.collection('users').doc(this.user.uid).update({
+     acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
+    });
+
+    // Add job back to posts
+    this.addBackToPostedJobs(job);
+
+    // Refresh Pages
+    this.getPostedJobs();
+    this.getMyJobs();
+  }
 
 }
