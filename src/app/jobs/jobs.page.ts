@@ -82,6 +82,10 @@ export class JobsPage implements OnInit {
      this.posts = jobs;
     }
 
+  goToJobDetail(post) {
+    
+    this.router.navigate(['../job-detail'])
+  }
   logout() {
     
     this.router.navigate(['/login']);
