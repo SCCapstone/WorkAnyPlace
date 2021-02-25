@@ -4,20 +4,19 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CreateJobPageRoutingModule } from './create-job-routing.module';
+import { ResetPasswordPageRoutingModule } from './reset-password-routing.module';
 
-import { CreateJobPage } from './create-job.page';
-
+import { ResetPasswordPage } from './reset-password.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateJobPageRoutingModule, 
+    ResetPasswordPageRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [CreateJobPage]
+  declarations: [ResetPasswordPage]
 })
-export class CreateJobPageModule {}
+export class ResetPasswordPageModule {}

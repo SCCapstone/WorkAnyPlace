@@ -26,7 +26,7 @@
 <ion-content>
 
 <ion-list>
-  <ion-item *ngFor="let post of posts">
+  <ion-item *ngFor="let post of this.jobsService.posts">
   <div tabindex="0"></div>
 
   <ion-card (click)="goToJobDetail(post)">

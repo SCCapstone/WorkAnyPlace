@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-jobs',
@@ -16,82 +17,53 @@ export class JobsPage implements OnInit {
 
   constructor(private router: Router,public jobsService: JobsService) { }
 
-  posts;
-  
-
   ngOnInit() {
-
-    this.getPostedJobs();   
+    this.jobsService.getPostedJobs();
   }
 
   openCreateJob() {
     this.router.navigate(['/create-job']);
   }
 
-
   refresh() {
-    this.getPostedJobs();   
+    this.jobsService.getPostedJobs();
   }
 
-  removeJob(post){
-    if (post.uid == this.user.uid) {
-      this.db.collection('users').doc(this.user.uid).update({
-        postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
-      });
-      
+  async removeJob(post){
+    if (post.uid == this.user.uid) {   
+      // this.db.collection('users').doc(this.user.uid).update({
+      //   postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
+      // });
     
-      this.db.collection('postedJobs').doc('jobs').update({
+      await this.db.collection('postedJobs').doc('jobs').update({
        postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
       });
 
-
-    //this.jobsService.removeJob(title,pay,category,description);
-      this.getPostedJobs();
+      this.refresh()
    } else {
       alert("This is not your post");
    }
 
   }
 
-  // removeJobFromPostedJobs() {
+  async addToMyJobs(post){
+    this.jobsService.addAcceptedJob(post);
+    await this.db.collection('postedJobs').doc('jobs').update({
+      postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
+     });
+     this.jobsService.getMyJobs();
+     this.refresh();
+  }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
+
+// removeJobFromPostedJobs() {
   //   this.db.collection('postedJobs').doc('jobs').set({
   //     postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
   //    });
   // }
-  addToMyJobs(post){
-    this.jobsService.addAcceptedJob(post);
-    this.db.collection('postedJobs').doc('jobs').update({
-      postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
-     });
-     this.refresh();
-
-  }
-
-  async getPostedJobs() {
-    var jobs = await this.db.collection('postedJobs').doc('jobs').get().then(function(doc) {
-       if (doc.exists) {
-          console.log("Document data:", doc.data());
-          return doc.data().postedJobs;
-         } else {
-           // doc.data() will be undefined in this case
-          console.log("No such document!");
-       }
-     }).catch(function(error) {
-       console.log("Error getting document:", error);
-     }); 
-     this.posts = jobs;
-    }
-
-  goToJobDetail(post) {
-    
-    this.router.navigate(['../job-detail'])
-  }
-  logout() {
-    
-    this.router.navigate(['/login']);
-  }
-
-
 
 } 
 
