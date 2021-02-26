@@ -27,12 +27,13 @@ export class ParallaxHeaderDirective {
     const scrollTop = $event.detail.scrollTop;
 
     this.domCtrl.write(() => {
-      //if(scrollTop > 0) {
+      if(scrollTop > 0) {
         this.moveImage = scrollTop / 2;
         this.scaleImage = 1;
-      //} else {
-
-     // }
+      } else {
+        this.moveImage = scrollTop/ 1.4;
+        this.scaleImage = -scrollTop / this.headerHeight + 1;
+      }
       this.renderer.setStyle(
         this.header, 'webkitTransform', 'translate3d(0,' + this.moveImage + 'px,0) scale(' + this.scaleImage + ',' + this.scaleImage +')'
         );
