@@ -21,6 +21,7 @@ export class JobsService {
 /* Varibles used accross components */
   posts
   myjobs
+  selectedjob
 //////////////////////////////////////////////////////////////
 
 
@@ -55,6 +56,12 @@ export class JobsService {
      this.myjobs = jobs
  }
 
+ setSelectedJob(job) {
+   this.selectedjob = job;
+ }
+
+
+/*********************************************************************************************************/
 
 /* Push to Firestore *////////////////////////////////////////////////////////////////////////
 
@@ -135,6 +142,9 @@ export class JobsService {
     });
     this.getPostedJobs();
   }
+
+/*********************************************************************************************************/
+
 
 /* removes from accepted Jobs */
   async cancelMyJob(job) {

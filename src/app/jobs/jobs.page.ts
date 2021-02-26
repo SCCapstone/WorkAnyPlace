@@ -25,6 +25,11 @@ export class JobsPage implements OnInit {
     this.router.navigate(['/create-job']);
   }
 
+  async goToJobDetail(post) {
+    await this.jobsService.setSelectedJob(post);
+    this.router.navigate(['../job-detail']);
+  }
+
   refresh() {
     this.jobsService.getPostedJobs();
   }

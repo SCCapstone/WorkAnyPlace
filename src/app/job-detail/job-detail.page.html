@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title></ion-title>
+    <ion-title>{{ this.jobsService.selectedjob.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content appParallaxHeader [scrollEvents]="true">
+  <div class="parallax-image" [style.background-image]="'url(' + defaultimg + ')'" >
+
+  </div>
+  <div class="colorDetailPage">
+    
+    <h3>
+      Pay
+    </h3>
+    {{ this.jobsService.selectedjob.pay }}
+    <h3>
+      Category
+    </h3>
+    {{ this.jobsService.selectedjob.category}}
+    <h3>
+      Description
+    </h3>
+    {{ this.jobsService.selectedjob.description }}
+  </div>
 
 </ion-content>

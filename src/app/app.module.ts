@@ -12,10 +12,11 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import firebaseConfig from './firebase';
 import {AngularFireModule} from '@angular/fire';
-import {AngularFireAuthModule} from '@angular/fire/auth'
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { ParallaxHeaderDirective } from './directives/parallax-header.directive'
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ParallaxHeaderDirective],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
