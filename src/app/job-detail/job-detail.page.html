@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="titl" text-center>{{ this.jobsService.selectedjob.title }}</ion-title>
+    <ion-title class="title" text-center>{{ this.jobsService.selectedjob.title }}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref=""></ion-back-button>
     </ion-buttons>
@@ -27,4 +27,12 @@
     {{ this.jobsService.selectedjob.description }}
   </div>
 
+  <div class="moveBottom">
+    <ion-button style="--background:#1f1f1f" (click)="addToMyJobs(this.jobsService.selectedjob)"> 
+      Accept Job
+    </ion-button>
+    <ion-button style="--background:#1f1f1f" (click)="removeJob(this.jobsService.selectedjob)">
+      Delete
+    </ion-button>
+  </div>
 </ion-content>

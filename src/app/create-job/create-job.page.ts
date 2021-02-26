@@ -30,8 +30,9 @@ export class CreateJobPage implements OnInit {
     });
   }
 
-  createJob(value) {
-    this.jobsService.addNewPostedJob(value);
+  async createJob(value) {
+    await this.jobsService.addNewPostedJob(value);
+    this.jobsService.getPostedJobs();
     this.router.navigate(['../jobs']);
     this.router.navigate(['../tabs']);
   }
