@@ -20,6 +20,7 @@ export class JobsService {
 
 /* Varibles used accross components */
   posts
+  postsNew
   myjobs
   selectedjob
 //////////////////////////////////////////////////////////////
@@ -39,6 +40,7 @@ export class JobsService {
        console.log("Error getting document:", error);
      }); 
      this.posts = jobs;
+     this.postsNew = jobs;
   }
 
   async getMyJobs() {
