@@ -4,7 +4,6 @@ import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { State } from '@stencil/core';
 
 @Component({
   selector: 'app-jobs',
