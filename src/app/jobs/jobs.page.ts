@@ -4,6 +4,7 @@ import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { State } from '@stencil/core';
 
 @Component({
   selector: 'app-jobs',
@@ -32,6 +33,24 @@ export class JobsPage implements OnInit {
 
   refresh() {
     this.jobsService.getPostedJobs();
+  }
+
+  async filterList(evt) {
+    let jobList = this.jobsService.posts;
+    const searchTerm = evt.srcElement.value;
+
+    if (!searchTerm) {
+      this.jobsService.postsNew = jobList;
+      return;
+    }
+
+    jobList = jobList.filter(currentJob => {
+      if (currentJob.title && searchTerm) {
+        return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+      }
+    })
+
+    this.jobsService.postsNew = jobList;
   }
 
   async removeJob(post){
@@ -71,4 +90,3 @@ export class JobsPage implements OnInit {
   // }
 
 } 
-
