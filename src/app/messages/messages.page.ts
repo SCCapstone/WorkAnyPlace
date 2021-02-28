@@ -18,4 +18,8 @@ export class MessagesPage implements OnInit {
   ngOnInit() {
   }
 
+  goToConversation() {
+    this.router.navigate(['/conversation']);
+  }
+
 }
