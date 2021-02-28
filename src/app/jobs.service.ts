@@ -7,6 +7,7 @@ import 'firebase/firestore';
 })
 
 export class JobsService {
+  getPosts: any;
 
   constructor() {
     this.getPostedJobs()
@@ -20,6 +21,7 @@ export class JobsService {
 
 /* Varibles used accross components */
   posts
+  postsNew
   myjobs
   selectedjob
   profilepic = "../../assets/img/work_any_place_logo.png"
@@ -40,6 +42,7 @@ export class JobsService {
        console.log("Error getting document:", error);
      }); 
      this.posts = jobs;
+     this.postsNew = jobs;
   }
 
   async getMyJobs() {
@@ -185,6 +188,7 @@ async getUIDProfilePic(uid) {
     this.getPostedJobs();
   }
 
+
 /*********************************************************************************************************/
 
 
@@ -214,5 +218,17 @@ async getUIDProfilePic(uid) {
     this.getPostedJobs();
     this.getMyJobs();
   }
+
+  async completeMyJob(job) {
+
+      // Removes Job from Firestore from users acceptedJobs array  
+      await this.db.collection('users').doc(this.user.uid).update({
+       acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
+      });
+
+      // Refresh Pages
+      this.getPostedJobs();
+      this.getMyJobs();
+    }
 
 }

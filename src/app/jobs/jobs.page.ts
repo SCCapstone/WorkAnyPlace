@@ -44,6 +44,24 @@ export class JobsPage implements OnInit {
     img.setAttribute('src', this.jobsService.profilepic);
   }
 
+  async filterList(evt) {
+    let jobList = this.jobsService.posts;
+    const searchTerm = evt.srcElement.value;
+
+    if (!searchTerm) {
+      this.jobsService.postsNew = jobList;
+      return;
+    }
+
+    jobList = jobList.filter(currentJob => {
+      if (currentJob.title && searchTerm) {
+        return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentJob.category.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+      }
+    })
+
+    this.jobsService.postsNew = jobList;
+  }
+
   async removeJob(post){
     if (post.uid == this.user.uid) {   
       // this.db.collection('users').doc(this.user.uid).update({
@@ -81,4 +99,3 @@ export class JobsPage implements OnInit {
   // }
 
 } 
-

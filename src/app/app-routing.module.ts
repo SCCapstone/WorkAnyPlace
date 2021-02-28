@@ -52,6 +52,10 @@ const routes: Routes = [
   {
     path: 'image-upload',
     loadChildren: () => import('./image-upload/image-upload.module').then( m => m.ImageUploadPageModule)
+  },
+  {
+    path: 'conversation',
+    loadChildren: () => import('./conversation/conversation.module').then( m => m.ConversationPageModule)
   }
 ];
 @NgModule({
