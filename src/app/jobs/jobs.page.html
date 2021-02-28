@@ -1,6 +1,9 @@
 <ion-header>
 
   <ion-toolbar>
+    <ion-avatar slot="start">
+      <img id="profilepic" >
+    </ion-avatar>
     <ion-buttons slot="start">
       <ion-button (click)="logout()">
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
@@ -30,7 +33,9 @@
   <div tabindex="0"></div>
 
   <ion-card (click)="goToJobDetail(post)">
-
+    <ion-avatar slot="start">
+      <img id="profilepic" src= "{{ post.profilePic }}">
+    </ion-avatar>
     <ion-card-header>
       <ion-card-title color="secondary">{{ post.title }}</ion-card-title>
       <ion-card-subtitle color="tertiary">{{ post.category }}</ion-card-subtitle>

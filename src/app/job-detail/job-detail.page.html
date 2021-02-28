@@ -25,6 +25,20 @@
       Description
     </h3>
     {{ this.jobsService.selectedjob.description }}
+
+   
+    <br/>
+    <br/>
+    <br/>
+    <ion-avatar slot="start">
+      <img id="profilepic" src= "{{ this.jobsService.selectedjob.profilePic }}">
+    </ion-avatar>
+    <div>
+      <br/>
+      {{ username }}
+    </div>
+    <br/>
+
   </div>
 
   <div class="moveBottom">

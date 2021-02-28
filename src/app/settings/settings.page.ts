@@ -19,6 +19,12 @@ export class SettingsPage implements OnInit {
   backToStats() {
     this.router.navigate(['/stats']);
   }
+
+  goToImage() {
+    this.router.navigate(['../image-upload']);
+  }
+
+
 }
 
 
