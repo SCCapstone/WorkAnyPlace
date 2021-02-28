@@ -10,17 +10,17 @@ export class ConversationPage implements OnInit {
     {
       user: 'Nick',
       createdAt: 15544090856000,
-      msg: 'Hey, how are you?'
+      msg: 'Hey there how are you, I have accepted your Work Any Place Job and am excited to work!'
     },
     {
       user: 'Brandon',
       createdAt: 155440924235,
-      msg: 'Working for Work Any Place, you?'
+      msg: 'Awesome, thank you so much, looking forward to meeting you. When are you available?'
     },
     {
       user: 'Nick',
       createdAT: 155440924235,
-      msg: 'Same me too!'
+      msg: 'I am available this upcoming Tuesday, My number is 703-555-3333'
     },
   ];
 
