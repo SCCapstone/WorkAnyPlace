@@ -7,6 +7,7 @@ import 'firebase/firestore';
 })
 
 export class JobsService {
+  getPosts: any;
 
   constructor() {
     this.getPostedJobs()
@@ -174,5 +175,17 @@ export class JobsService {
     this.getPostedJobs();
     this.getMyJobs();
   }
+
+  async completeMyJob(job) {
+
+      // Removes Job from Firestore from users acceptedJobs array  
+      await this.db.collection('users').doc(this.user.uid).update({
+       acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
+      });
+
+      // Refresh Pages
+      this.getPostedJobs();
+      this.getMyJobs();
+    }
 
 }
