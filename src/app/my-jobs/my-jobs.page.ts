@@ -42,8 +42,37 @@ export class MyJobsPage implements OnInit {
   this.jobsService.getPostedJobs()
   this.refresh()
  }
- 
 
+ async completeJob(job) {
+  await this.jobsService.completeMyJob(job)
+  this.jobsService.getPostedJobs()
+  this.refresh()
+ }
+
+ completeJobConfirm(job) {
+  this.alertController.create({
+    header: 'Did you complete this job?',
+    subHeader: 'Thank you for completing this job',
+    message: 'Job will be removed from your jobs and the owner will be notified',
+    buttons: [  
+      {
+        text: 'Yes',
+        handler: () => {
+          this.completeJob(job)
+        }
+      },
+      {
+        text: 'No',
+        handler: () => {
+          
+        }
+      }
+    ]
+  }).then(res => {
+    res.present();
+  });
+}
+ 
  removeJobConfirm(job) {
   this.alertController.create({
     header: 'Are  you sure?',
