@@ -45,7 +45,7 @@ export class JobsPage implements OnInit {
 
     jobList = jobList.filter(currentJob => {
       if (currentJob.title && searchTerm) {
-        return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+        return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentJob.category.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       }
     })
 
