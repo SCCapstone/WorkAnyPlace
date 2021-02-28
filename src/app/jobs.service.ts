@@ -24,6 +24,7 @@ export class JobsService {
   postsNew
   myjobs
   selectedjob
+  profilepic = "../../assets/img/work_any_place_logo.png"
 //////////////////////////////////////////////////////////////
 
 
@@ -62,6 +63,41 @@ export class JobsService {
  setSelectedJob(job) {
    this.selectedjob = job;
  }
+ 
+ // Gets Current User Profile Pic
+ async getProfilePic() {
+  var pic = await this.db.collection('profilePics').doc(this.user.uid).get().then(function(doc) {
+     if (doc.exists) {
+        console.log("Document data:", doc.data().filepath);
+        return doc.data().filepath;
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   this.profilepic = pic;
+   
+  }
+// Pass in uid and get profile pic for that uid
+async getUIDProfilePic(uid) {
+  var pic = await this.db.collection('profilePics').doc(uid).get().then(function(doc) {
+     if (doc.exists) {
+        console.log("Document data:", doc.data().filepath);
+        return doc.data().filepath;
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   return pic;
+   
+}
+
+
 
 
 /*********************************************************************************************************/
@@ -102,7 +138,17 @@ export class JobsService {
   }
 
 /* Use this function when adding a newly created Job */
-  addNewPostedJob(job) {
+  async addNewPostedJob(job) {
+    var pic = await this.getUIDProfilePic(job.uid);
+    var post = {"category":job.category, "description":job.description, "pay":job.pay,
+      "title": job.title, "uid": job.uid, "profilePic": pic 
+    }
+    
+
+    this.db.collection('postedJobs').doc('jobs').set({
+      postedJobs: firebase.firestore.FieldValue.arrayUnion(post)
+    }, { merge: true });
+
     this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
       if (doc.exists) {
         console.log("Document data:", doc.data());
@@ -119,12 +165,8 @@ export class JobsService {
           starRating: doc.data().starRating,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
-          postedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+          postedJobs: firebase.firestore.FieldValue.arrayUnion(post)
          
-      }, { merge: true });
-
-     db.collection('postedJobs').doc('jobs').set({
-        postedJobs: firebase.firestore.FieldValue.arrayUnion(job)
       }, { merge: true });
 
         

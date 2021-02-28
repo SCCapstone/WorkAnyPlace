@@ -7,25 +7,23 @@ import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import {JobsService } from '../jobs.service'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-
 
 export interface MyData {
   name: string;
   filepath: string;
   size: number;
 }
-
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss'],
+  selector: 'app-image-upload',
+  templateUrl: './image-upload.page.html',
+  styleUrls: ['./image-upload.page.scss'],
 })
-export class SignupPage implements OnInit {
+export class ImageUploadPage implements OnInit {
 
-  new_product_form: FormGroup;
+  user = firebase.auth().currentUser;
   db = firebase.firestore();
 
   // Upload Task 
@@ -53,61 +51,19 @@ export class SignupPage implements OnInit {
  
    private imageCollection: AngularFirestoreCollection<MyData>;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, public formBuilder: FormBuilder, private storage: AngularFireStorage, private database: AngularFirestore) 
+  constructor(public afAuth: AngularFireAuth, private router: Router, public formBuilder: FormBuilder, private storage: AngularFireStorage, private database: AngularFirestore, public jobsService: JobsService) 
   { this.isUploading = false;
     this.isUploaded = false;
     //Set collection where our documents/ images info will save
-    this.imageCollection = database.collection<MyData>('freakyImages');
+    this.imageCollection = database.collection<MyData>('profilePics');
     this.images = this.imageCollection.valueChanges();
    }
 
   ngOnInit() {
-    this.new_product_form = this.formBuilder.group({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.required),
-      group: new FormControl('', Validators.required)
-    });
+    
 
   }
 
-  async createAccount(item) {
-    const user = await this.afAuth.createUserWithEmailAndPassword(
-      item.email,
-      item.password
-    ).then(function() {
-      var db = firebase.firestore();
-      db.collection("users").doc(firebase.auth().currentUser.uid).set({
-        acceptedJobs: [],
-        postedJobs: [],
-        email: item.email,
-        group: item.group,
-        hoursWorked: 0,
-        jobsCompleted: 0,
-        jobsCreated: 0,
-        moneyMade: 0.00,
-        starRating: 0,
-        username: item.username
-      })
-      .then(function() {
-          console.log("Document successfully written!");
-      })
-      .catch(function(error) {
-          console.error("Error writing document: ", error);
-      });
-
-    }).catch(function(error) {
-      alert(error.message);
-      console.error("Error writing document: ", error);
-    });
-  
-      console.log(user);
-     
-     
-      // this.router.navigate(['/jobs']);
-      // this.router.navigate(['/tabs']);
-      this.router.navigate(['/image-upload']);
-  }
   uploadFile(event: FileList) {
     
 
@@ -166,10 +122,10 @@ export class SignupPage implements OnInit {
 
   addImagetoDB(image: MyData) {
     //Create an ID for document
-    const id = this.database.createId();
+    const id = this.user.uid;
 
     //Set document id with value in database
-    this.imageCollection.doc(id).set(image).then(resp => {
+    this.db.collection('profilePics').doc(this.user.uid).set(image).then(resp => {
       console.log(resp);
     }).catch(error => {
       console.log("error " + error);
@@ -177,8 +133,10 @@ export class SignupPage implements OnInit {
   }
 
 
-  
-  back() {
-    this.router.navigate(['/login'])
+  goToJobs() {
+    this.jobsService.getProfilePic();
+    this.router.navigate(['/jobs']);
+    this.router.navigate(['/tabs']);
   }
+
 }

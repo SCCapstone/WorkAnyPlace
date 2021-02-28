@@ -28,4 +28,22 @@
 
   <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_product_form.valid">Create Account</ion-button>
 </form>
+
+
+
+<!-- <h2 class="ion-text-center">Uploaded Freaky Images</h2>
+
+<ion-card color="light" class="ion-text-center" *ngFor="let item of images | async">
+  <ion-card-header>
+    <ion-card-title>
+      {{ item.name }}
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <img [src]="item.filepath" />
+    <a [href]="item.filepath" target="_blank" rel="noopener">Download</a>
+  </ion-card-content>
+</ion-card> -->
+
 </ion-content>
