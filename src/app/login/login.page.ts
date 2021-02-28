@@ -47,8 +47,7 @@ export class LoginPage implements OnInit {
 
     this.router.navigate(['/jobs']);
     this.router.navigate(['/tabs']);
-    item.email = "";
-    item.password = "";
+    this.new_product_form.reset();
 }
 
 signup() {
