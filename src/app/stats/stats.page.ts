@@ -36,4 +36,5 @@ export class StatsPage implements OnInit {
     this.router.navigate(['/created-jobs'])
   }
 
+
 }
