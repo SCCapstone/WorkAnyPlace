@@ -14,11 +14,18 @@ export class JobsPage implements OnInit {
 
   db = firebase.firestore();
   user = firebase.auth().currentUser;
+  
 
   constructor(private router: Router,public jobsService: JobsService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
     this.jobsService.getPostedJobs();
+    await this.jobsService.getProfilePic();
+    var img = document.getElementById('profilepic');
+    img.setAttribute('src', this.jobsService.profilepic);
+    
+    
   }
 
   openCreateJob() {
@@ -32,6 +39,9 @@ export class JobsPage implements OnInit {
 
   refresh() {
     this.jobsService.getPostedJobs();
+    this.jobsService.getProfilePic();
+    var img = document.getElementById('profilepic');
+    img.setAttribute('src', this.jobsService.profilepic);
   }
 
   async filterList(evt) {
@@ -45,7 +55,7 @@ export class JobsPage implements OnInit {
 
     jobList = jobList.filter(currentJob => {
       if (currentJob.title && searchTerm) {
-        return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+        return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentJob.category.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       }
     })
 
