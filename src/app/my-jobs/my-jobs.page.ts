@@ -45,6 +45,7 @@ export class MyJobsPage implements OnInit {
  async completeJob(job) {
   await this.jobsService.completeMyJob(job)
   this.jobsService.getPostedJobs()
+  this.jobsService.getCompletedJobs()
   this.refresh()
  }
 

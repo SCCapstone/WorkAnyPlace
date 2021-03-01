@@ -173,7 +173,7 @@ export class JobsService {
          
       }, { merge: true });
 
-     db.collection('postedJobs').doc('jobs').set({
+     db.collection('completedJobs').doc('my-jobs').set({
         completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
       }, { merge: true });
 
@@ -197,7 +197,7 @@ export class JobsService {
   }
 
   addToCompletedJobs(post) {
-    this.db.collection('acceptedJobs').doc('jobs').update({
+    this.db.collection('completedJobs').doc('my-jobs').update({
       completedJobs: firebase.firestore.FieldValue.arrayUnion(post)
     });
     this.getCompletedJobs();
@@ -243,7 +243,7 @@ export class JobsService {
       this.addToCompletedJobs(job);
 
       // Refresh Pages
-      this.getPostedJobs();
+      this.getCompletedJobs();
       this.getMyJobs();
     }
 
