@@ -49,14 +49,6 @@ export class MyJobsPage implements OnInit {
   this.refresh()
  }
 
- async completedJob(job) {
-  await this.jobsService.addCompletedJob(job)
-  this.jobsService.getPostedJobs()
-  this.jobsService.getCompletedJobs()
-  this.jobsService.currentuser.completedJobs
-  this.refresh()
- }
-
  completeJobConfirm(job) {
   this.alertController.create({
     header: 'Did you complete this job?',

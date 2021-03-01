@@ -48,4 +48,6 @@ export class CompletedJobsPage implements OnInit {
      this.refresh();
   }
 
+
+
 }
