@@ -28,6 +28,7 @@
     "@stencil/core": "^2.4.0",
     "angularfire": "^2.3.0",
     "firebase": "^8.0.1",
+    "joyo-directive-parallax-header": "^3.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

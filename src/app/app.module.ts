@@ -16,7 +16,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { ParallaxHeaderDirective } from './directives/parallax-header.directive'
 
 @NgModule({
-  declarations: [AppComponent, ParallaxHeaderDirective],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
