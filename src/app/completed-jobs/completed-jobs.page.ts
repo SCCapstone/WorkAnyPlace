@@ -44,6 +44,7 @@ export class CompletedJobsPage implements OnInit {
       postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
      });
      this.jobsService.getMyJobs();
+     this.router.navigate(['../my-jobs']);
      this.refresh();
   }
 
