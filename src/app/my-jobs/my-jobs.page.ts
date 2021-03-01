@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -46,7 +45,26 @@ export class MyJobsPage implements OnInit {
  async completeJob(job) {
   await this.jobsService.completeMyJob(job)
   this.jobsService.getPostedJobs()
+  this.jobsService.getCompletedJobs()
   this.refresh()
+
+  var ref = this.db.collection("users").doc(this.user.uid);
+
+
+  return ref.update({ 
+     jobsCompleted: this.jobsService.currentuser.jobsCompleted+1,
+     moneyMade: this.jobsService.currentuser.moneyMade+job.pay,
+     hoursWorked: this.jobsService.currentuser.hoursWorked+2
+  })
+  .then(() => {
+      console.log("Document successfully updated!");
+      this.jobsService.getUser();
+  })
+  .catch((error) => {
+    // The document probably doesn't exist.
+      console.error("Error updating document: ", error);
+  });
+
  }
 
  completeJobConfirm(job) {
