@@ -60,6 +60,21 @@ export class JobsService {
      this.myjobs = jobs
  }
 
+ async getCompletedJobs() {
+  var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+     if (doc.exists) {
+        console.log("Document data:", doc.data().completedJobs);
+        return doc.data().completedJobs;
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   this.myjobs = jobs
+}
+
  setSelectedJob(job) {
    this.selectedjob = job;
  }
@@ -179,6 +194,41 @@ async getUIDProfilePic(uid) {
     });
   }
 
+  addCompletedJob(job) {
+    this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+        var db = firebase.firestore();
+        var user = firebase.auth().currentUser;
+
+        db.collection('users').doc(user.uid).set({
+          email: doc.data().email,
+          group: doc.data().group,
+          hoursWorked: doc.data().hoursWorked,
+          jobsCompleted: doc.data().jobsCompleted,
+          jobsCreated: doc.data().jobsCreated+1,
+          moneyMade: doc.data().moneyMade,
+          starRating: doc.data().starRating,
+          username: doc.data().username,
+          acceptedJobs: doc.data().acceptedJobs,
+          completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+         
+      }, { merge: true });
+
+     db.collection('postedJobs').doc('jobs').set({
+        completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+      }, { merge: true });
+
+        
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+    }).catch(function(error) {
+    console.log("Error getting document:", error);
+    });
+  }
+
 /* Use this function when adding an already existing job back to posted jobs
    Example: someone cancels job so it needs to be added back to posted jobs */
   addBackToPostedJobs(post) {
@@ -188,6 +238,15 @@ async getUIDProfilePic(uid) {
     this.getPostedJobs();
   }
 
+<<<<<<< HEAD
+=======
+  addToCompletedJobs(post) {
+    this.db.collection('acceptedJobs').doc('jobs').update({
+      completedJobs: firebase.firestore.FieldValue.arrayUnion(post)
+    });
+    this.getCompletedJobs();
+  }
+>>>>>>> 1d66b1858414503ae39ba2f3299ea6783aaeb1ad
 
 /*********************************************************************************************************/
 
@@ -225,6 +284,8 @@ async getUIDProfilePic(uid) {
       await this.db.collection('users').doc(this.user.uid).update({
        acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
       });
+
+      this.addToCompletedJobs(job);
 
       // Refresh Pages
       this.getPostedJobs();

@@ -50,12 +50,21 @@ const routes: Routes = [
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'image-upload',
     loadChildren: () => import('./image-upload/image-upload.module').then( m => m.ImageUploadPageModule)
   },
   {
     path: 'conversation',
     loadChildren: () => import('./conversation/conversation.module').then( m => m.ConversationPageModule)
+=======
+    path: 'completed-jobs',
+    loadChildren: () => import('./completed-jobs/completed-jobs.module').then( m => m.CompletedJobsPageModule)
+  },
+  {
+    path: 'created-jobs',
+    loadChildren: () => import('./created-jobs/created-jobs.module').then( m => m.CreatedJobsPageModule)
+>>>>>>> 1d66b1858414503ae39ba2f3299ea6783aaeb1ad
   }
 ];
 @NgModule({

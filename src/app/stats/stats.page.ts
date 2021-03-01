@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -10,6 +10,9 @@ import 'firebase/firestore';
   styleUrls: ['./stats.page.scss'],
 })
 export class StatsPage implements OnInit {
+
+  db = firebase.firestore();
+  user = firebase.auth().currentUser;
 
   constructor(private router: Router) { }
 
@@ -24,5 +27,14 @@ export class StatsPage implements OnInit {
 
   ngOnInit() {
   }
+
+  openCompletedJobs() {
+    this.router.navigate(['/completed-jobs'])
+  }
+
+  openCreatedJobs() {
+    this.router.navigate(['/created-jobs'])
+  }
+
 
 }
