@@ -47,7 +47,7 @@ export class ConversationPage implements OnInit {
 
   sendMessage() {
     this.messages.push({
-      user: 'Nick',
+      user: 'Me',
       createdAt: new Date().getTime(),
       msg: this.newMsg
     });
