@@ -50,14 +50,6 @@ const routes: Routes = [
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
-    path: 'image-upload',
-    loadChildren: () => import('./image-upload/image-upload.module').then( m => m.ImageUploadPageModule)
-  },
-  {
-    path: 'conversation',
-    loadChildren: () => import('./conversation/conversation.module').then( m => m.ConversationPageModule)
-  },
-  {
     path: 'completed-jobs',
     loadChildren: () => import('./completed-jobs/completed-jobs.module').then( m => m.CompletedJobsPageModule)
   },

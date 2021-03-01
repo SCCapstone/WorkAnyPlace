@@ -11,6 +11,7 @@ export class JobsService {
 
   constructor() {
     this.getPostedJobs()
+    this.getCompletedJobs()
    }
 
 
