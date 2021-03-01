@@ -8,6 +8,12 @@
       </ion-button> 
     </ion-buttons>
 
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
     <ion-buttons slot="end">
       <ion-button (click)="openSettings()">
         <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
@@ -40,7 +46,7 @@
     <ion-item color="white" (click)="openCompletedJobs()">
       <ion-icon name="" slot="start"></ion-icon>
       <ion-label>Money Made</ion-label>
-      {{ this.jobsService.currentuser.moneyMade }}
+      ${{ this.jobsService.currentuser.moneyMade }}
     </ion-item>
 
     <ion-item color="white">
