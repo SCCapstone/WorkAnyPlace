@@ -25,6 +25,7 @@ export class JobsService {
   myjobs
   selectedjob
   profilepic = "../../assets/img/work_any_place_logo.png"
+  currentuser;
 //////////////////////////////////////////////////////////////
 
 
@@ -112,6 +113,22 @@ async getUIDProfilePic(uid) {
    
 }
 
+async getUser() {
+
+  var user = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+     if (doc.exists) {
+        console.log("Document data:", doc.data());
+        return doc.data();
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   this.currentuser = user;
+   
+}
 
 
 
@@ -238,15 +255,12 @@ async getUIDProfilePic(uid) {
     this.getPostedJobs();
   }
 
-<<<<<<< HEAD
-=======
   addToCompletedJobs(post) {
     this.db.collection('acceptedJobs').doc('jobs').update({
       completedJobs: firebase.firestore.FieldValue.arrayUnion(post)
     });
     this.getCompletedJobs();
   }
->>>>>>> 1d66b1858414503ae39ba2f3299ea6783aaeb1ad
 
 /*********************************************************************************************************/
 

@@ -13,8 +13,8 @@ export class StatsPage implements OnInit {
 
   db = firebase.firestore();
   user = firebase.auth().currentUser;
-
-  constructor(private router: Router) { }
+  
+  constructor(private router: Router, public jobsService: JobsService) { }
 
   logout() {
     
@@ -25,7 +25,14 @@ export class StatsPage implements OnInit {
     this.router.navigate(['/settings']);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.log("uid:::"+this.user.uid)
+    await this.jobsService.getUser();
+    
+  }
+  
+  refresh() {
+   this.jobsService.getUser();
   }
 
   openCompletedJobs() {
@@ -35,6 +42,7 @@ export class StatsPage implements OnInit {
   openCreatedJobs() {
     this.router.navigate(['/created-jobs'])
   }
+
 
 
 }
