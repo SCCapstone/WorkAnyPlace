@@ -24,7 +24,7 @@ export class JobsPage implements OnInit {
     await this.jobsService.getProfilePic();
     var img = document.getElementById('profilepic');
     img.setAttribute('src', this.jobsService.profilepic);
-    
+    this.jobsService.getUser();
     
   }
 

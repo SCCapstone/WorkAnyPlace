@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -46,6 +45,7 @@ export class MyJobsPage implements OnInit {
  async completeJob(job) {
   await this.jobsService.completeMyJob(job)
   this.jobsService.getPostedJobs()
+  this.jobsService.getCompletedJobs()
   this.refresh()
  }
 

@@ -25,6 +25,7 @@ export class JobsService {
   myjobs
   selectedjob
   profilepic = "../../assets/img/work_any_place_logo.png"
+  currentuser;
 //////////////////////////////////////////////////////////////
 
 
@@ -59,6 +60,21 @@ export class JobsService {
      }); 
      this.myjobs = jobs
  }
+
+ async getCompletedJobs() {
+  var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+     if (doc.exists) {
+        console.log("Document data:", doc.data().completedJobs);
+        return doc.data().completedJobs;
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   this.myjobs = jobs
+}
 
  setSelectedJob(job) {
    this.selectedjob = job;
@@ -97,6 +113,22 @@ async getUIDProfilePic(uid) {
    
 }
 
+async getUser() {
+
+  var user = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+     if (doc.exists) {
+        console.log("Document data:", doc.data());
+        return doc.data();
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   this.currentuser = user;
+   
+}
 
 
 
@@ -179,6 +211,41 @@ async getUIDProfilePic(uid) {
     });
   }
 
+  addCompletedJob(job) {
+    this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+        var db = firebase.firestore();
+        var user = firebase.auth().currentUser;
+
+        db.collection('users').doc(user.uid).set({
+          email: doc.data().email,
+          group: doc.data().group,
+          hoursWorked: doc.data().hoursWorked,
+          jobsCompleted: doc.data().jobsCompleted,
+          jobsCreated: doc.data().jobsCreated+1,
+          moneyMade: doc.data().moneyMade,
+          starRating: doc.data().starRating,
+          username: doc.data().username,
+          acceptedJobs: doc.data().acceptedJobs,
+          completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+         
+      }, { merge: true });
+
+     db.collection('completedJobs').doc('my-jobs').set({
+        completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+      }, { merge: true });
+
+        
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+    }).catch(function(error) {
+    console.log("Error getting document:", error);
+    });
+  }
+
 /* Use this function when adding an already existing job back to posted jobs
    Example: someone cancels job so it needs to be added back to posted jobs */
   addBackToPostedJobs(post) {
@@ -188,6 +255,12 @@ async getUIDProfilePic(uid) {
     this.getPostedJobs();
   }
 
+  addToCompletedJobs(post) {
+    this.db.collection('completedJobs').doc('my-jobs').update({
+      completedJobs: firebase.firestore.FieldValue.arrayUnion(post)
+    });
+    this.getCompletedJobs();
+  }
 
 /*********************************************************************************************************/
 
@@ -226,8 +299,10 @@ async getUIDProfilePic(uid) {
        acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
       });
 
+      this.addToCompletedJobs(job);
+
       // Refresh Pages
-      this.getPostedJobs();
+      this.getCompletedJobs();
       this.getMyJobs();
     }
 

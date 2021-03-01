@@ -56,6 +56,14 @@ const routes: Routes = [
   {
     path: 'conversation',
     loadChildren: () => import('./conversation/conversation.module').then( m => m.ConversationPageModule)
+  },
+  {
+    path: 'completed-jobs',
+    loadChildren: () => import('./completed-jobs/completed-jobs.module').then( m => m.CompletedJobsPageModule)
+  },
+  {
+    path: 'created-jobs',
+    loadChildren: () => import('./created-jobs/created-jobs.module').then( m => m.CreatedJobsPageModule)
   }
 ];
 @NgModule({
