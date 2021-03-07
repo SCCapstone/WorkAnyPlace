@@ -7,11 +7,31 @@
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
       </ion-button> 
     </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="goToConversation()">
-    click me
-  </ion-button>
+  <ion-list>
+    <ion-item *ngFor="let thread of this.messageService.myThreads">
+      <div tabindex="0"></div>
+      <ion-card>
+        <ion-card-header>
+          <!-- <ion-card-title color="secondary">{{ thread.sentMessages[0]["messageText"] }}</ion-card-title> -->
+          <!-- <ion-card-subtitle color="tertiary">{{ post.category }}</ion-card-subtitle>
+          <ion-card-subtitle color="tertiary">${{ post.pay }}</ion-card-subtitle>   -->
+        </ion-card-header>
+    
+        <ion-card-content>
+          <!-- <p style="color:#101010">{{ post.description }}</p> -->
+        </ion-card-content>
+      
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
