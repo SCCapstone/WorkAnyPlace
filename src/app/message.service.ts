@@ -29,6 +29,34 @@ export class MessageService {
       console.log("Error getting document:", error);
     });
     
+    let threads = [];
+    // threadIds.forEach(async function(threadId) {
+    //   let thread = await this.db.collection('messages').doc(threadId).get().then(function(doc) {
+    //     if (doc.exists) {
+    //       return doc.data().sentMessages;
+    //     } else {
+    //       console.log("No such document");
+    //     }
+    //   }).catch(function(error) {
+    //     console.log("Error getting document:", error);
+    //   });
+    //   threads.push(thread);
+    // });
+    for (let i = 0; i < threadIds.length; i++) {
+      let currentId = threadIds[i];
+      let thread = await this.db.collection('messages').doc(currentId).get().then(function(doc) {
+        if (doc.exists) {
+          return doc.data().sentMessagse;
+        } else {
+          console.log("No such document");
+        }
+      }).catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+      threads.push(thread);
+    }
+
+    console.log(threads);
     
   }
 
