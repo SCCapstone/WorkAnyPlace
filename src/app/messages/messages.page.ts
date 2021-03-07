@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-messages',
@@ -8,7 +11,13 @@ import { Router } from '@angular/router';
 })
 export class MessagesPage implements OnInit {
 
-  constructor(private router: Router) { }
+  db = firebase.firestore();
+  user = firebase.auth().currentUser;
+
+  constructor(
+    private router: Router,
+    public messageService: MessageService
+    ) { }
 
   logout() {
     
@@ -19,7 +28,8 @@ export class MessagesPage implements OnInit {
   }
 
   goToConversation() {
-    this.router.navigate(['/conversation']);
+    //this.router.navigate(['/conversation']);
+    this.messageService.getMyThreads();
   }
 
 }
