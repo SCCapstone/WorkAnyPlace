@@ -21,6 +21,7 @@ export class MessageService {
   }
 
   async getMyThreads() {
+    // function taking to long and page loads before completion
     let threadIds = await this.db.collection('userMessageThreads').doc(this.user.uid).get().then(function(doc) {
       if (doc.exists) {
         return doc.data().threads;
