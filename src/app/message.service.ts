@@ -46,7 +46,6 @@ export class MessageService {
       threads.push(thread);
     }
     this.myThreads = threads;
-    console.log(this.myThreads);
   }
 
   async getUsernameFromId(uid) {
