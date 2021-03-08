@@ -18,11 +18,11 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let thread of this.messageService.myThreads">
+    <ion-item *ngFor="let preview of this.previews">
       <div tabindex="0"></div>
       <ion-card>
         <ion-card-header>
-          <!-- <ion-card-title color="secondary">{{ thread.sentMessages[0]["messageText"] }}</ion-card-title> -->
+          <ion-card-title color="secondary">{{ preview }}</ion-card-title>
           <!-- <ion-card-subtitle color="tertiary">{{ post.category }}</ion-card-subtitle>
           <ion-card-subtitle color="tertiary">${{ post.pay }}</ion-card-subtitle>   -->
         </ion-card-header>

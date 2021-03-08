@@ -8,7 +8,7 @@ import 'firebase/firestore';
 export class MessageService {
 
   constructor() {
-    this.getMyThreads();
+    this.fetchThreads();
   }
 
   db = firebase.firestore();
@@ -16,12 +16,11 @@ export class MessageService {
 
   myThreads = [];
 
-  getThreads() {
+  getMyThreads() {
     return this.myThreads;
   }
 
-  async getMyThreads() {
-    // function taking to long and page loads before completion
+  async fetchThreads() {
     let threadIds = await this.db.collection('userMessageThreads').doc(this.user.uid).get().then(function(doc) {
       if (doc.exists) {
         return doc.data().threads;
@@ -49,6 +48,8 @@ export class MessageService {
     this.myThreads = threads;
     console.log(this.myThreads);
   }
+
+  
 
   startNewConvo(user1, user2) {
     let threadId:any;

@@ -24,21 +24,24 @@ export class MessagesPage implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.messageService.fetchThreads();
     this.getMessagePreviews();
   }
 
-  refresh() {
-    this.messageService.getMyThreads();
+  async refresh() {
+    await this.messageService.fetchThreads();
     this.getMessagePreviews();
   }
 
   getMessagePreviews() {
-    // for (let i = 0; i < this.messageService.myThreads.length; i++) {
-    //   let currentThread = this.messageService.myThreads[i];
-    //   console.log(currentThread);
-    // }
-    console.log(this.messageService.getThreads());
+    let newPreviews = [];
+    let myThreads = this.messageService.getMyThreads();
+    for (let i = 0; i < myThreads.length; i++) {
+      let currentThread = myThreads[i];
+      newPreviews.push(currentThread[0].messageText);
+    }
+    this.previews = newPreviews;
   }
 
   goToConversation() {
