@@ -49,7 +49,18 @@ export class MessageService {
     console.log(this.myThreads);
   }
 
-  
+  async getUsernameFromId(uid) {
+    let username = await this.db.collection('users').doc(uid).get().then(function(doc) {
+      if (doc.exists) {
+        return doc.data().username;
+      } else {
+        console.log("No such document");
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+    return username;
+  }
 
   startNewConvo(user1, user2) {
     let threadId:any;

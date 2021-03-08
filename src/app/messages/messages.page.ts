@@ -34,12 +34,25 @@ export class MessagesPage implements OnInit {
     this.getMessagePreviews();
   }
 
-  getMessagePreviews() {
+  async getMessagePreviews() {
     let newPreviews = [];
     let myThreads = this.messageService.getMyThreads();
     for (let i = 0; i < myThreads.length; i++) {
-      let currentThread = myThreads[i];
-      newPreviews.push(currentThread[0].messageText);
+      let lastMessage = myThreads[i][0];
+      let recId = lastMessage.receiverId;
+      let sendId = lastMessage.senderId;
+      let threadMemberId;
+      if (recId == this.user.uid) {
+        threadMemberId = sendId;
+      } else {
+        threadMemberId = recId;
+      }
+      let threadMemberUsername = await this.messageService.getUsernameFromId(threadMemberId);
+      newPreviews.push({
+        messageText:lastMessage.messageText,
+        timeStamp:lastMessage.timestamp,
+        threadMember:threadMemberUsername
+      });
     }
     this.previews = newPreviews;
   }
