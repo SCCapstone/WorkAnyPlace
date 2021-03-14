@@ -13,11 +13,19 @@ export class MessageService {
 
   db = firebase.firestore();
   user = firebase.auth().currentUser;
-
   myThreads = [];
+  currentThreadId = null;
 
   getMyThreads() {
     return this.myThreads;
+  }
+
+  getCurrentThreadId() {
+    return this.currentThreadId;
+  }
+
+  setCurrentThreadId(id) {
+    this.currentThreadId = id;
   }
 
   async fetchThreads() {

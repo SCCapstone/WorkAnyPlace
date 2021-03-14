@@ -20,7 +20,7 @@
   <ion-list>
     <ion-item *ngFor="let preview of this.previews">
       <div tabindex="0"></div>
-      <ion-card>
+      <ion-card (click)="goToConversation(preview)">
         <ion-card-header>
           <ion-card-title color="secondary">{{ preview.threadMember }}</ion-card-title>
         </ion-card-header>

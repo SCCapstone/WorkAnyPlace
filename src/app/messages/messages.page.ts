@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-messages',
@@ -42,22 +43,30 @@ export class MessagesPage implements OnInit {
       let recId = lastMessage.receiverId;
       let sendId = lastMessage.senderId;
       let threadMemberId;
+      let threadId;
       if (recId == this.user.uid) {
         threadMemberId = sendId;
       } else {
         threadMemberId = recId;
       }
+      if (recId < sendId) {
+        threadId = recId + sendId;
+      } else {
+        threadId = sendId + recId;
+      }
       let threadMemberUsername = await this.messageService.getUsernameFromId(threadMemberId);
       newPreviews.push({
         messageText:lastMessage.messageText,
         timeStamp:lastMessage.timestamp,
-        threadMember:threadMemberUsername
+        threadMember:threadMemberUsername,
+        threadId:threadId
       });
     }
     this.previews = newPreviews;
   }
 
-  goToConversation() {
+  goToConversation(conversationPreview) {
+    this.messageService.setCurrentThreadId(conversationPreview.threadId);
     this.router.navigate(['/conversation']);
   }
 
