@@ -26,37 +26,37 @@
 <ion-content>
   <ion-card>
     <ion-item color="white" (click)="openCompletedJobs()">
-      <ion-icon name="" slot="start"></ion-icon>
+      <ion-icon name="bag-check-outline" slot="start"></ion-icon>
       <ion-label>Jobs Completed</ion-label>
       {{ this.jobsService.currentuser.jobsCompleted }}
     </ion-item>
   
     <ion-item color="white" (click)="openCompletedJobs()">
-      <ion-icon name="" slot="start"></ion-icon>
+      <ion-icon name="timer-outline" slot="start"></ion-icon>
       <ion-label>Hours Worked</ion-label>
       {{ this.jobsService.currentuser.hoursWorked }}
     </ion-item>
   
     <ion-item color="white" (click)="openCreatedJobs()">
-      <ion-icon name="" slot="start"></ion-icon>
+      <ion-icon name="create-outline" slot="start"></ion-icon>
       <ion-label>Created Jobs</ion-label>
       {{ this.jobsService.currentuser.jobsCreated }}
     </ion-item>
   
     <ion-item color="white" (click)="openCompletedJobs()">
-      <ion-icon name="" slot="start"></ion-icon>
+      <ion-icon name="cash-outline" slot="start"></ion-icon>
       <ion-label>Money Made</ion-label>
       ${{ this.jobsService.currentuser.moneyMade }}
     </ion-item>
 
     <ion-item color="white">
-      <ion-icon name="" slot="start"></ion-icon>
+      <ion-icon name="people-outline" slot="start"></ion-icon>
       <ion-label>Group</ion-label>
       {{ this.jobsService.currentuser.group }}
     </ion-item>
 
-    <ion-item>
-      <ion-icon name="" slot="start"></ion-icon>
+    <ion-item color="white">
+      <ion-icon name="star-outline" slot="start"></ion-icon>
       <ion-label>Star Rating</ion-label>
       {{ this.jobsService.currentuser.starRating }}
     </ion-item>
