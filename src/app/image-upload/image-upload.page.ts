@@ -60,8 +60,7 @@ export class ImageUploadPage implements OnInit {
    }
 
   ngOnInit() {
-    
-
+   
   }
 
   uploadFile(event: FileList) {
@@ -132,7 +131,21 @@ export class ImageUploadPage implements OnInit {
     });
   }
 
+  uploadDefault() {
+    console.log(this.user.uid);
 
+    const path = `https://firebasestorage.googleapis.com/v0/b/workanyplace-62a66.appspot.com/o/profilePics%2F1614545292064_work_any_place_logo.png?alt=media&token=cbe8c41f-8ec4-49f2-b3f7-0ddc233d3d1d`;
+
+    
+    this.addImagetoDB({
+      name: "work_any_place_logo.png",
+      filepath: path,
+      size: 76394
+    });
+    this.goToJobs();
+    }
+
+ 
   goToJobs() {
     this.jobsService.getProfilePic();
     this.router.navigate(['/jobs']);

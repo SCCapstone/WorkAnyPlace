@@ -24,6 +24,10 @@ export class SettingsPage implements OnInit {
     this.router.navigate(['../image-upload']);
   }
 
+  logout() {
+    this.router.navigate(['/login']);
+  }
+
 
 }
 

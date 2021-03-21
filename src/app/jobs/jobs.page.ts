@@ -37,6 +37,10 @@ export class JobsPage implements OnInit {
     this.router.navigate(['../job-detail']);
   }
 
+  goToSettings() {
+    this.router.navigate(['../settings'])
+  }
+
   refresh() {
     this.jobsService.getPostedJobs();
     this.jobsService.getProfilePic();
@@ -91,6 +95,7 @@ export class JobsPage implements OnInit {
   logout() {
     this.router.navigate(['/login']);
   }
+
 
 // removeJobFromPostedJobs() {
   //   this.db.collection('postedJobs').doc('jobs').set({
