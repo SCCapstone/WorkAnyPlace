@@ -26,9 +26,7 @@ export class StatsPage implements OnInit {
   }
 
   async ngOnInit() {
-    console.log("uid:::"+this.user.uid)
     await this.jobsService.getUser();
-    
   }
   
   refresh() {

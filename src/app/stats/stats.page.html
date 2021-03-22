@@ -24,7 +24,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-avatar >
+    <img id="profilepic" src="{{this.jobsService.profilepic}}">
+  </ion-avatar>
   <ion-card>
+    
     <ion-item color="white" (click)="openCompletedJobs()">
       <ion-icon name="bag-check-outline" slot="start"></ion-icon>
       <ion-label>Jobs Completed</ion-label>
