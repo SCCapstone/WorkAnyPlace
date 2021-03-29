@@ -21,7 +21,7 @@ export class SettingsPage implements OnInit {
   }
 
   goToImage() {
-    this.router.navigate(['../image-upload']);
+    this.router.navigate(['../profile-pic-update']);
   }
 
   logout() {

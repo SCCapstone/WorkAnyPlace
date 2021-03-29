@@ -64,6 +64,10 @@ const routes: Routes = [
   {
     path: 'created-jobs',
     loadChildren: () => import('./created-jobs/created-jobs.module').then( m => m.CreatedJobsPageModule)
+  },
+  {
+    path: 'profile-pic-update',
+    loadChildren: () => import('./profile-pic-update/profile-pic-update.module').then( m => m.ProfilePicUpdatePageModule)
   }
 ];
 @NgModule({
