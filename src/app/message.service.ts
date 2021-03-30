@@ -69,7 +69,7 @@ export class MessageService {
     return username;
   }
 
-  startNewConvo(user1Id, user2Id) {
+  async startNewConvo(user1Id, user2Id) {
     let newThreadId;
     if (user1Id < user2Id) {
       newThreadId = user1Id.concat(user2Id.toString());
@@ -87,9 +87,25 @@ export class MessageService {
       sentMessages: sentMessages
     });
 
-    this.db.collection("userMessageThreads").doc(this.user.uid).update({
-      threads: firebase.firestore.FieldValue.arrayUnion(newThreadId)
+    let docExists = await this.db.collection("userMessageThreads").doc(this.user.uid).get().then(doc => {
+      if (doc.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
     });
+
+    if (docExists) {
+      this.db.collection("userMessageThreads").doc(this.user.uid).update({
+        threads: firebase.firestore.FieldValue.arrayUnion(newThreadId)
+      });
+    } else {
+      this.db.collection("userMessageThreads").doc(this.user.uid).set({
+        threads: [newThreadId]
+      });
+    }
   }
 
   removeConvo(user1Id, user2Id) {
