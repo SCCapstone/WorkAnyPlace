@@ -53,6 +53,9 @@ export class MyJobsPage implements OnInit {
   this.jobsService.getCompletedJobs()
   this.refresh()
 
+  let posterId = job.uid;
+  this.messageService.removeConvo(this.user.uid, posterId);
+
   var ref = this.db.collection("users").doc(this.user.uid);
 
 
