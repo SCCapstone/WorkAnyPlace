@@ -3,6 +3,8 @@ import { JobsService } from '../jobs.service';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { MessageService } from '../message.service';
+import { platformBrowserTesting } from '@angular/platform-browser/testing';
 @Component({
   selector: 'app-job-detail',
   templateUrl: './job-detail.page.html',
@@ -10,7 +12,7 @@ import 'firebase/firestore';
 })
 export class JobDetailPage implements OnInit {
 
-  constructor(public jobsService:JobsService, public router: Router) { }
+  constructor(public jobsService:JobsService, public messageService:MessageService, public router: Router) { }
 
   
   defaultimg = '../assets/img/work_any_place_logo.png' 
@@ -44,6 +46,9 @@ export class JobDetailPage implements OnInit {
      this.jobsService.getPostedJobs();
      this.router.navigate(['../jobs']);
      this.router.navigate(['tabs']);
+
+    let posterId = this.jobsService.selectedjob.uid;
+    this.messageService.startNewConvo(this.user.uid, posterId);
   }
 
   async removeJob(post){
@@ -64,6 +69,8 @@ export class JobDetailPage implements OnInit {
       alert("This is not your post");
    }
 
+   let posterId = this.jobsService.selectedjob.uid;
+   this.messageService.removeConvo(this.user.uid, posterId);
   }
 
 }

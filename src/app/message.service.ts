@@ -69,13 +69,45 @@ export class MessageService {
     return username;
   }
 
-  startNewConvo(user1, user2) {
-    let threadId:any;
-    if (user1.uid < user2.uid) {
-      threadId = user1.uid + user2.uid;
+  startNewConvo(user1Id, user2Id) {
+    let newThreadId;
+    if (user1Id < user2Id) {
+      newThreadId = user1Id.concat(user2Id.toString());
     } else {
-      threadId = user2.uid + user1.uid;
+      newThreadId = user2Id.concat(user1Id.toString());
     }
-    console.log(threadId);
+
+    let sentMessages = [{
+      messageText: "Hello! I have accepted your job.",
+      receiverId: user2Id,
+      senderId: user1Id,
+      timestamp: firebase.firestore.Timestamp.fromDate(new Date())
+    }];
+    this.db.collection("messages").doc(newThreadId).set({
+      sentMessages: sentMessages
+    });
+
+    this.db.collection("userMessageThreads").doc(this.user.uid).update({
+      threads: firebase.firestore.FieldValue.arrayUnion(newThreadId)
+    });
+  }
+
+  removeConvo(user1Id, user2Id) {
+    let threadId;
+    if (user1Id < user2Id) {
+      threadId = user1Id.concat(user2Id.toString());
+    } else {
+      threadId = user2Id.concat(user1Id.toString());
+    }
+
+    this.db.collection("messages").doc(threadId).delete().then(() => {
+      console.log("Document delted");
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+
+    this.db.collection("userMessageThreads").doc(this.user.uid).update({
+      threads: firebase.firestore.FieldValue.arrayRemove(threadId)
+    });
   }
 }

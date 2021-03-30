@@ -5,6 +5,7 @@ import 'firebase/firestore';
 
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { MessageService } from '../message.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class MyJobsPage implements OnInit {
   user = firebase.auth().currentUser;
 
   constructor(
-    public jobsService: JobsService, 
+    public jobsService: JobsService,
+    public messageService: MessageService,
     private router: Router, 
     public alertController: AlertController
     
@@ -40,6 +42,9 @@ export class MyJobsPage implements OnInit {
   await this.jobsService.cancelMyJob(job)
   this.jobsService.getPostedJobs()
   this.refresh()
+
+  let posterId = job.uid;
+  this.messageService.removeConvo(this.user.uid, posterId);
  }
 
  async completeJob(job) {

@@ -39,7 +39,7 @@ export class MessagesPage implements OnInit {
     let newPreviews = [];
     let myThreads = this.messageService.getMyThreads();
     for (let i = 0; i < myThreads.length; i++) {
-      let lastMessage = myThreads[i][0];
+      let lastMessage = myThreads[i][myThreads[i].length - 1];
       let recId = lastMessage.receiverId;
       let sendId = lastMessage.senderId;
       let threadMemberId;
