@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-messages',
@@ -8,17 +12,61 @@ import { Router } from '@angular/router';
 })
 export class MessagesPage implements OnInit {
 
-  constructor(private router: Router) { }
+  db = firebase.firestore();
+  user = firebase.auth().currentUser;
+  previews = [];
+
+  constructor(
+    private router: Router,
+    public messageService: MessageService
+    ) { }
 
   logout() {
-    
     this.router.navigate(['/login']);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.messageService.fetchThreads();
+    this.getMessagePreviews();
   }
 
-  goToConversation() {
+  async refresh() {
+    await this.messageService.fetchThreads();
+    this.getMessagePreviews();
+  }
+
+  async getMessagePreviews() {
+    let newPreviews = [];
+    let myThreads = this.messageService.getMyThreads();
+    for (let i = 0; i < myThreads.length; i++) {
+      let lastMessage = myThreads[i][myThreads[i].length - 1];
+      let recId = lastMessage.receiverId;
+      let sendId = lastMessage.senderId;
+      let threadMemberId;
+      let threadId;
+      if (recId == this.user.uid) {
+        threadMemberId = sendId;
+      } else {
+        threadMemberId = recId;
+      }
+      if (recId < sendId) {
+        threadId = recId + sendId;
+      } else {
+        threadId = sendId + recId;
+      }
+      let threadMemberUsername = await this.messageService.getUsernameFromId(threadMemberId);
+      newPreviews.push({
+        messageText:lastMessage.messageText,
+        timeStamp:lastMessage.timestamp,
+        threadMember:threadMemberUsername,
+        threadId:threadId
+      });
+    }
+    this.previews = newPreviews;
+  }
+
+  goToConversation(conversationPreview) {
+    this.messageService.setCurrentThreadId(conversationPreview.threadId);
     this.router.navigate(['/conversation']);
   }
 
