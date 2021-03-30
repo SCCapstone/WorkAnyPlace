@@ -35,12 +35,10 @@
         <textarea autosize maxRows="3" [(ngModel)] = "newMsg" class ="message-input"></textarea>
       </ion-col>
       <ion-col size ="2">
-        <ion-button expand="block" fill="clear" color="#fff" [disabled]="newMsg === ''"class="msg-btn" (click)="sendMessage()">
-          <ion-icon name="ios-send" slot="icon-only"></ion-icon>
+        <ion-button expand="block" mode="ios" fill="solid" color="#ffffff" [disabled]="newMsg === ''" (click)="sendMessage()">
+          <ion-icon name="arrow-forward-outline" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-col>
-      
-
     </ion-row>
   </ion-toolbar>
 </ion-footer>
