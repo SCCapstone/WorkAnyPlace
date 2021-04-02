@@ -21,8 +21,8 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let job of this.jobsService.myjobs">
-    
+    <ion-item class="item" *ngFor="let job of this.jobsService.myjobs">
+    <div class="posts">
     <ion-card>
   
       <ion-card-header>
@@ -45,7 +45,7 @@
 
       
     </ion-card>
-  
+  </div>
   </ion-item>
   </ion-list>
 
