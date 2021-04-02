@@ -167,7 +167,7 @@ async getUser() {
   }).catch(function(error) {
     console.log("Error getting document:", error);
   });
-  }
+  } 
 
 /* Use this function when adding a newly created Job */
   async addNewPostedJob(job) {

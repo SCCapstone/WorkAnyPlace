@@ -21,6 +21,7 @@ export class CreateJobPage implements OnInit {
     public jobsService: JobsService) { }
 
   ngOnInit() { 
+    
     this.create_job_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       pay: new FormControl('', Validators.required),
