@@ -13,7 +13,13 @@ export class SettingsPage implements OnInit {
 
   constructor(private router: Router) { }
 
+  name:string = '';
+
   ngOnInit() {
+  }
+
+  updateName() {
+    console.log(this.name);
   }
 
   backToStats() {
