@@ -4,6 +4,7 @@ import { MessageService } from '../message.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { NONE_TYPE } from '@angular/compiler';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-messages',
@@ -18,10 +19,12 @@ export class MessagesPage implements OnInit {
 
   constructor(
     private router: Router,
-    public messageService: MessageService
+    public messageService: MessageService,
+    private fireAuth: AngularFireAuth
     ) { }
 
   logout() {
+    this.fireAuth.signOut();
     this.router.navigate(['/login']);
   }
 

@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MessageService } from '../message.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class MyJobsPage implements OnInit {
     public jobsService: JobsService,
     public messageService: MessageService,
     private router: Router, 
-    public alertController: AlertController
+    public alertController: AlertController,
+    private fireAuth: AngularFireAuth
     
     ) { }
 
@@ -124,7 +126,8 @@ export class MyJobsPage implements OnInit {
 }
 
   logout() {   
-   this.router.navigate(['/login']);
+    this.fireAuth.signOut();
+    this.router.navigate(['/login']);
   }
 
 }

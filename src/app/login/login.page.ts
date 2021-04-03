@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     ).catch((error) => {
       alert(error.message);
       success = false;
-    });;
+    });
 
     console.log(user);
     
