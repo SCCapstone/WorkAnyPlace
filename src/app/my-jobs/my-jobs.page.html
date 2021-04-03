@@ -22,8 +22,8 @@
 
   <h3 style="padding: 10px">Accepted Jobs</h3>
   <ion-list>
-    <ion-item *ngFor="let job of this.jobsService.myjobs">
-    
+    <ion-item class="item" *ngFor="let job of this.jobsService.myjobs">
+    <div class="posts">
     <ion-card>
   
       <ion-card-header>
@@ -46,6 +46,7 @@
 
       
     </ion-card>
+  </div>
   </ion-item>
   </ion-list>
   <h3 style="padding: 10px">Posted Jobs</h3>
