@@ -28,6 +28,7 @@ export class MyJobsPage implements OnInit {
 
   ngOnInit() {
     this.getAcceptedJobs();
+    this.jobsService.getMyPostedJobs();
   }
 
   refresh() {
