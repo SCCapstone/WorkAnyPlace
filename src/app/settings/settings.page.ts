@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import {JobsService} from '../jobs.service';
 
 @Component({
   selector: 'app-settings',
@@ -11,15 +12,40 @@ import 'firebase/firestore';
 })
 export class SettingsPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public jobsService: JobsService) { }
+
+  db = firebase.firestore();
+  user = firebase.auth().currentUser;
 
   name:string = '';
+  username: string = '';
+  email: string = '';
+  group: string = '';
+
+  userDetails:any;
 
   ngOnInit() {
+    this.jobsService.getUser();
+    this.userDetails = this.jobsService.currentuser;
+    this.name = this.userDetails.username;
+    console.log(this.name);
   }
 
-  updateName() {
-    console.log(this.name);
+  updateUserName() {
+    this.db.collection('users').doc(this.user.uid).update({
+      username: this.username
+    });
+
+  }
+  updateUserEmail() {
+    this.db.collection('users').doc(this.user.uid).update({
+      email: this.email
+    });
+  }
+  updateGroup() {
+    this.db.collection('users').doc(this.user.uid).update({
+      group: this.group
+    });
   }
 
   backToStats() {
