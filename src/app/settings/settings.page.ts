@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -11,7 +12,10 @@ import 'firebase/firestore';
 })
 export class SettingsPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private fireAuth: AngularFireAuth
+    ) { }
 
   ngOnInit() {
   }
@@ -25,6 +29,7 @@ export class SettingsPage implements OnInit {
   }
 
   logout() {
+    this.fireAuth.signOut();
     this.router.navigate(['/login']);
   }
 

@@ -6,8 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
 
 @Component({
   selector: 'app-root',
@@ -33,20 +31,18 @@ export class AppComponent {
         if (user) {
           console.log("SESSION")
           this.zone.run(() => {
-            this.router.navigate(["/jobs"]);
-            this.router.navigate(['/tabs']);
+            this.router.navigate(["/stats"]);
+            this.router.navigate(["/tabs"]);
           });
-          
-          this.splashScreen.hide();
         }
         else {
           console.log("NEW")
           this.zone.run(() => {
             this.router.navigate(["/login"]);
           });
-          this.splashScreen.hide();
         }
-      })
+      });
+      this.splashScreen.hide();
       this.statusBar.styleDefault();
     });
   }

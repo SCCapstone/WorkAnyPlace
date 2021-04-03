@@ -19,7 +19,11 @@ export class LoginPage implements OnInit {
   new_product_form: FormGroup;
   
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, public formBuilder: FormBuilder) { }
+  constructor(
+    public afAuth: AngularFireAuth,
+    private router: Router,
+    public formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
 
