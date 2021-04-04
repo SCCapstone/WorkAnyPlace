@@ -33,6 +33,7 @@ export class MyJobsPage implements OnInit {
 
   refresh() {
     this.getAcceptedJobs();
+    this.jobsService.getPostedJobs();
   }
 
   getAcceptedJobs() {
@@ -144,6 +145,10 @@ export class MyJobsPage implements OnInit {
         handler: () => {
           this.rateUser()
           this.completeJob(job)
+          this.db.collection('users').doc(this.user.uid).update({
+            acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
+           });
+          this.refresh();
         }
       },
       {
