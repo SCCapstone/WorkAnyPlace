@@ -68,6 +68,10 @@ const routes: Routes = [
   {
     path: 'profile-pic-update',
     loadChildren: () => import('./profile-pic-update/profile-pic-update.module').then( m => m.ProfilePicUpdatePageModule)
+  },
+  {
+    path: 'post-pics',
+    loadChildren: () => import('./post-pics/post-pics.module').then( m => m.PostPicsPageModule)
   }
 ];
 @NgModule({
