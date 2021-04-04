@@ -5,6 +5,10 @@ ion-card{
   height: 30em;
   margin: auto !important;
  }
+ .pics {
+   padding: 0;
+   background-color: black;
+ }
  
 .posts{
   position: relative;
@@ -12,12 +16,13 @@ ion-card{
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .post-pic {
-  width: 100px;
-  height: 200px;
+  width: 25em;
+  height: 15em;
+  padding: none;
 }
 
 .item{
