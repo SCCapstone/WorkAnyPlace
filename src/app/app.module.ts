@@ -13,10 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import firebaseConfig from './firebase';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import { ParallaxHeaderDirective } from './directives/parallax-header.directive'
-
+import { ParallaxHeaderDirective } from './directives/parallax-header.directive';
+import { DropzoneDirective } from './dropzone.directive';
+import  { UploaderComponent } from './uploader/uploader.component';
+import { UploadTaskComponent } from './upload-task/upload-task.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DropzoneDirective, UploaderComponent, UploadTaskComponent ],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 

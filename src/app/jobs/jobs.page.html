@@ -39,6 +39,11 @@
       <img id="profilepic" src= "{{ post.profilePic }}">
     </ion-avatar>
     <ion-card-header>
+      <ion-slides [options]="slideOptsOne" #slideWithNav >
+        <ion-slide class="post-pic" *ngFor="let pic of post.pics">
+            <img class="post-pic" src={{pic}}>
+         </ion-slide>
+     </ion-slides>
       <ion-card-title color="secondary">{{ post.title }}</ion-card-title>
       <ion-card-subtitle color="tertiary">{{ post.category }}</ion-card-subtitle>
       <ion-card-subtitle color="tertiary">${{ post.pay }}</ion-card-subtitle>  

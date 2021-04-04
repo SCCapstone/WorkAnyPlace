@@ -21,20 +21,28 @@ export class CreateJobPage implements OnInit {
     public jobsService: JobsService) { }
 
   ngOnInit() { 
+    
     this.create_job_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       pay: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      uid: this.user.uid
+      uid: this.user.uid,
+      pics: []
     });
   }
 
-  async createJob(value) {
-    await this.jobsService.addNewPostedJob(value);
-    this.jobsService.getPostedJobs();
-    this.router.navigate(['../jobs']);
-    this.router.navigate(['../tabs']);
+  goToPics() {
+    this.router.navigate(['/post-pics']);
+  }
+
+  createJob(value) {
+    // await this.jobsService.addNewPostedJob(value);
+    // this.jobsService.getPostedJobs();
+    // this.router.navigate(['../jobs']);
+    // this.router.navigate(['../tabs']);
+    this.jobsService.jobToPost = value;
+    this.router.navigate(['/post-pics']);
   }
 
 }
