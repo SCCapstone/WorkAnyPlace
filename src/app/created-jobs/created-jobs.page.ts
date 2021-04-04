@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from '../jobs.service';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-created-jobs',
   templateUrl: './created-jobs.page.html',
@@ -7,9 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatedJobsPage implements OnInit {
 
-  constructor() { }
+  db = firebase.firestore();
+  user = firebase.auth().currentUser;
+
+  constructor(
+    public jobsService: JobsService, 
+    private router: Router, 
+    public alertController: AlertController
+  ) { }
 
   ngOnInit() {
+    this.getCompletedJobs();
   }
+
+  refresh() {
+    this.getCompletedJobs();
+  }
+
+  getCompletedJobs() {
+    this.jobsService.getMyJobs()
+  }
+  logout() {   
+    this.router.navigate(['/login']);
+   }
 
 }
