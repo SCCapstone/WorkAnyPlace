@@ -24,6 +24,8 @@ export class JobsService {
   postsNew;
   myjobs;
   myPostedJobs;
+  myCompletedJobs;
+  completedJob;
   selectedjob
   profilepic = "../../assets/img/work_any_place_logo.png";
   currentuser;
@@ -88,7 +90,7 @@ export class JobsService {
    }).catch(function(error) {
      console.log("Error getting document:", error);
    }); 
-   this.myjobs = jobs
+   this.myCompletedJobs = jobs
 }
 
  setSelectedJob(job) {

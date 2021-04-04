@@ -20,5 +20,24 @@
 </ion-header>
 
 <ion-content>
-
+  <h3 style="padding: 10px">Posted Jobs</h3>
+  <ion-list>
+    <ion-item *ngFor="let postjob of this.jobsService.myPostedJobs">
+    <div class="posts">
+    <ion-card>
+  
+      <ion-card-header>
+        <ion-card-title color="secondary">{{ postjob.title }}</ion-card-title>
+        <ion-card-subtitle color="tertiary">{{ postjob.category }}</ion-card-subtitle>
+        <ion-card-subtitle color="tertiary">${{ postjob.pay }}</ion-card-subtitle>  
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p style="color:#101010">{{ postjob.description }}</p>
+      </ion-card-content>
+            
+    </ion-card>
+    </div>
+  </ion-item>
+</ion-list>
 </ion-content>
