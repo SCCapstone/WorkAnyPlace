@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 import firebase from 'firebase/app';
@@ -12,15 +13,16 @@ import {JobsService} from '../jobs.service';
 })
 export class SettingsPage implements OnInit {
 
-  constructor(private router: Router, public jobsService: JobsService) { }
+  constructor(private router: Router, public jobsService: JobsService, public afAuth: AngularFireAuth) { }
 
   db = firebase.firestore();
+  firebase = firebase;
   user = firebase.auth().currentUser;
 
   name:string = '';
-  username: string = '';
-  email: string = '';
-  group: string = '';
+  username: string =  this.jobsService.currentuser.username;
+  email: string =  this.jobsService.currentuser.email;
+  group: string = this.jobsService.currentuser.group;
 
   userDetails:any;
 
@@ -37,10 +39,33 @@ export class SettingsPage implements OnInit {
     });
 
   }
-  updateUserEmail() {
-    this.db.collection('users').doc(this.user.uid).update({
-      email: this.email
-    });
+  updateEmail() {
+
+    
+    // this.db.collection('users').doc(this.user.uid).update({
+    //   email: this.email
+    // });
+
+    var password = this.getPassword();
+
+
+    var t = this;
+
+    firebase.auth()
+    .signInWithEmailAndPassword(this.user.email, password)
+    .then(function(userCredential) {
+        var db = firebase.firestore();
+        var user = firebase.auth().currentUser;
+        userCredential.user.updateEmail(t.email)
+        db.collection('users').doc(user.uid).update({
+          email: t.email
+        });
+    })
+  }
+  getPassword() {
+
+    var password = prompt("Please enter your password", "");
+    return password;
   }
   updateGroup() {
     this.db.collection('users').doc(this.user.uid).update({
