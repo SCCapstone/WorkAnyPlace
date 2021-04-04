@@ -54,6 +54,12 @@
   --ion-color-dark-contrast-rgb: 255, 255, 255;
   --ion-color-dark-shade: #1e2023;
   --ion-color-dark-tint: #383a3e;
+  input {
+    caret-color: #af4cab;
+  }
+  input.custom {
+    caret-color:#af4cab;
+  }
 
   /** medium **/
   --ion-color-medium: #92949c;
@@ -62,6 +68,12 @@
   --ion-color-medium-contrast-rgb: 255, 255, 255;
   --ion-color-medium-shade: #808289;
   --ion-color-medium-tint: #9d9fa6;
+  input {
+    caret-color: #af4cab;
+  }
+  input.custom {
+    caret-color:#af4cab;
+  }
 
   /** light **/
   --ion-color-light: #f4f5f8;
@@ -70,6 +82,12 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+  input {
+    caret-color: #af4cab;
+  }
+  input.custom {
+    caret-color:#af4cab;
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -141,6 +159,12 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+    input {
+      caret-color: #af4cab;
+    }
+    input.custom {
+      caret-color:#af4cab;
+    }
   }
 
   /*
@@ -183,10 +207,10 @@
 
     --ion-card-background: #9e9e9e;
     input {
-      caret-color: #874caf;
+      caret-color: #af4cab;
     }
     input.custom {
-      caret-color:#874caf;
+      caret-color:#af4cab;
     }
   }
 
@@ -232,6 +256,12 @@
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #9e9e9e;
+    input {
+      caret-color: #af4cab;
+    }
+    input.custom {
+      caret-color:#af4cab;
+    }
   }
 }
 
@@ -304,6 +334,12 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+    input {
+      caret-color: #af4cab;
+    }
+    input.custom {
+      caret-color:#af4cab;
+    }
   }
 
   /*
@@ -345,10 +381,10 @@
 
     --ion-card-background: #9e9e9e;
     input {
-      caret-color: #874caf;
+      caret-color: #af4cab;
     }
     input.custom {
-      caret-color:#874caf;
+      caret-color:#af4cab;
     }
   }
 
@@ -394,5 +430,11 @@
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #9e9e9e;
+    input {
+      caret-color: #af4cab;
+    }
+    input.custom {
+      caret-color:#af4cab;
+    }
   }
 }
