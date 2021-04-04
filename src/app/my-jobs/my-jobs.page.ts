@@ -77,60 +77,6 @@ export class MyJobsPage implements OnInit {
 
  }
 
- async rateUser() {
-  const alert = await this.alertController.create({  
-    header: 'Please rate the user out of 5',  
-    inputs: [  
-      {  
-        name: '1',  
-        type: 'radio',  
-        label: '1',  
-        value: '1',  
-        checked: true,  
-      },  
-      {  
-        name: '2',  
-        type: 'radio',  
-        label: '2',  
-        value: '2',  
-      },  
-      {  
-        name: '3',  
-        type: 'radio',  
-        label: '3',  
-        value: '3',  
-      },  
-      {  
-        name: '4',  
-        type: 'radio',  
-        label: '4',  
-        value: '4',  
-      },  
-      {  
-        name: '5',  
-        type: 'radio',  
-        label: '5',  
-        value: '5',  
-      },  
-
-    ],  
-    buttons: [  
-      {  
-        text: 'Cancel',  
-        handler: data => {  
-          console.log('Cancel clicked');  
-        }  
-      },  
-      {  
-        text: 'Save',  
-        handler: data => {  
-          console.log('Saved clicked');  
-        }  
-      }  
-    ]  
-  });  
-  await alert.present();  
-}  
   
 
 
@@ -144,7 +90,6 @@ export class MyJobsPage implements OnInit {
         text: 'Yes',
         cssClass: "alertButtons",
         handler: () => {
-          this.rateUser()
           this.completeJob(job)
           this.db.collection('users').doc(this.user.uid).update({
             acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)

@@ -11,6 +11,7 @@ export class JobsService {
 
   constructor() {
     this.getPostedJobs()
+    this.getCompletedJobs()
    }
 
 
@@ -25,9 +26,10 @@ export class JobsService {
   posts;
   postsNew;
   myjobs;
+  completedJob
   myPostedJobs;
   myCompletedJobs;
-  completedJob;
+  myCompletedJob;
   selectedjob
   profilepic = "../../assets/img/work_any_place_logo.png";
   currentuser;
@@ -81,9 +83,9 @@ export class JobsService {
  }
 
  async getCompletedJobs() {
-  var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+  var jobs = await this.db.collection('completedJobs').doc('my-jobs').get().then(function(doc) {
      if (doc.exists) {
-        console.log("Document data:", doc.data().completedJobs);
+        console.log("Document data:", doc.data());
         return doc.data().completedJobs;
        } else {
          // doc.data() will be undefined in this case
@@ -92,8 +94,23 @@ export class JobsService {
    }).catch(function(error) {
      console.log("Error getting document:", error);
    }); 
-   this.myCompletedJobs = jobs
+   this.completedJob = jobs
 }
+async getMyCompletedJobs() {
+  var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      return doc.data().completedJobs;
+     } else {
+       // doc.data() will be undefined in this case
+      console.log("No such document!");
+   }
+ }).catch(function(error) {
+   console.log("Error getting document:", error);
+ }); 
+ this.myCompletedJobs = jobs;
+}
+
 
  setSelectedJob(job) {
    this.selectedjob = job;
