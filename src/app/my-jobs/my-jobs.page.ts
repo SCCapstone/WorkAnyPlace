@@ -142,6 +142,7 @@ export class MyJobsPage implements OnInit {
     buttons: [  
       {
         text: 'Yes',
+        cssClass: "alertButtons",
         handler: () => {
           this.rateUser()
           this.completeJob(job)
@@ -153,6 +154,7 @@ export class MyJobsPage implements OnInit {
       },
       {
         text: 'No',
+        cssClass: "alertButtons",
         handler: () => {
           
         }
@@ -171,12 +173,14 @@ export class MyJobsPage implements OnInit {
     buttons: [  
       {
         text: 'Yes',
+        cssClass: "alertButtons",
         handler: () => {
           this.cancelJob(job)
         }
       },
       {
         text: 'No',
+        cssClass: "alertButtons",
         handler: () => {
           
         }

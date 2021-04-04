@@ -1,4 +1,11 @@
 ion-card{
+
+    display: float;
+    flex-direction: column;
+    width: 75% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  
     display: float !important;
     position: relative !important;
     width: 25em;
@@ -32,3 +39,4 @@ ion-card{
     width: 80% !important;
   }
 }
+

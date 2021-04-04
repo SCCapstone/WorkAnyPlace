@@ -7,6 +7,9 @@ ion-card{
   margin-bottom: auto !important;
   margin-left: auto !important;
   margin-right: auto !important;
+
+  
+
  }
 
 .posts{
@@ -22,6 +25,11 @@ ion-card{
   display: inline-block;
 }
 
+.alertButtons{
+  color: white !important;
+  background-color: #9e9e9e !important
+}
+
 @media only screen and (max-width: 479) {
 .posts{
   display: flex;
@@ -29,4 +37,5 @@ ion-card{
   align-items: center;
   width: auto;
 }
+
 }
