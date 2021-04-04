@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import {finalize, tap} from 'rxjs/operators';
-
+import {JobsService} from '../jobs.service';
 
 
 @Component({
@@ -16,12 +17,12 @@ export class UploadTaskComponent implements OnInit {
   @Input() file: File;
 
   task: AngularFireUploadTask;
-
+  user = firebase.auth().currentUser;
   percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL: string;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, public jobsService: JobsService) { }
 
   ngOnInit() {
     this.startUpload();
@@ -30,7 +31,7 @@ export class UploadTaskComponent implements OnInit {
   startUpload() {
 
     // The storage path
-    const path = `test/${Date.now()}_${this.file.name}`;
+    const path = `postpics/${Date.now()}_${this.file.name}`;
 
     // Reference to storage bucket
     const ref = this.storage.ref(path);
@@ -47,7 +48,8 @@ export class UploadTaskComponent implements OnInit {
       finalize( async() =>  {
         this.downloadURL = await ref.getDownloadURL().toPromise();
 
-        this.db.collection('files').add( { downloadURL: this.downloadURL, path });
+        // this.db.collection('users').doc(this.user.uid).update({posts: firebase.firestore.FieldValue.arrayUnion(path)})
+        this.jobsService.postPicsToUpload.push(this.downloadURL);
       }),
     );
   }

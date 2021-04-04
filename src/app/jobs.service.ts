@@ -19,6 +19,8 @@ export class JobsService {
   db = firebase.firestore();
   user = firebase.auth().currentUser;
 
+  postPicsToUpload = [];
+  jobToPost = undefined;
 /* Varibles used accross components */
   posts
   postsNew
@@ -170,10 +172,10 @@ async getUser() {
   } 
 
 /* Use this function when adding a newly created Job */
-  async addNewPostedJob(job) {
-    var pic = await this.getUIDProfilePic(job.uid);
-    var post = {"category":job.category, "description":job.description, "pay":job.pay,
-      "title": job.title, "uid": job.uid, "profilePic": pic 
+  async addNewPostedJob() {
+    var pic = await this.getUIDProfilePic(this.jobToPost.uid);
+    var post = {"category":this.jobToPost.category, "description":this.jobToPost.description, "pay":this.jobToPost.pay,
+      "title": this.jobToPost.title, "uid": this.jobToPost.uid, "profilePic": pic, "pics": this.postPicsToUpload
     }
     
 
@@ -209,6 +211,8 @@ async getUser() {
     }).catch(function(error) {
     console.log("Error getting document:", error);
     });
+    this.jobToPost = undefined;
+    this.postPicsToUpload = [];
   }
 
   addCompletedJob(job) {
