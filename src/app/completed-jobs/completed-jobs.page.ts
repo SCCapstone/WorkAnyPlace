@@ -31,7 +31,8 @@ export class CompletedJobsPage implements OnInit {
   }
 
   getCompletedJobs() {
-    this.jobsService.getMyJobs()
+    this.jobsService.getMyJobs();
+    this.jobsService.getCompletedJobs();
   }
 
   logout() {   

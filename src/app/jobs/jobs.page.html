@@ -31,9 +31,9 @@
 <ion-searchbar (ionInput)="filterList($event)" showCancelButton="focus" placeholder="Search jobs" color="light"></ion-searchbar>
 
 <ion-list>
-  <ion-item *ngFor="let post of this.jobsService.postsNew">
-  <div tabindex="0"></div>
-
+  <ion-item class="item" *ngFor="let post of this.jobsService.postsNew">
+  <!-- <div tabindex="0"></div> -->
+  <div class="posts">
   <ion-card (click)="goToJobDetail(post)">
     <ion-avatar slot="start">
       <img id="profilepic" src= "{{ post.profilePic }}">
@@ -61,7 +61,7 @@
     </ion-button> -->
     
   </ion-card>
-
+</div>
 </ion-item>
 </ion-list>
 </ion-content>

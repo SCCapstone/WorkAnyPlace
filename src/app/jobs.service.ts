@@ -22,11 +22,14 @@ export class JobsService {
   postPicsToUpload = [];
   jobToPost = undefined;
 /* Varibles used accross components */
-  posts
-  postsNew
-  myjobs
+  posts;
+  postsNew;
+  myjobs;
+  myPostedJobs;
+  myCompletedJobs;
+  completedJob;
   selectedjob
-  profilepic = "../../assets/img/work_any_place_logo.png"
+  profilepic = "../../assets/img/work_any_place_logo.png";
   currentuser;
 //////////////////////////////////////////////////////////////
 
@@ -47,6 +50,20 @@ export class JobsService {
      this.posts = jobs;
      this.postsNew = jobs;
   }
+  async getMyPostedJobs() {
+    var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+        return doc.data().postedJobs;
+       } else {
+         // doc.data() will be undefined in this case
+        console.log("No such document!");
+     }
+   }).catch(function(error) {
+     console.log("Error getting document:", error);
+   }); 
+   this.myPostedJobs = jobs;
+}
 
   async getMyJobs() {
     var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
@@ -75,7 +92,7 @@ export class JobsService {
    }).catch(function(error) {
      console.log("Error getting document:", error);
    }); 
-   this.myjobs = jobs
+   this.myCompletedJobs = jobs
 }
 
  setSelectedJob(job) {
@@ -309,5 +326,7 @@ async getUser() {
       this.getCompletedJobs();
       this.getMyJobs();
     }
+
+  
 
 }

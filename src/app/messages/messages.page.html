@@ -7,111 +7,29 @@
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
       </ion-button> 
     </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="goToConversation()">
-    click me
-  </ion-button>
-    <ion-list>
-        <ion-list-header>
-          Recent Conversations
-        </ion-list-header>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-finn.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Austin Donaldson</h2>
-            <h3>Car Washing Service</h3>
-            <h4>Listen, I've had a pretty messed up day...</h4>
-          </ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-han.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Mary Goldstein</h2>
-            <h3>Pet Sitting</h3>
-            <h4>My puppy is very playful and energetic...</h4>
-          </ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-rey.png"> 
-          </ion-avatar>
-          <ion-label>
-            <h2>Rey</h2>
-            <h3>Heavy item Removal</h3>
-            <h4>You will remove the old car engine from the back of my property, it is behind the shed</h4>
-          </ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-luke.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Kevin Nguyen</h2>
-            <h3>Babysitting</h3>
-            <h4>Hi there my 3 year old son needs a sitter that can pickup from daycare.</h4>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-list-header>
-          Past Conversations
-        </ion-list-header>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-poe.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Brandon</h2>
-            <h3>Job Completed</h3>
-            <h4>My Wife said she sent you your payment via paypal, thanks for your help</h4>
-          </ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-ben.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Caleb</h2>
-            <h3>Job Completed</h3>
-            <h4>Just Venmo'd you for Car Washing! Thanks</h4>
-          </ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-leia.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Janki</h2>
-            <h3>Job Completed</h3>
-            <h4>Thank you for completing my Dog Sitting</h4>
-          </ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="./avatar-yoda.png">
-          </ion-avatar>
-          <ion-label>
-            <h2>Anthony</h2>
-            <h3>Job Completed</h3>
-            <h4>Thank you for completing my Lawn Care</h4>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-
+  <ion-list>
+    <ion-item *ngFor="let preview of this.previews">
+      <div tabindex="0"></div>
+      <ion-card (click)="goToConversation(preview)">
+        <ion-card-header>
+          <ion-card-title color="secondary">{{ preview.threadMember }}</ion-card-title>
+        </ion-card-header>
+    
+        <ion-card-content>
+          <p style="color:#101010">{{ preview.messageText }}</p>
+        </ion-card-content>
+      
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
