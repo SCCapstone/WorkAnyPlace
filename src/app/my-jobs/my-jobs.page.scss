@@ -4,4 +4,7 @@ ion-card{
   width: 75% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  .active{
+    background: gray;
+  }
 }
