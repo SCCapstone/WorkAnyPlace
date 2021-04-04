@@ -86,6 +86,9 @@ export class MyJobsPage implements OnInit {
         text: 'Yes',
         handler: () => {
           this.completeJob(job)
+          this.db.collection('users').doc(this.user.uid).update({
+            acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
+           });
         }
       },
       {
