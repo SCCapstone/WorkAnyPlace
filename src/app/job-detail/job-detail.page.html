@@ -37,6 +37,8 @@
       <br/>
       {{ username }}
     </div>
+    <ion-icon name="star-outline" slot="start" (click)="rateUser()"></ion-icon>
+    {{ this.jobsService.currentuser.starRating }}
     <br/>
 
   </div>

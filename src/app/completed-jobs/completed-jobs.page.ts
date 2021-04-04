@@ -23,17 +23,14 @@ export class CompletedJobsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCompletedJobs();
+    this.jobsService.getMyCompletedJobs();
   }
 
   refresh() {
-    this.getCompletedJobs();
+    this.jobsService.getMyCompletedJobs();
   }
 
-  getCompletedJobs() {
-    this.jobsService.getMyJobs();
-    this.jobsService.getCompletedJobs();
-  }
+
 
   logout() {   
     this.router.navigate(['/login']);
