@@ -12,6 +12,12 @@
 .my-message{
     background: var(--ion-color-tertiary);
     color: #fff;
+    input {
+        caret-color: #af4cab;
+      }
+      input.custom {
+        caret-color:#af4cab;
+      }
 }
 
 
@@ -31,6 +37,12 @@
     resize: none;
     padding-left: 10px;
     padding-right: 10px;
+    input {
+        caret-color: #af4cab;
+      }
+      input.custom {
+        caret-color:#af4cab;
+      }
 }
 .msg-btn {
     color:#b81010;
