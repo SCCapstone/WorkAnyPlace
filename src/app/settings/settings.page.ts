@@ -81,6 +81,11 @@ export class SettingsPage implements OnInit {
     this.router.navigate(['../profile-pic-update']);
   }
 
+  changePassword() {
+    this.router.navigate(['/reset-password']);
+  }
+
+
   logout() {
     this.router.navigate(['/login']);
   }
