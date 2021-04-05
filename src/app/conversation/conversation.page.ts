@@ -30,6 +30,12 @@ export class ConversationPage implements OnInit {
     
     ) { }
 
+
+  async refresh() {
+    await this.messageService.fetchThreads();
+    this.updateMessages;
+  }
+
   sendMessage() {
     let collectionRef = this.db.collection("messages").doc(this.threadId);
     const timestamp = firebase.firestore.Timestamp.fromDate(new Date());
@@ -50,6 +56,7 @@ export class ConversationPage implements OnInit {
   }
 
   async updateMessages() {
+    this.messages = []
     let thread = await this.getCurrentThread(this.threadId);
     for (let i = 0; i < thread.length; i++) {
       let currentMessage = thread[i];

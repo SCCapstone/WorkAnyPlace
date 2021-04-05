@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { MessageService } from '../message.service';
+import { AlertController } from '@ionic/angular';
+
 import { platformBrowserTesting } from '@angular/platform-browser/testing';
 @Component({
   selector: 'app-job-detail',
@@ -12,7 +14,10 @@ import { platformBrowserTesting } from '@angular/platform-browser/testing';
 })
 export class JobDetailPage implements OnInit {
 
-  constructor(public jobsService:JobsService, public messageService:MessageService, public router: Router) { }
+  constructor(public jobsService:JobsService,
+    public alertController: AlertController,
+    public messageService:MessageService, 
+    public router: Router) { }
 
   
   defaultimg = '../assets/img/work_any_place_logo.png' 
@@ -72,5 +77,60 @@ export class JobDetailPage implements OnInit {
    let posterId = this.jobsService.selectedjob.uid;
    this.messageService.removeConvo(this.user.uid, posterId);
   }
+
+  async rateUser() {
+    const alert = await this.alertController.create({  
+      header: 'Please rate the user out of 5',  
+      inputs: [  
+        {  
+          name: '1',  
+          type: 'radio',  
+          label: '1',  
+          value: '1',  
+          checked: true,  
+        },  
+        {  
+          name: '2',  
+          type: 'radio',  
+          label: '2',  
+          value: '2',  
+        },  
+        {  
+          name: '3',  
+          type: 'radio',  
+          label: '3',  
+          value: '3',  
+        },  
+        {  
+          name: '4',  
+          type: 'radio',  
+          label: '4',  
+          value: '4',  
+        },  
+        {  
+          name: '5',  
+          type: 'radio',  
+          label: '5',  
+          value: '5',  
+        },  
+  
+      ],  
+      buttons: [  
+        {  
+          text: 'Cancel',  
+          handler: data => {  
+            console.log('Cancel clicked');  
+          }  
+        },  
+        {  
+          text: 'Save',  
+          handler: data => {  
+            console.log('Saved clicked');  
+          }  
+        }  
+      ]  
+    });  
+    await alert.present();  
+  }  
 
 }

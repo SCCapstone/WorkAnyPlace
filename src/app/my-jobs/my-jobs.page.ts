@@ -30,10 +30,12 @@ export class MyJobsPage implements OnInit {
 
   ngOnInit() {
     this.getAcceptedJobs();
+    this.jobsService.getMyPostedJobs();
   }
 
   refresh() {
     this.getAcceptedJobs();
+    this.jobsService.getPostedJobs();
   }
 
   getAcceptedJobs() {
@@ -77,6 +79,9 @@ export class MyJobsPage implements OnInit {
 
  }
 
+  
+
+
  completeJobConfirm(job) {
   this.alertController.create({
     header: 'Did you complete this job?',
@@ -85,12 +90,18 @@ export class MyJobsPage implements OnInit {
     buttons: [  
       {
         text: 'Yes',
+        cssClass: "alertButtons",
         handler: () => {
           this.completeJob(job)
+          this.db.collection('users').doc(this.user.uid).update({
+            acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
+           });
+          this.refresh();
         }
       },
       {
         text: 'No',
+        cssClass: "alertButtons",
         handler: () => {
           
         }
@@ -109,12 +120,14 @@ export class MyJobsPage implements OnInit {
     buttons: [  
       {
         text: 'Yes',
+        cssClass: "alertButtons",
         handler: () => {
           this.cancelJob(job)
         }
       },
       {
         text: 'No',
+        cssClass: "alertButtons",
         handler: () => {
           
         }

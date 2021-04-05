@@ -87,7 +87,7 @@ export class MessageService {
       sentMessages: sentMessages
     });
 
-    let docExists = await this.db.collection("userMessageThreads").doc(this.user.uid).get().then(doc => {
+    let user1DocExists = await this.db.collection("userMessageThreads").doc(user1Id).get().then(doc => {
       if (doc.exists) {
         return true;
       } else {
@@ -97,15 +97,37 @@ export class MessageService {
       console.log("Error getting document:", error);
     });
 
-    if (docExists) {
-      this.db.collection("userMessageThreads").doc(this.user.uid).update({
+    if (user1DocExists) {
+      this.db.collection("userMessageThreads").doc(user1Id).update({
         threads: firebase.firestore.FieldValue.arrayUnion(newThreadId)
       });
     } else {
-      this.db.collection("userMessageThreads").doc(this.user.uid).set({
+      this.db.collection("userMessageThreads").doc(user1Id).set({
         threads: [newThreadId]
       });
     }
+
+    let user2DocExists = await this.db.collection("userMessageThreads").doc(user2Id).get().then(doc => {
+      if (doc.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+
+    if (user2DocExists) {
+      this.db.collection("userMessageThreads").doc(user2Id).update({
+        threads: firebase.firestore.FieldValue.arrayUnion(newThreadId)
+      });
+    } else {
+      this.db.collection("userMessageThreads").doc(user2Id).set({
+        threads: [newThreadId]
+      });
+    }
+
+    
   }
 
   removeConvo(user1Id, user2Id) {

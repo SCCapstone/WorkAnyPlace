@@ -8,8 +8,13 @@
 </ion-header>
 
 <ion-content appParallaxHeader [scrollEvents]="true">
-  <div class="parallax-image" [style.background-image]="'url(' + defaultimg + ')'" >
-
+  <div class="parallax-image" >
+  <!-- [style.background-image]="'url(' + defaultimg + ')'" > -->
+    <ion-slides [options]="slideOptsOne" #slideWithNav >
+      <ion-slide class="post-pic" *ngFor="let pic of this.jobsService.selectedjob.pics">
+          <img class="post-pic" src={{pic}}>
+       </ion-slide>
+    </ion-slides>
   </div>
   <div class="colorDetailPage">
     
@@ -17,6 +22,10 @@
       Pay
     </h3>
     ${{ this.jobsService.selectedjob.pay }}
+    <h3>
+      Location
+    </h3>
+    {{ this.jobsService.selectedjob.location}}
     <h3>
       Category
     </h3>
@@ -37,6 +46,8 @@
       <br/>
       {{ username }}
     </div>
+    <ion-icon name="star-outline" slot="start" (click)="rateUser()"></ion-icon>
+    {{ this.jobsService.currentuser.starRating }}
     <br/>
 
   </div>

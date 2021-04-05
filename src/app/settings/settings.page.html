@@ -17,23 +17,14 @@
 <ion-content>
   <ion-list>
   <ion-list-header>
-    Name:
-  </ion-list-header>
-  <ion-item>
-    <ion-avatar slot="start">
-    </ion-avatar>
-    <ion-label position = "floating"></ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-
-  <ion-list-header>
     Username:
   </ion-list-header>
   <ion-item>
-    <ion-avatar slot="start">
-    </ion-avatar>
-    <ion-label position = "floating"></ion-label>
-    <ion-input></ion-input>
+    
+    <ion-input type="text" [(ngModel)]="username" text-right id="input" placeholder={{this.jobsService.currentuser.username}}></ion-input>
+    <ion-button (click)='updateUserName()'>
+      Update
+    </ion-button>
   </ion-item>
 
 
@@ -41,36 +32,35 @@
     Email:
   </ion-list-header>
   <ion-item>
-    <ion-avatar slot="start">
-    </ion-avatar>
-    <ion-label position = "floating"></ion-label>
-    <ion-input></ion-input>
+    
+    <ion-input type="text" [(ngModel)]="email" text-right id="input" placeholder={{this.jobsService.currentuser.email}}></ion-input>
+    <ion-button (click)='updateEmail()'>
+      Update
+    </ion-button>
   </ion-item>
 
   <ion-list-header>
     Group:
   </ion-list-header>
   <ion-item>
-    <ion-avatar slot="start">
-    </ion-avatar>
-    <ion-label position = "floating"></ion-label>
-    <ion-input></ion-input>
+    
+    <ion-input type="text" [(ngModel)]="group" text-right id="input" placeholder={{this.jobsService.currentuser.group}}></ion-input>
+    <ion-button (click)='updateGroup()'>
+      Update
+    </ion-button>
   </ion-item>
 
-
   </ion-list>
-  
-  <ion-buttons>
-    <ion-button (click)="backToStats()" fill="solid" slot="center">
-      Save
-    </ion-button>
-  </ion-buttons>
   
   <ion-list-header>
     Change Profile Pic:
   </ion-list-header>
   <ion-button (click)="goToImage()">
     Select
+  </ion-button>
+  <br>
+  <ion-button (click)="changePassword()">
+    Change Password
   </ion-button>
 <ion-content>
 
