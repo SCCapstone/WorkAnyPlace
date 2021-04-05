@@ -137,12 +137,6 @@ export class MyJobsPage implements OnInit {
     res.present();
   });
 }
-
-  logout() {   
-    this.fireAuth.signOut();
-    this.router.navigate(['/login']);
-  }
-
 }
 
 

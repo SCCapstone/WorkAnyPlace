@@ -92,10 +92,6 @@ export class JobsPage implements OnInit {
      this.refresh();
   }
 
-  logout() {
-    this.router.navigate(['/login']);
-  }
-
 
 // removeJobFromPostedJobs() {
   //   this.db.collection('postedJobs').doc('jobs').set({

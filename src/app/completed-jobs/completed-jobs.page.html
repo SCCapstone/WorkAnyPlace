@@ -4,12 +4,6 @@
       <ion-back-button defaultHref=""></ion-back-button>
     </ion-buttons>
     <ion-title>Completed Jobs</ion-title>
-
-    <ion-buttons slot="start">
-      <ion-button (click)="logout()">
-        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
     
     <ion-buttons slot="start">
       <ion-button (click)="refresh()">
@@ -23,7 +17,7 @@
 <ion-content>
   <h3 style="padding: 10px">Completed Jobs</h3>
   <ion-list>
-    <ion-item *ngFor="let completedJob of this.jobsService.myCompletedJobs">
+    <ion-item *ngFor="let completedJob of myCompletedJobs">
     <div class="posts">
     <ion-card>
   

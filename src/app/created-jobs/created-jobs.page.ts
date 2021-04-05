@@ -30,9 +30,4 @@ export class CreatedJobsPage implements OnInit {
     this.jobsService.getPostedJobs();
 
   }
-
-  logout() {   
-    this.router.navigate(['/login']);
-   }
-
 }

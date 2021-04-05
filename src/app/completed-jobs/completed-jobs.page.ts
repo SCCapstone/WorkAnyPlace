@@ -15,6 +15,7 @@ export class CompletedJobsPage implements OnInit {
 
   db = firebase.firestore();
   user = firebase.auth().currentUser;
+  myCompletedJobs;
 
   constructor(
     public jobsService: JobsService, 
@@ -22,21 +23,15 @@ export class CompletedJobsPage implements OnInit {
     public alertController: AlertController
   ) { }
 
-  ngOnInit() {
-    this.jobsService.getMyCompletedJobs();
+  async ngOnInit() {
+    this.myCompletedJobs = await this.jobsService.getMyCompletedJobs();
   }
 
-  refresh() {
-    this.jobsService.getMyCompletedJobs();
+  async refresh() {
+    this.myCompletedJobs = await this.jobsService.getMyCompletedJobs();
   }
 
-
-
-  logout() {   
-    this.router.navigate(['/login']);
-   }
-
-   async addToCompletedJobs(post){
+  async addToCompletedJobs(post){
     this.jobsService.addAcceptedJob(post);
     await this.db.collection('postedJobs').doc('jobs').update({
       postedJobs: firebase.firestore.FieldValue.arrayRemove(post)

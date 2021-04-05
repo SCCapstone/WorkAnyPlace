@@ -23,11 +23,6 @@ export class MessagesPage implements OnInit {
     private fireAuth: AngularFireAuth
     ) { }
 
-  logout() {
-    this.fireAuth.signOut();
-    this.router.navigate(['/login']);
-  }
-
   async ngOnInit() {
     await this.messageService.fetchThreads();
     this.getMessagePreviews();
