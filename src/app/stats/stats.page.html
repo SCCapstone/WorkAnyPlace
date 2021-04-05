@@ -35,7 +35,7 @@
       {{ this.jobsService.currentuser.jobsCompleted }}
     </ion-item>
   
-    <ion-item color="white" (click)="openCompletedJobs()">
+    <ion-item color="white">
       <ion-icon name="timer-outline" slot="start"></ion-icon>
       <ion-label>Hours Worked</ion-label>
       {{ this.jobsService.currentuser.hoursWorked }}
@@ -47,7 +47,7 @@
       {{ this.jobsService.currentuser.jobsCreated }}
     </ion-item>
   
-    <ion-item color="white" (click)="openCompletedJobs()">
+    <ion-item color="white">
       <ion-icon name="cash-outline" slot="start"></ion-icon>
       <ion-label>Money Made</ion-label>
       ${{ this.jobsService.currentuser.moneyMade }}
