@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -87,6 +88,7 @@ export class SettingsPage implements OnInit {
 
 
   logout() {
+    this.fireAuth.signOut();
     this.router.navigate(['/login']);
   }
 
