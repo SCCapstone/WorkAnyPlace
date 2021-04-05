@@ -208,7 +208,7 @@ async getUser() {
 /* Use this function when adding a newly created Job */
   async addNewPostedJob() {
     var pic = await this.getUIDProfilePic(this.jobToPost.uid);
-    var post = {"category":this.jobToPost.category, "description":this.jobToPost.description, "pay":this.jobToPost.pay,
+    var post = {"category":this.jobToPost.category, "location":this.jobToPost.location, "description":this.jobToPost.description, "pay":this.jobToPost.pay,
       "title": this.jobToPost.title, "uid": this.jobToPost.uid, "profilePic": pic, "pics": this.postPicsToUpload
     }
     
