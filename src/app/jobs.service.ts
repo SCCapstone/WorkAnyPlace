@@ -93,8 +93,8 @@ export class JobsService {
    }).catch(function(error) {
      console.log("Error getting document:", error);
    }); 
-   this.posts = jobs
-   this.completedJob = jobs
+   this.posts = jobs;
+   this.completedJob = jobs;
 }
 async getMyCompletedJobs() {
   var jobs = await this.db.collection('users').doc(this.user.uid).get().then(function(doc) {
@@ -276,7 +276,7 @@ async getUser() {
           starRating: doc.data().starRating,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
-          postedJobs: doc.data().completedJobs,
+          postedJobs: doc.data().postedJobs,
           completedJobs: firebase.firestore.FieldValue.arrayUnion(post)
          
       }, { merge: true });
@@ -392,7 +392,7 @@ async getUser() {
        acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
       });
   
-      // Add job back to posts
+      // Add job to completed jobs page
       this.addToCompletedJobs(job);
   
       // Refresh Pages
