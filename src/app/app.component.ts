@@ -25,23 +25,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-    
     this.platform.ready().then(() => {
-      this.fireAuth.onAuthStateChanged(user => {
-        if (user) {
-          console.log("SESSION")
-          this.zone.run(() => {
-            this.router.navigate(["/stats"]);
-            this.router.navigate(["/tabs"]);
-          });
-        }
-        else {
-          console.log("NEW")
-          this.zone.run(() => {
-            this.router.navigate(["/login"]);
-          });
-        }
-      });
       this.splashScreen.hide();
       this.statusBar.styleDefault();
     });

@@ -19,6 +19,7 @@ export class StatsPage implements OnInit {
 
   logout() {
     this.fireAuth.signOut();
+    firebase.auth().signOut();
     this.router.navigate(['/login']);
   }
 
