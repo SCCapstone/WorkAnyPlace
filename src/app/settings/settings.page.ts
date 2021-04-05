@@ -87,6 +87,7 @@ export class SettingsPage implements OnInit {
 
 
   logout() {
+    this.afAuth.signOut();
     this.router.navigate(['/login']);
   }
 
