@@ -5,6 +5,9 @@ import 'firebase/firestore';
 
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+
 @Component({
   selector: 'app-created-jobs',
   templateUrl: './created-jobs.page.html',
@@ -18,7 +21,8 @@ export class CreatedJobsPage implements OnInit {
   constructor(
     public jobsService: JobsService, 
     private router: Router, 
-    public alertController: AlertController
+    public alertController: AlertController,
+    private fireAuth: AngularFireAuth
   ) { }
 
   ngOnInit() {

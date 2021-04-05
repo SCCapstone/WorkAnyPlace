@@ -5,6 +5,8 @@ import 'firebase/firestore';
 
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-completed-jobs',
@@ -20,7 +22,8 @@ export class CompletedJobsPage implements OnInit {
   constructor(
     public jobsService: JobsService, 
     private router: Router, 
-    public alertController: AlertController
+    public alertController: AlertController,
+    private fireAuth: AngularFireAuth
   ) { }
 
   async ngOnInit() {
@@ -30,17 +33,4 @@ export class CompletedJobsPage implements OnInit {
   async refresh() {
     this.myCompletedJobs = await this.jobsService.getMyCompletedJobs();
   }
-
-  async addToCompletedJobs(post){
-    this.jobsService.addAcceptedJob(post);
-    await this.db.collection('postedJobs').doc('jobs').update({
-      postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
-     });
-     this.jobsService.getMyJobs();
-     this.router.navigate(['../my-jobs']);
-     this.refresh();
-  }
-
-
-
 }
