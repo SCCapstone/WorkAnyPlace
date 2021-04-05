@@ -34,10 +34,4 @@ export class CreatedJobsPage implements OnInit {
     this.jobsService.getPostedJobs();
 
   }
-
-  logout() { 
-    this.fireAuth.signOut();  
-    this.router.navigate(['/login']);
-   }
-
 }

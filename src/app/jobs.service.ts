@@ -109,6 +109,7 @@ async getMyCompletedJobs() {
    console.log("Error getting document:", error);
  }); 
  this.myCompletedJobs = jobs;
+ return jobs;
 }
 
 
@@ -391,7 +392,11 @@ async getUser() {
       await this.db.collection('users').doc(this.user.uid).update({
        acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
       });
-  
+    
+      await this.db.collection('users').doc(this.user.uid).update({
+        completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
+      });
+    
       // Add job to completed jobs page
       this.addToCompletedJobs(job);
   

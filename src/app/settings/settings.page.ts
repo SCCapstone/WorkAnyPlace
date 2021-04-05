@@ -84,14 +84,6 @@ export class SettingsPage implements OnInit {
   changePassword() {
     this.router.navigate(['/reset-password']);
   }
-
-
-  logout() {
-    this.afAuth.signOut();
-    this.router.navigate(['/login']);
-  }
-
-
 }
 
 

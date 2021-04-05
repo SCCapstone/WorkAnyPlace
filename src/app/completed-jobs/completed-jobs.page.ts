@@ -17,6 +17,7 @@ export class CompletedJobsPage implements OnInit {
 
   db = firebase.firestore();
   user = firebase.auth().currentUser;
+  myCompletedJobs;
 
   constructor(
     public jobsService: JobsService, 
@@ -25,21 +26,11 @@ export class CompletedJobsPage implements OnInit {
     private fireAuth: AngularFireAuth
   ) { }
 
-  ngOnInit() {
-    this.jobsService.getMyCompletedJobs();
+  async ngOnInit() {
+    this.myCompletedJobs = await this.jobsService.getMyCompletedJobs();
   }
 
-  refresh() {
-    this.jobsService.getMyCompletedJobs();
+  async refresh() {
+    this.myCompletedJobs = await this.jobsService.getMyCompletedJobs();
   }
-
-
-  logout() {   
-    this.fireAuth.signOut();
-    this.router.navigate(['/login']);
-   }
-
-
-
-
 }
