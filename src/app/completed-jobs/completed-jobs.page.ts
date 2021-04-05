@@ -31,20 +31,10 @@ export class CompletedJobsPage implements OnInit {
   }
 
 
-
   logout() {   
     this.router.navigate(['/login']);
    }
 
-   async addToCompletedJobs(post){
-    this.jobsService.addAcceptedJob(post);
-    await this.db.collection('postedJobs').doc('jobs').update({
-      postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
-     });
-     this.jobsService.getMyJobs();
-     this.router.navigate(['../my-jobs']);
-     this.refresh();
-  }
 
 
 
