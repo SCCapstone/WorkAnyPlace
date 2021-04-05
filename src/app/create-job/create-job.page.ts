@@ -25,6 +25,7 @@ export class CreateJobPage implements OnInit {
     this.create_job_form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       pay: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       uid: this.user.uid,
