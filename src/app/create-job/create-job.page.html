@@ -30,7 +30,9 @@
         <ion-label color="primary-contrast" position="floating">Description</ion-label>
         <ion-input type="text" formControlName="description" required></ion-input>
       </ion-item>
-      <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!create_job_form.valid">Create</ion-button>
+      <div style="text-align: left;">
+        <ion-button class="submit-btn" type="submit" [disabled]="!create_job_form.valid">Create</ion-button>
+      </div>
     </form>
   
    <!-- <app-uploader></app-uploader> -->
