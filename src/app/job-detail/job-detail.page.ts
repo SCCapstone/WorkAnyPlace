@@ -117,13 +117,15 @@ export class JobDetailPage implements OnInit {
       ],  
       buttons: [  
         {  
-          text: 'Cancel',  
+          text: 'Cancel',
+          cssClass: "alertButtons",  
           handler: data => {  
             console.log('Cancel clicked');  
           }  
         },  
         {  
-          text: 'Save',  
+          text: 'Save',
+          cssClass: "alertButtons",  
           handler: data => {  
             console.log('Saved clicked');  
           }  
