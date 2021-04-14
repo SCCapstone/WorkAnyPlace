@@ -185,7 +185,6 @@ async getUser() {
         db.collection('users').doc(user.uid).set({
           email: doc.data().email,
           group: doc.data().group,
-          hoursWorked: doc.data().hoursWorked,
           jobsCompleted: doc.data().jobsCompleted,
           jobsCreated: doc.data().jobsCreated,
           moneyMade: doc.data().moneyMade,
@@ -227,7 +226,6 @@ async getUser() {
         db.collection('users').doc(user.uid).set({
           email: doc.data().email,
           group: doc.data().group,
-          hoursWorked: doc.data().hoursWorked,
           jobsCompleted: doc.data().jobsCompleted,
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
@@ -270,7 +268,6 @@ async getUser() {
         db.collection('users').doc(user.uid).set({
           email: doc.data().email,
           group: doc.data().group,
-          hoursWorked: doc.data().hoursWorked,
           jobsCompleted: doc.data().jobsCompleted,
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
@@ -304,7 +301,6 @@ async getUser() {
         db.collection('users').doc(user.uid).set({
           email: doc.data().email,
           group: doc.data().group,
-          hoursWorked: doc.data().hoursWorked,
           jobsCompleted: doc.data().jobsCompleted,
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,

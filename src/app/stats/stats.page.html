@@ -35,12 +35,6 @@
       {{ this.jobsService.currentuser.jobsCompleted }}
     </ion-item>
   
-    <ion-item color="white">
-      <ion-icon name="timer-outline" slot="start"></ion-icon>
-      <ion-label>Hours Worked</ion-label>
-      {{ this.jobsService.currentuser.hoursWorked }}
-    </ion-item>
-  
     <ion-item color="white" (click)="openCreatedJobs()">
       <ion-icon name="create-outline" slot="start"></ion-icon>
       <ion-label>Created Jobs</ion-label>
