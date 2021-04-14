@@ -33,7 +33,7 @@
     <ion-avatar slot="start">
       <img id="profilepic" src= "{{ post.profilePic }}">
     </ion-avatar>
-    <ion-slides [options]="slideOptsOne" class="pics" >
+    <ion-slides class="pics" >
       <ion-slide class="post-pic" *ngFor="let pic of post.pics">
           <img class="post-pic" src={{pic}}>
        </ion-slide>

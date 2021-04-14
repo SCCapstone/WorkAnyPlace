@@ -10,7 +10,7 @@
 <ion-content appParallaxHeader [scrollEvents]="true">
   <div class="parallax-image" >
   <!-- [style.background-image]="'url(' + defaultimg + ')'" > -->
-    <ion-slides [options]="slideOptsOne" #slideWithNav >
+    <ion-slides #slideWithNav >
       <ion-slide class="post-pic" *ngFor="let pic of this.jobsService.selectedjob.pics">
           <img class="post-pic" src={{pic}}>
        </ion-slide>
