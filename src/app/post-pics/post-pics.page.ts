@@ -20,4 +20,11 @@ export class PostPicsPage implements OnInit {
     this.router.navigate(['/tabs']);
   }
 
+  cancelPost() {
+    this.jobsService.jobToPost = undefined;
+    this.jobsService.postPicsToUpload = [];
+    this.router.navigate(['/jobs']);
+    this.router.navigate(['/tabs']);
+  }
+
 }
