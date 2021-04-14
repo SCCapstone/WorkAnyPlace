@@ -7,8 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CreateJobPageRoutingModule } from './create-job-routing.module';
 
 import { CreateJobPage } from './create-job.page';
-import {UploaderComponent} from '../uploader/uploader.component';
-import {UploadTaskComponent} from '../upload-task/upload-task.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +17,6 @@ import {UploadTaskComponent} from '../upload-task/upload-task.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [CreateJobPage, UploaderComponent, UploadTaskComponent]
+  declarations: [CreateJobPage]
 })
 export class CreateJobPageModule {}
