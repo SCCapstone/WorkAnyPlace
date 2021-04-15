@@ -43,6 +43,11 @@ export class JobDetailPage implements OnInit {
   }
 
   async addToMyJobs(post){
+
+    if(this.user.uid == post.uid) {
+      alert("This is your post!");
+      return;
+    }
     this.jobsService.addAcceptedJob(post);
     await this.db.collection('postedJobs').doc('jobs').update({
       postedJobs: firebase.firestore.FieldValue.arrayRemove(post)

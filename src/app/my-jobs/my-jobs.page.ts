@@ -44,94 +44,99 @@ export class MyJobsPage implements OnInit {
     this.jobsService.getMyJobs()
   }
 
- async cancelJob(job) {
-  await this.jobsService.cancelMyJob(job)
-  this.jobsService.getPostedJobs()
-  this.refresh()
+//  async cancelJob(job) {
+//   await this.jobsService.cancelMyJob(job)
+//   this.jobsService.getPostedJobs()
+//   this.refresh()
 
-  let posterId = job.uid;
-  this.messageService.removeConvo(this.user.uid, posterId);
- }
+//   let posterId = job.uid;
+//   this.messageService.removeConvo(this.user.uid, posterId);
+//  }
 
- async completeJob(job) {
-  await this.jobsService.completeMyJob(job)
-  this.jobsService.getCompletedJobs()
-  this.refresh()
+//  async completeJob(job) {
+//   await this.jobsService.completeMyJob(job)
+//   this.jobsService.getCompletedJobs()
+//   this.refresh()
 
-  let posterId = job.uid;
-  this.messageService.removeConvo(this.user.uid, posterId);
+//   let posterId = job.uid;
+//   this.messageService.removeConvo(this.user.uid, posterId);
 
-  var ref = this.db.collection("users").doc(this.user.uid);
+//   var ref = this.db.collection("users").doc(this.user.uid);
 
 
-  return ref.update({ 
-     jobsCompleted: this.jobsService.currentuser.jobsCompleted+1,
-     moneyMade: this.jobsService.currentuser.moneyMade+job.pay,
-     hoursWorked: this.jobsService.currentuser.hoursWorked+2
-  })
-  .then(() => {
-      console.log("Document successfully updated!");
-      this.jobsService.getUser();
-  })
-  .catch((error) => {
-    // The document probably doesn't exist.
-      console.error("Error updating document: ", error);
-  });
+//   return ref.update({ 
+//      jobsCompleted: this.jobsService.currentuser.jobsCompleted+1,
+//      moneyMade: this.jobsService.currentuser.moneyMade+job.pay,
+//      hoursWorked: this.jobsService.currentuser.hoursWorked+2
+//   })
+//   .then(() => {
+//       console.log("Document successfully updated!");
+//       this.jobsService.getUser();
+//   })
+//   .catch((error) => {
+//     // The document probably doesn't exist.
+//       console.error("Error updating document: ", error);
+//   });
 
- }
+//  }
 
   
 
- completeJobConfirm(job) {
-  this.alertController.create({
-    header: 'Did you complete this job?',
-    subHeader: 'Thank you for completing this job',
-    message: 'Job will be removed from your jobs and the owner will be notified',
-    buttons: [  
-      {
-        text: 'Yes',
-        cssClass: "alertButtons",
-        handler: () => {
-          this.completeJob(job)
-        }
-      },
-      {
-        text: 'No',
-        cssClass: "alertButtons",
-        handler: () => {
+//  completeJobConfirm(job) {
+//   this.alertController.create({
+//     header: 'Did you complete this job?',
+//     subHeader: 'Thank you for completing this job',
+//     message: 'Job will be removed from your jobs and the owner will be notified',
+//     buttons: [  
+//       {
+//         text: 'Yes',
+//         cssClass: "alertButtons",
+//         handler: () => {
+//           this.completeJob(job)
+//         }
+//       },
+//       {
+//         text: 'No',
+//         cssClass: "alertButtons",
+//         handler: () => {
           
-        }
-      }
-    ]
-  }).then(res => {
-    res.present();
-  });
-}
+//         }
+//       }
+//     ]
+//   }).then(res => {
+//     res.present();
+//   });
+// }
  
- removeJobConfirm(job) {
-  this.alertController.create({
-    header: 'Are  you sure?',
-    subHeader: 'Are you sure you want to cancel job?',
-    message: 'Job will be removed from your jobs and the owner will be notified',
-    buttons: [  
-      {
-        text: 'Yes',
-        cssClass: "alertButtons",
-        handler: () => {
-          this.cancelJob(job)
-        }
-      },
-      {
-        text: 'No',
-        cssClass: "alertButtons",
-        handler: () => {
+//  removeJobConfirm(job) {
+//   this.alertController.create({
+//     header: 'Are  you sure?',
+//     subHeader: 'Are you sure you want to cancel job?',
+//     message: 'Job will be removed from your jobs and the owner will be notified',
+//     buttons: [  
+//       {
+//         text: 'Yes',
+//         cssClass: "alertButtons",
+//         handler: () => {
+//           this.cancelJob(job)
+//         }
+//       },
+//       {
+//         text: 'No',
+//         cssClass: "alertButtons",
+//         handler: () => {
           
-        }
-      }
-    ]
-  }).then(res => {
-    res.present();
-  });
+//         }
+//       }
+//     ]
+//   }).then(res => {
+//     res.present();
+//   });
+// }
+
+async goToAcceptedDetails(post) {
+  await this.jobsService.setSelectedJob(post);
+  this.router.navigate(['/accepted-job-detail']);
 }
 }
 
