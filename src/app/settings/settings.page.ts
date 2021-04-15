@@ -33,13 +33,22 @@ export class SettingsPage implements OnInit {
     console.log(this.name);
   }
 
-  updateUserName() {
-    this.db.collection('users').doc(this.user.uid).update({
+  async refresh() {
+    await this.jobsService.getUser();
+    this.username =  this.jobsService.currentuser.username;
+    this.email =  this.jobsService.currentuser.email;
+    this.group= this.jobsService.currentuser.group;
+  }
+
+  async updateUserName() {
+    await this.db.collection('users').doc(this.user.uid).update({
       username: this.username
     });
-
+    this.refresh();
   }
-  updateEmail() {
+
+  
+  async updateEmail() {
 
     
     // this.db.collection('users').doc(this.user.uid).update({
@@ -51,7 +60,7 @@ export class SettingsPage implements OnInit {
 
     var t = this;
 
-    firebase.auth()
+    await firebase.auth()
     .signInWithEmailAndPassword(this.user.email, password)
     .then(function(userCredential) {
         var db = firebase.firestore();
@@ -61,16 +70,19 @@ export class SettingsPage implements OnInit {
           email: t.email
         });
     })
+    this.refresh();
   }
   getPassword() {
 
     var password = prompt("Please enter your password", "");
     return password;
   }
-  updateGroup() {
-    this.db.collection('users').doc(this.user.uid).update({
+  async updateGroup() {
+    await this.db.collection('users').doc(this.user.uid).update({
       group: this.group
     });
+
+    this.refresh();
   }
 
   backToStats() {
