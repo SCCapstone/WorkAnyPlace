@@ -30,6 +30,13 @@ export class UploadTaskComponent implements OnInit {
 
   startUpload() {
 
+    // Validation for Images Only
+    if (this.file.type.split('/')[0] !== 'image') { 
+      console.error('unsupported file type');
+      alert("Unsupported file try again");
+      return;
+     }
+
     // The storage path
     const path = `postpics/${Date.now()}_${this.file.name}`;
 
