@@ -42,8 +42,13 @@ export class CreateJobPage implements OnInit {
     // this.jobsService.getPostedJobs();
     // this.router.navigate(['../jobs']);
     // this.router.navigate(['../tabs']);
+    if(value.pay < 0.01 || value.pay > 999.99) {
+      alert('Enter a price between $0.01 and $999.99');
+      return;
+    }
     this.jobsService.jobToPost = value;
     this.router.navigate(['/post-pics']);
   }
 
 }
+
