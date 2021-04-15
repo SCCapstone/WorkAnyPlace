@@ -16,7 +16,7 @@
       </ion-item>
       <ion-item>
         <ion-label color="primary-contrast" position="floating">Pay</ion-label>
-        <ion-input type="number" formControlName="pay" required></ion-input>
+        <ion-input type="number" pattern="^\d{0,3}(\.\d{1,2})?$" formControlName="pay" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary-contrast" position="floating">Location</ion-label>
