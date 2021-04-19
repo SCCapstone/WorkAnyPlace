@@ -80,7 +80,9 @@ export class MyJobsPage implements OnInit {
 
 //  }
 
-  
+ openCreateJob() {
+  this.router.navigate(['/create-job']);
+ }
 
 //  completeJobConfirm(job) {
 //   this.alertController.create({
