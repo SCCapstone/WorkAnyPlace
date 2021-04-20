@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectLoggedInToJobs = () => redirectLoggedInTo(['tabs/tab1']);
+const redirectLoggedInToJobs = () => redirectLoggedInTo(['tabs/find-jobs']);
 
 const routes: Routes = [
   {
