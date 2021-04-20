@@ -25,8 +25,9 @@
     <ion-label color="primary-contrast" position="floating">Skill</ion-label>
     <ion-input type="text" formControlName="group" required></ion-input>
   </ion-item>
-
-  <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_product_form.valid">Create Account</ion-button>
+  <div style="text-align: left;">
+  <ion-button class="submit-btn" type="submit" [disabled]="!new_product_form.valid">Create Account</ion-button>
+  </div>
 </form>
 
 
