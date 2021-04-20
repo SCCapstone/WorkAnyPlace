@@ -150,10 +150,4 @@ export class ProfilePicUpdatePage implements OnInit {
     });
   }
 
-  goToJobs() {
-    this.jobsService.getProfilePic();
-    this.router.navigate(['/jobs']);
-    this.router.navigate(['/tabs']);
-  }
-
 }
