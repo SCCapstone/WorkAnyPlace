@@ -90,7 +90,6 @@ export class AcceptedJobDetailPage implements OnInit {
   
    }
   
-    
   
    completeJobConfirm() {
     this.alertController.create({

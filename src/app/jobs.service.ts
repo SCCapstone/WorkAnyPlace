@@ -133,6 +133,7 @@ async getMyCompletedJobs() {
    this.profilepic = pic;
    
   }
+
 // Pass in uid and get profile pic for that uid
 async getUIDProfilePic(uid) {
   var pic = await this.db.collection('profilePics').doc(uid).get().then(function(doc) {
@@ -189,6 +190,8 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
+          starReceived: doc.data().starReceived+1,
+          totalStars: doc.data().totalStars,
           username: doc.data().username,
           postedJobs: doc.data().postedJobs,
           acceptedJobs: firebase.firestore.FieldValue.arrayUnion(post)
@@ -230,6 +233,8 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
+          starReceived: doc.data().starReceived+1,
+          totalStars: doc.data().totalStars,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
           postedJobs: firebase.firestore.FieldValue.arrayUnion(post)
@@ -272,6 +277,8 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
+          starReceived: doc.data().starReceived+1,
+          totalStars: doc.data().totalStars,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
           postedJobs: doc.data().postedJobs,
@@ -305,6 +312,8 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
+          starReceived: doc.data().starReceived+1,
+          totalStars: doc.data().totalStars,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
           completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
