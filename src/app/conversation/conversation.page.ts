@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 
 import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
@@ -33,7 +33,8 @@ export class ConversationPage implements OnInit {
 
   async refresh() {
     await this.messageService.fetchThreads();
-    this.updateMessages;
+    await this.updateMessages();
+    console.log(this.messages)
   }
 
   sendMessage() {
@@ -56,7 +57,7 @@ export class ConversationPage implements OnInit {
   }
 
   async updateMessages() {
-    this.messages = []
+    let newMessages = []
     let thread = await this.getCurrentThread(this.threadId);
     for (let i = 0; i < thread.length; i++) {
       let currentMessage = thread[i];
@@ -66,11 +67,16 @@ export class ConversationPage implements OnInit {
       } else {
         name = await this.messageService.getUsernameFromId(currentMessage.senderId);
       }
-      this.messages.push({
+      newMessages.push({
         user:name,
         createdAt:currentMessage.timestamp.toDate(),
         msg:currentMessage.messageText
       });
+    }
+    let nextMessageIdx = this.messages.length;
+    while (this.messages.length < newMessages.length) {
+      this.messages.push(newMessages[nextMessageIdx]);
+      nextMessageIdx += 1;
     }
   }
 
@@ -101,6 +107,9 @@ export class ConversationPage implements OnInit {
     this.threadId = this.messageService.getCurrentThreadId();
     this.getOtherUser(this.threadId);
     this.updateMessages();
+    setInterval(()=> {
+      this.refresh();
+    }, 5000);
   }
 
 }
