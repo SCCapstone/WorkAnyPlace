@@ -190,7 +190,7 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
-          starReceived: doc.data().starReceived+1,
+          starReceived: doc.data().starReceived,
           totalStars: doc.data().totalStars,
           username: doc.data().username,
           postedJobs: doc.data().postedJobs,
@@ -233,11 +233,12 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
-          starReceived: doc.data().starReceived+1,
+          starReceived: doc.data().starReceived,
           totalStars: doc.data().totalStars,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
-          postedJobs: firebase.firestore.FieldValue.arrayUnion(post)
+          postedJobs: firebase.firestore.FieldValue.arrayUnion(post),
+          completedJobs: doc.data().completedJobs
          
       }, { merge: true });
 
@@ -277,7 +278,7 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
-          starReceived: doc.data().starReceived+1,
+          starReceived: doc.data().starReceived,
           totalStars: doc.data().totalStars,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,
@@ -312,7 +313,7 @@ async getUser() {
           jobsCreated: doc.data().jobsCreated+1,
           moneyMade: doc.data().moneyMade,
           starRating: doc.data().starRating,
-          starReceived: doc.data().starReceived+1,
+          starReceived: doc.data().starReceived,
           totalStars: doc.data().totalStars,
           username: doc.data().username,
           acceptedJobs: doc.data().acceptedJobs,

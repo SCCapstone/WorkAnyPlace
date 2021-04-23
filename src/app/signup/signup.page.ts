@@ -87,6 +87,8 @@ export class SignupPage implements OnInit {
         jobsCreated: 0,
         moneyMade: 0.00,
         starRating: 0,
+        starReceived:0,
+        totalStars: 0,
         username: item.username
       })
       .then(function() {
