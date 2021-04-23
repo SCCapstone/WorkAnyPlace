@@ -142,7 +142,7 @@ export class ImageUploadPage implements OnInit {
       filepath: path,
       size: 76394
     });
-    this.goToJobs();
+    this.goToWelcome();
     }
 
  
@@ -150,6 +150,11 @@ export class ImageUploadPage implements OnInit {
     this.jobsService.getProfilePic();
     this.router.navigate(['/jobs']);
     this.router.navigate(['/tabs']);
+  }
+
+  goToWelcome() {
+    this.jobsService.getProfilePic();
+    this.router.navigate(['/welcome']);
   }
 
 }
