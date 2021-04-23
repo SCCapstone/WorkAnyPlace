@@ -102,6 +102,10 @@ const routes: Routes = [
   {
     path: 'accepted-job-detail',
     loadChildren: () => import('./accepted-job-detail/accepted-job-detail.module').then( m => m.AcceptedJobDetailPageModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
   }
 ];
 @NgModule({
