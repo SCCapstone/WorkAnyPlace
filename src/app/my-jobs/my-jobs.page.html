@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
+    <ion-title class="ion-text-center">My Jobs</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h3 style="padding: 10px">Accepted Jobs</h3>
+  <ion-list>
+
+
+    <ion-item class="item" *ngFor="let job of this.jobsService.myjobs">
+    <div class="posts">
+    <ion-card (click)="goToAcceptedDetails(job)">
+      <ion-slides class="pics" >
+        <ion-slide class="post-pic" *ngFor="let pic of job.pics">
+            <img class="post-pic" src={{pic}}>
+         </ion-slide>
+     </ion-slides>
+  
+      <ion-card-header>
+        <ion-card-title color="secondary">{{ job.title }}</ion-card-title>
+        <ion-card-subtitle color="tertiary">{{ job.category }}</ion-card-subtitle>
+        <ion-card-subtitle color="tertiary">${{ job.pay }}</ion-card-subtitle>  
+        <ion-card-subtitle color="tertiary">{{ job.location }}</ion-card-subtitle>  
+      </ion-card-header>
+    
+      <!-- <ion-card-content>
+        <p style="color:#101010">{{ job.description }}</p>
+      </ion-card-content> -->
+      
+      <!-- <ion-button  (click)="removeJobConfirm(job)">
+        Cancel Job
+      </ion-button> 
+
+      <ion-button  (click)="completeJobConfirm(job)">
+        Complete Job
+      </ion-button>  -->
+
+      
+    </ion-card>
+  </div>
+  </ion-item>
+  </ion-list>
+  <h3 style="padding: 10px">Posted Jobs</h3>
+  <ion-list>
+    <ion-item *ngFor="let postjob of this.jobsService.myPostedJobs">
+    <div class="posts">
+    <ion-card>
+      <ion-slides class="pics" >
+        <ion-slide class="post-pic" *ngFor="let pic of postjob.pics">
+            <img class="post-pic" src={{pic}}>
+         </ion-slide>
+     </ion-slides>
+  
+      <ion-card-header>
+        <ion-card-title color="secondary">{{ postjob.title }}</ion-card-title>
+        <ion-card-subtitle color="tertiary">{{ postjob.category }}</ion-card-subtitle>
+        <ion-card-subtitle color="tertiary">${{ postjob.pay }}</ion-card-subtitle>  
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p style="color:#101010">{{ postjob.description }}</p>
+      </ion-card-content>
+            
+    </ion-card>
+    </div>
+  </ion-item>
+  </ion-list>
+</ion-content>

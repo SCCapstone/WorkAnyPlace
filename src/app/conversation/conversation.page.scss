@@ -1,0 +1,52 @@
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+.other-message {
+    background: var(--ion-color-primary);
+    color: #fff;
+}
+
+.my-message{
+    background: var(--ion-color-tertiary);
+    color: #fff;
+    input {
+        caret-color: #af4cab;
+      }
+      input.custom {
+        caret-color:#af4cab;
+      }
+}
+
+
+.time {
+
+    color:#dfdfdf;
+    float: right;
+    font-size: small;
+}
+.message-input{
+    color:#4caf50;
+    font-size: larger;
+    width: 100%;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    background:#fff;
+    resize: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    input {
+        caret-color: #af4cab;
+      }
+      input.custom {
+        caret-color:#af4cab;
+      }
+}
+.msg-btn {
+    color:#b81010;
+    --padding-start:0.5em;
+    --padding-end: 0.5em;
+
+}

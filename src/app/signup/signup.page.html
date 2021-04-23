@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="new_product_form" (submit)="createAccount(new_product_form.value)">
+  <ion-item>
+    <ion-label color="primary-contrast" position="floating">email</ion-label>
+    <ion-input type="text" formControlName="email" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary-contrast" position="floating">password</ion-label>
+    <ion-input type="password" formControlName="password" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary-contrast" position="floating">Username</ion-label>
+    <ion-input type="text" formControlName="username" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary-contrast" position="floating">Skill</ion-label>
+    <ion-input type="text" formControlName="group" required></ion-input>
+  </ion-item>
+
+  <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_product_form.valid">Create Account</ion-button>
+</form>
+
+
+
+<!-- <h2 class="ion-text-center">Uploaded Freaky Images</h2>
+
+<ion-card color="light" class="ion-text-center" *ngFor="let item of images | async">
+  <ion-card-header>
+    <ion-card-title>
+      {{ item.name }}
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <img [src]="item.filepath" />
+    <a [href]="item.filepath" target="_blank" rel="noopener">Download</a>
+  </ion-card-content>
+</ion-card> -->
+
+</ion-content>

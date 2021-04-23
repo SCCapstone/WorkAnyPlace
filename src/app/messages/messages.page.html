@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Messages</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let preview of this.previews">
+      <div tabindex="0"></div>
+      <ion-card (click)="goToConversation(preview)">
+        <ion-card-header>
+          <ion-card-title color="secondary">{{ preview.threadMember }}</ion-card-title>
+        </ion-card-header>
+    
+        <ion-card-content>
+          <p style="color:#101010">{{ preview.messageText }}</p>
+        </ion-card-content>
+      
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

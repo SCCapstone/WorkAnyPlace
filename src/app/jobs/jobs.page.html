@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-avatar slot="start" (click)="goToSettings()" style="cursor: pointer">
+      <img id="profilepic" >
+    </ion-avatar>
+    
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openCreateJob()">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
+    <ion-title class="ion-text-center">Find Jobs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-searchbar (ionInput)="filterList($event)" showCancelButton="focus" placeholder="Search jobs" color="light"></ion-searchbar>
+
+<ion-list>
+  <ion-item class="item" *ngFor="let post of this.jobsService.postsNew">
+  <!-- <div tabindex="0"></div> -->
+  <div class="posts">
+  <ion-card (click)="goToJobDetail(post)">
+    <ion-avatar slot="start">
+      <img id="profilepic" src= "{{ post.profilePic }}">
+    </ion-avatar>
+    <ion-slides class="pics" >
+      <ion-slide class="post-pic" *ngFor="let pic of post.pics">
+          <img class="post-pic" src={{pic}}>
+       </ion-slide>
+   </ion-slides>
+    <ion-card-header>
+    
+      <ion-card-title color="secondary">{{ post.title }}</ion-card-title>
+      <ion-card-subtitle color="tertiary">{{ post.category }}</ion-card-subtitle>
+      <ion-card-subtitle color="tertiary">${{ post.pay }}</ion-card-subtitle>
+      <ion-card-subtitle color="tertiary">{{ post.location }}</ion-card-subtitle>  
+    </ion-card-header>
+  
+    <!-- <ion-card-content>
+      <p style="color:#101010">{{ post.description }}</p>
+    </ion-card-content> -->
+
+    <!-- <ion-button style="--background:#1f1f1f" (click)="addToMyJobs(post)"> 
+      Accept Job
+    </ion-button>
+    <ion-button style="--background:#1f1f1f" (click)="removeJob(post)">
+      Delete
+    </ion-button> -->
+    
+  </ion-card>
+</div>
+</ion-item>
+</ion-list>
+</ion-content>

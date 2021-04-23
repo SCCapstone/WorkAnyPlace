@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title" text-center>{{ this.jobsService.selectedjob.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content appParallaxHeader [scrollEvents]="true">
+  <div class="parallax-image" >
+  <!-- [style.background-image]="'url(' + defaultimg + ')'" > -->
+    <ion-slides #slideWithNav >
+      <ion-slide class="post-pic" *ngFor="let pic of this.jobsService.selectedjob.pics">
+          <img class="post-pic" src={{pic}}>
+       </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="colorDetailPage">
+    
+    <h3>
+      Pay
+    </h3>
+    ${{ this.jobsService.selectedjob.pay }}
+    <h3>
+      Location
+    </h3>
+    {{ this.jobsService.selectedjob.location}}
+    <h3>
+      Category
+    </h3>
+    {{ this.jobsService.selectedjob.category}}
+    <h3>
+      Description
+    </h3>
+    {{ this.jobsService.selectedjob.description }}
+
+   
+    <br/>
+    <br/>
+    <br/>
+    <ion-avatar slot="start">
+      <img id="profilepic" src= "{{ this.jobsService.selectedjob.profilePic }}">
+    </ion-avatar>
+    <div>
+      <br/>
+      {{ username }}
+    </div>
+    <ion-icon name="star-outline" slot="start" (click)="rateUser()"></ion-icon>
+    {{ this.jobsService.currentuser.starRating }}
+    <br/>
+
+  </div>
+
+  <div class="moveBottom">
+    <ion-button style="--background:#1f1f1f" (click)="addToMyJobs(this.jobsService.selectedjob)"> 
+      Accept Job
+    </ion-button>
+    <ion-button style="--background:#1f1f1f" (click)="removeJob(this.jobsService.selectedjob)">
+      Delete
+    </ion-button>
+  </div>
+</ion-content>

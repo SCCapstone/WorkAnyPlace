@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Stats</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openSettings()">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-avatar >
+    <img id="profilepic" src="{{this.jobsService.profilepic}}">
+  </ion-avatar>
+  <ion-card>
+    
+    <ion-item color="white" (click)="openCompletedJobs()">
+      <ion-icon name="bag-check-outline" slot="start"></ion-icon>
+      <ion-label>Jobs Completed</ion-label>
+      {{ this.jobsService.currentuser.jobsCompleted }}
+    </ion-item>
+  
+    <ion-item color="white" (click)="openCreatedJobs()">
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      <ion-label>Created Jobs</ion-label>
+      {{ this.jobsService.currentuser.jobsCreated }}
+    </ion-item>
+  
+    <ion-item color="white">
+      <ion-icon name="cash-outline" slot="start"></ion-icon>
+      <ion-label>Money Made</ion-label>
+      ${{ this.jobsService.currentuser.moneyMade }}
+    </ion-item>
+
+    <ion-item color="white">
+      <ion-icon name="people-outline" slot="start"></ion-icon>
+      <ion-label>Group</ion-label>
+      {{ this.jobsService.currentuser.group }}
+    </ion-item>
+
+    <ion-item color="white">
+      <ion-icon name="star-outline" slot="start"></ion-icon>
+      <ion-label>Star Rating</ion-label>
+      {{ this.jobsService.currentuser.starRating }}
+    </ion-item>
+
+  </ion-card>
+
+ 
+</ion-content>

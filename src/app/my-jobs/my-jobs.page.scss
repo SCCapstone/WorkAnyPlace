@@ -1,0 +1,51 @@
+ion-card{
+  display: float impo !important;
+  position: relative !important;
+  width: 25em;
+  height: 30em;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  
+
+ }
+
+.posts{
+  position: relative;
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.post-pic {
+  width: 25em;
+  height: 15em;
+  padding: none;
+}
+
+.pics {
+  padding: 0;
+  background-color: black;
+}
+
+.item{
+  display: inline-block;
+}
+
+.alertButtons{
+  color: white !important;
+  background-color: #9e9e9e !important
+}
+
+@media only screen and (max-width: 479) {
+.posts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+}
