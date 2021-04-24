@@ -194,7 +194,8 @@ async getUser() {
           totalStars: doc.data().totalStars,
           username: doc.data().username,
           postedJobs: doc.data().postedJobs,
-          acceptedJobs: firebase.firestore.FieldValue.arrayUnion(post)
+          acceptedJobs: firebase.firestore.FieldValue.arrayUnion(post),
+          completedJobs: doc.data().completedJobs
          
       }, { merge: true });
 

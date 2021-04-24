@@ -89,7 +89,8 @@ export class SignupPage implements OnInit {
         starRating: 0,
         starReceived:0,
         totalStars: 0,
-        username: item.username
+        username: item.username,
+        completedJobs: []
       })
       .then(function() {
           console.log("Document successfully written!");
