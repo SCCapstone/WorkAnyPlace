@@ -92,11 +92,6 @@ export class JobsPage implements OnInit {
      this.refresh();
   }
 
-  goToWelcome() {
-    this.router.navigate(['../welcome'])
-  }
-
-
 // removeJobFromPostedJobs() {
   //   this.db.collection('postedJobs').doc('jobs').set({
   //     postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
