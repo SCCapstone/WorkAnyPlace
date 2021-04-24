@@ -25,21 +25,13 @@ export class JobDetailPage implements OnInit {
   db = firebase.firestore();
   user = firebase.auth().currentUser;
 
-  username;
+ 
 
   async ngOnInit() {
-    var name = await this.db.collection('users').doc(this.jobsService.selectedjob.uid).get().then(function(doc) {
-      if (doc.exists) {
-         
-         return doc.data().username;
-        } else {
-          // doc.data() will be undefined in this case
-         console.log("No such document!");
-      }
-    }).catch(function(error) {
-      console.log("Error getting document:", error);
-    }); 
-    this.username = name;
+    await this.getSelectedUser();
+
+    
+
   }
 
   async addToMyJobs(post){
@@ -83,93 +75,11 @@ export class JobDetailPage implements OnInit {
    this.messageService.removeConvo(this.user.uid, posterId);
   }
 
-  async starRating() {
-    var ref = this.db.collection("users").doc(this.user.uid);
-    return ref.update({ 
-      starRating: this.jobsService.currentuser.starRating,
-      starReceived: this.jobsService.currentuser.starReceived+1,
-      totalStars: this.jobsService.currentuser.totalStars
-   })
-   .then(() => {
-    console.log("Document successfully updated!");
-    this.jobsService.getUser();
-  })
-  .catch((error) => {
-    // The document probably doesn't exist.
-    console.error("Error updating document: ", error);
-  });
+  async rateUser(uid) {
+    this.jobsService.rateUser(uid);
   }
 
-  async rateUser() {
-    const alert = await this.alertController.create({  
-      header: 'Please rate the user out of 5',  
-      inputs: [  
-        {  
-          name: '1',  
-          type: 'radio',  
-          label: '1',  
-          value: '1', 
-          handler: () => {
-            console.log('Radio 1 selected');
-          }, 
-          checked: true,  
-        },  
-        {  
-          name: '2',  
-          type: 'radio',  
-          label: '2',  
-          value: '2', 
-          handler: () => {
-            console.log('Radio 2 selected');
-          } 
-        },  
-        {  
-          name: '3',  
-          type: 'radio',  
-          label: '3',  
-          value: '3',  
-          handler: () => {
-            console.log('Radio 3 selected');
-          }
-        },  
-        {  
-          name: '4',  
-          type: 'radio',  
-          label: '4',  
-          value: '4',  
-          handler: () => {
-            console.log('Radio 4 selected');
-          }
-        },  
-        {  
-          name: '5',  
-          type: 'radio',  
-          label: '5',  
-          value: '5', 
-          handler: () => {
-            console.log('Radio 5 selected');
-          } 
-        },  
-  
-      ],  
-      buttons: [  
-        {  
-          text: 'Cancel',
-          cssClass: "alertButtons",  
-          handler: data => {  
-            console.log('Cancel clicked');  
-          }  
-        },  
-        {  
-          text: 'Save',
-          cssClass: "alertButtons",  
-          handler: data => {  
-            console.log('Confirm Save');
-          }  
-        }  
-      ]  
-    });  
-    await alert.present();  
-  }  
-
+  getSelectedUser() {
+    this.jobsService.getSelectedUser(this.jobsService.selectedjob.uid);
+  }
 }

@@ -33,7 +33,8 @@ export class JobsPage implements OnInit {
   }
 
   async goToJobDetail(post) {
-    await this.jobsService.setSelectedJob(post);
+    await this.jobsService.getSelectedUser(post.uid);
+    this.jobsService.setSelectedJob(post);
     this.router.navigate(['../job-detail']);
   }
 
