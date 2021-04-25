@@ -83,7 +83,7 @@ export class AcceptedJobDetailPage implements OnInit {
     });
 
     
-
+    var jobToConfirm = this.jobsService.selectedjob;
     this.db.collection("messages").doc(threadId)
     .onSnapshot((doc) => {
       var sentMessages = doc.data().sentMessages;
@@ -93,12 +93,10 @@ export class AcceptedJobDetailPage implements OnInit {
       if(sentMessages[lastIndex].senderId == posterId) {
         if(sentMessages[lastIndex].messageText == "Confirm" || sentMessages[lastIndex].messageText == "confirm") {
           alert("Confirmed!");
-          this.hasBeenConfirmed();
+          this.hasBeenConfirmed(jobToConfirm);
         } else {
           alert("Not confirmed");     
       }
-      } else {
-       
       }
     });
   
@@ -107,12 +105,13 @@ export class AcceptedJobDetailPage implements OnInit {
 
    }
 
-   async hasBeenConfirmed() {
-    await this.jobsService.completeMyJob(this.jobsService.selectedjob)
+   async hasBeenConfirmed(job) {
+    await this.jobsService.completeMyJob(job)
     //this.jobsService.getCompletedJobs()
      this.refresh()
 
-    let posterId = this.jobsService.selectedjob.uid;
+     this.jobsService.rateUser(job.uid);
+    let posterId = job.uid;
     this.messageService.removeConvo(this.user.uid, posterId);
   
     var ref = this.db.collection("users").doc(this.user.uid);

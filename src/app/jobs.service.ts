@@ -276,14 +276,15 @@ export class JobsService {
     await this.db.collection('pendingCompletion').doc(this.user.uid+this.jobToPost.title).set({
       confirm: false,
       attempt: false,
+      uidToRate: "",
     })
 
     this.db.collection("pendingCompletion").doc(this.user.uid+this.jobToPost.title)
     .onSnapshot((doc) => {
       if(doc.data().attempt == true) {
         alert("A job was just completed check your messages to confirm or decline.");
-      } else {
-        
+      } else if(doc.data().confirm == true) {
+        this.rateUser(doc.data().uidToRate);
       }
     });
 
@@ -546,6 +547,11 @@ export class JobsService {
     //     }
     // });
      
+    this.db.collection('pendingCompletion').doc(job.uid+job.title).set({
+      confirm: true,
+      attempt: true,
+      uidToRate: this.user.uid
+    })
     // Removes Job from Firestore from users acceptedJobs array  
     await this.db.collection('users').doc(this.user.uid).update({
       acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
