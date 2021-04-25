@@ -52,7 +52,7 @@ export class AcceptedJobDetailPage implements OnInit {
    }
 
    async completeJob() {
-    await this.db.collection('pendingCompletion').doc(this.jobsService.selectedjob.uid+this.jobsService.selectedjob.title).set({
+    await this.db.collection('pendingCompletion').doc(this.jobsService.selectedjob.uid+this.jobsService.selectedjob.title).update({
       confirm: false,
       attempt: true,
     })
