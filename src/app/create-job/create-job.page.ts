@@ -23,11 +23,14 @@ export class CreateJobPage implements OnInit {
   ngOnInit() { 
     
     this.create_job_form = this.formBuilder.group({
-      title: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.compose([Validators.maxLength(30),
+      Validators.required])),
       pay: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.compose([Validators.maxLength(30),
+        Validators.required])),
+      description: new FormControl('', Validators.compose([Validators.maxLength(300),
+        Validators.required])),
       uid: this.user.uid,
       pics: []
     });
@@ -42,8 +45,8 @@ export class CreateJobPage implements OnInit {
     // this.jobsService.getPostedJobs();
     // this.router.navigate(['../jobs']);
     // this.router.navigate(['../tabs']);
-    if(value.pay < 0.01 || value.pay > 999.99) {
-      alert('Enter a price between $0.01 and $999.99');
+    if(value.pay < 0.01 || value.pay > 9999.99) {
+      alert('Enter a price between $0.01 and $9999.99');
       return;
     }
     this.jobsService.jobToPost = value;
