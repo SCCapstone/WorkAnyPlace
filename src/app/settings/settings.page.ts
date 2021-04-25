@@ -22,6 +22,7 @@ export class SettingsPage implements OnInit {
   name:string = '';
   username: string =  this.jobsService.currentuser.username;
   email: string =  this.jobsService.currentuser.email;
+  password: string = "";
   group: string = this.jobsService.currentuser.group;
 
   userDetails:any;
@@ -74,9 +75,37 @@ export class SettingsPage implements OnInit {
   }
   getPassword() {
 
-    var password = prompt("Please enter your password", "");
+    var password = prompt("Please enter your password.", "");
     return password;
   }
+
+  getOldPassword() {
+
+    var oldPassword = prompt("Please enter your old password to confirm the password change.", "");
+    return oldPassword;
+  }
+
+  async updatePassword() {
+
+    var email = firebase.auth().currentUser.email;
+
+    var oldPassword = this.getOldPassword();
+
+    var t = this;
+
+    await firebase.auth()
+    .signInWithEmailAndPassword(email, oldPassword)
+    .then(function(userCredential) {
+        var db = firebase.firestore();
+        var user = firebase.auth().currentUser;
+        userCredential.user.updatePassword(t.password)
+        db.collection('users').doc(user.uid).update({
+          password: t.password
+        });
+    })
+    this.refresh();
+  }
+
   async updateGroup() {
     await this.db.collection('users').doc(this.user.uid).update({
       group: this.group
@@ -84,6 +113,7 @@ export class SettingsPage implements OnInit {
 
     this.refresh();
   }
+  
 
   backToStats() {
     this.router.navigate(['/stats']);
@@ -91,10 +121,6 @@ export class SettingsPage implements OnInit {
 
   goToImage() {
     this.router.navigate(['../profile-pic-update']);
-  }
-
-  changePassword() {
-    this.router.navigate(['/reset-password']);
   }
 }
 
