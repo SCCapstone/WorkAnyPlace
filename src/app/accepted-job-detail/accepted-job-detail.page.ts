@@ -61,6 +61,10 @@ export class AcceptedJobDetailPage implements OnInit {
     this.router.navigate(['/tabs']);
     
    }
+
+   pendingCompletion() {
+     
+   }
   
    async completeJob() {
     await this.jobsService.completeMyJob(this.jobsService.selectedjob)

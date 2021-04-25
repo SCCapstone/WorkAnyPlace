@@ -25,7 +25,7 @@ export class JobDetailPage implements OnInit {
   db = firebase.firestore();
   user = firebase.auth().currentUser;
 
- 
+  starRating;
 
   async ngOnInit() {
     await this.getSelectedUser();
@@ -81,5 +81,7 @@ export class JobDetailPage implements OnInit {
 
   getSelectedUser() {
     this.jobsService.getSelectedUser(this.jobsService.selectedjob.uid);
+    this.starRating = this.jobsService.selectedUser.starRating;
+    this.starRating = this.starRating.toFixed(1);
   }
 }
