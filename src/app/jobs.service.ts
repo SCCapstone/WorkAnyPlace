@@ -281,7 +281,7 @@ export class JobsService {
     this.db.collection("pendingCompletion").doc(this.user.uid+this.jobToPost.title)
     .onSnapshot((doc) => {
       if(doc.data().attempt == true) {
-        alert("A job was just compleded check your posted jobs to confirm or decline.");
+        alert("A job was just compleded check your messages to confirm or decline.");
       } else {
         
       }

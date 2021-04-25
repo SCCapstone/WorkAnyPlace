@@ -57,12 +57,31 @@ export class AcceptedJobDetailPage implements OnInit {
     this.refresh()
   
     let posterId = this.jobsService.selectedjob.uid;
-    this.messageService.removeConvo(this.user.uid, posterId);
+    //this.messageService.removeConvo(this.user.uid, posterId);
   
+    let threadId;
+    if (posterId < this.user.uid) {
+      threadId = posterId.concat(this.user.uid.toString());
+    } else {
+      threadId = this.user.uid.concat(posterId.toString());
+    }
+
+    let sentMessage = [{
+      messageText: "Job has been completed. Can you confirm? Send confirm to close job or decline.",
+      receiverId: posterId,
+      senderId: this.user.uid,
+      timestamp: firebase.firestore.Timestamp.fromDate(new Date())
+    }];
+
+    this.db.collection('messages').doc(threadId).update({
+      sendMessages: firebase.firestore.FieldValue.arrayUnion(sentMessage)
+    })
+
     var ref = this.db.collection("users").doc(this.user.uid);
   
     this.router.navigate(['/my-jobs']);
     this.router.navigate(['/tabs']);
+    
     return ref.update({ 
        jobsCompleted: this.jobsService.currentuser.jobsCompleted+1,
        moneyMade: this.jobsService.currentuser.moneyMade+this.jobsService.selectedjob.pay,
