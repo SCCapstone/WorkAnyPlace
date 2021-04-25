@@ -82,15 +82,13 @@ export class AcceptedJobDetailPage implements OnInit {
       sentMessages: firebase.firestore.FieldValue.arrayUnion(sentMessage)
     });
 
-   
+    
 
     this.db.collection("messages").doc(threadId)
     .onSnapshot((doc) => {
       var sentMessages = doc.data().sentMessages;
-      var lastIndex;
-      this.db.collection('messages').doc(threadId).get().then(function(doc) {
-        lastIndex = doc.data().sentMessages.length-1
-      });
+      var lastIndex = sentMessages.length -1 ;
+    
       
       if(sentMessages[lastIndex].senderId == posterId) {
         if(sentMessages[lastIndex].messageText == "Confirm" || sentMessages[lastIndex].messageText == "confirm") {
