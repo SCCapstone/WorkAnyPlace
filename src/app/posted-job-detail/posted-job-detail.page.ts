@@ -52,12 +52,16 @@ export class PostedJobDetailPage implements OnInit {
   }
 
   async editJob(post) {
-    
+
   }
 
   getSelectedUser() {
     this.jobsService.getSelectedUser(this.jobsService.selectedjob.uid);
     this.starRating = this.jobsService.selectedUser.starRating;
     this.starRating = this.starRating.toFixed(1);
+  }
+  goToEditJob(job) {
+    this.router.navigate(['/edit-job',this.jobsService.selectedjob])
+    console.log('should have navigated')
   }
 }

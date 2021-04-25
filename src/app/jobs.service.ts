@@ -35,6 +35,11 @@ export class JobsService {
   selectedUser;
   profilepic = "../../assets/img/work_any_place_logo.png";
   currentuser;
+  editTitle = null;
+  editPay = null;
+  editLocation = null;
+  editCategory = null;
+  editDescription = null;
   //////////////////////////////////////////////////////////////
 
 
