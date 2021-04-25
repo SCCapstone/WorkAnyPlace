@@ -83,7 +83,8 @@ export class AcceptedJobDetailPage implements OnInit {
     });
 
     
-    var jobToConfirm = this.jobsService.selectedjob;
+    // var jobToConfirm = 
+    this.jobsService.selectedjob;
     this.db.collection("messages").doc(threadId)
     .onSnapshot((doc) => {
       var sentMessages = doc.data().sentMessages;
@@ -93,7 +94,7 @@ export class AcceptedJobDetailPage implements OnInit {
       if(sentMessages[lastIndex].senderId == posterId) {
         if(sentMessages[lastIndex].messageText == "Confirm" || sentMessages[lastIndex].messageText == "confirm") {
           alert("Confirmed!");
-          this.hasBeenConfirmed(jobToConfirm);
+          this.hasBeenConfirmed(this.jobsService.selectedjob);
         } else {
           alert("Not confirmed");     
       }
