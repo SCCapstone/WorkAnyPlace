@@ -7,10 +7,7 @@ const redirectLoggedInToJobs = () => redirectLoggedInTo(['tabs/find-jobs']);
 
 const routes: Routes = [
   {
-    path: 'job-detail',
-    loadChildren: () => import('./job-detail/job-detail.module').then( m => m.JobDetailPageModule),
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
   {
     path: 'tabs',
@@ -50,7 +47,7 @@ const routes: Routes = [
     path: 'stats',
     loadChildren: () => import('./stats/stats.module').then( m => m.StatsPageModule),
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    data: { authGuardPipe: redirectUnauthorizedToLogin, redirectLoggedInToJobs }
   },
   {
     path: 'my-jobs',
@@ -64,7 +61,10 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
-  
+  {
+    path: 'job-detail',
+    loadChildren: () => import('./job-detail/job-detail.module').then( m => m.JobDetailPageModule),
+  },
   {
     path: 'reset-password',
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule),
@@ -106,17 +106,11 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
-  },
-  {
-    path: '', redirectTo: 'login', pathMatch: 'full'
-  },
-  {
-    path: '**', redirectTo: 'login', pathMatch: 'full'
   }
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, onSameUrlNavigation: 'reload' })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })
