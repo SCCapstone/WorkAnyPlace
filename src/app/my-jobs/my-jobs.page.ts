@@ -21,6 +21,7 @@ export class MyJobsPage implements OnInit {
 
   myPostedJobs;
 
+
   constructor(
     public jobsService: JobsService,
     public messageService: MessageService,
@@ -146,28 +147,17 @@ export class MyJobsPage implements OnInit {
 // }
 
   async goToAcceptedDetails(post) {
-    await this.jobsService.setSelectedJob(post);
+    await this.jobsService.getSelectedUser(post.uid);
+    this.jobsService.setSelectedJob(post);
     this.router.navigate(['/accepted-job-detail']);
   }
-
-  async removeJob(post) {
-    await this.jobsService.setSelectedJob(post);
-    if (post.uid == this.user.uid) {   
-      this.db.collection('users').doc(this.user.uid).update({
-        postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
-      });
-    
-      await this.db.collection('postedJobs').doc('jobs').update({
-       postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
-      });
-
-      this.refresh()
-      alert("Job successfully removed")
-   } else {
-      alert("This is not your post");
-   }
-   this.refresh()
+  async goToPostedDetail(post) {
+    await this.jobsService.getSelectedUser(post.uid);
+    this.jobsService.setSelectedJob(post);
+    this.router.navigate(['/posted-job-detail']);
   }
+
+  
 }
 
 
