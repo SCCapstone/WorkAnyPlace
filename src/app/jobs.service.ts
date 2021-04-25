@@ -378,7 +378,7 @@ export class JobsService {
       if (doc.exists) {
         var totalstars = doc.data().totalStars;
         var starsreceived = doc.data().starReceived+1;
-        var newStarRating = totalstars+stars/starsreceived;
+        var newStarRating = (totalstars+stars)/starsreceived;
         console.log("Stars Rating: "+starsreceived);
         return newStarRating;
       } else {
@@ -390,8 +390,8 @@ export class JobsService {
     
     this.db.collection("users").doc(uid).update({
       starRating: newStarRating,
-      starReceived: this.currentuser.starReceived + 1,
-      totalStars: this.currentuser.totalStars +stars
+      starReceived: this.selectedUser.starReceived + 1,
+      totalStars: this.selectedUser.totalStars +stars
     })
       .then(() => {
         console.log("Document successfully updated!");
