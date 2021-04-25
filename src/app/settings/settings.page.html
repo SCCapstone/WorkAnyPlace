@@ -11,6 +11,10 @@
 
 <ion-content>
   <ion-list>
+    <ion-list-header>
+      To update Account Settings, change the text in each field then click the update button for the changes to be saved.
+    </ion-list-header>
+  
   <ion-list-header>
     Username:
   </ion-list-header>
@@ -35,6 +39,18 @@
   </ion-item>
 
   <ion-list-header>
+    Password:
+  </ion-list-header>
+  <ion-item>
+    
+    <ion-input type="password" [(ngModel)]="password" text-right id="input" placeholder=""></ion-input>
+    <ion-button (click)='updatePassword()'>
+      Update
+    </ion-button>
+  </ion-item>
+
+
+  <ion-list-header>
     Group:
   </ion-list-header>
   <ion-item>
@@ -50,12 +66,9 @@
   <ion-list-header>
     Change Profile Pic:
   </ion-list-header>
+  
   <ion-button (click)="goToImage()">
     Select
-  </ion-button>
-  <br>
-  <ion-button (click)="changePassword()">
-    Change Password
   </ion-button>
 <ion-content>
 
