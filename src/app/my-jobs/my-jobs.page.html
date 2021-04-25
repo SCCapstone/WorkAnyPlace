@@ -59,7 +59,7 @@
   </ion-list>
   <h3 style="padding: 10px">Posted Jobs</h3>
   <ion-list>
-    <ion-item *ngFor="let postjob of this.jobsService.myPostedJobs">
+    <ion-item *ngFor="let postjob of myPostedJobs">
     <div class="posts">
     <ion-card>
       <ion-slides class="pics" >
@@ -77,6 +77,10 @@
       <ion-card-content>
         <p style="color:#101010">{{ postjob.description }}</p>
       </ion-card-content>
+
+      <ion-button style="--background:#1f1f1f" (click)="removeJob(postjob)">
+        Delete
+      </ion-button>
             
     </ion-card>
     </div>
