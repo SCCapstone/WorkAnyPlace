@@ -283,7 +283,7 @@ export class JobsService {
     .onSnapshot((doc) => {
       if(doc.data().attempt == true) {
         alert("A job was just completed check your messages to confirm or decline.");
-      } else if(doc.data().confirm == true) {
+      } if(doc.data().confirm == true) {
         this.rateUser(doc.data().uidToRate);
       }
     });
