@@ -28,6 +28,12 @@ export class MessagesPage implements OnInit {
     this.getMessagePreviews();
   }
 
+  logout() {
+    this.fireAuth.signOut();
+    firebase.auth().signOut();
+    this.router.navigate(['/login']);
+  }
+  
   async refresh() {
     await this.messageService.fetchThreads();
     this.getMessagePreviews();

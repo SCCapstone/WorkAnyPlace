@@ -37,6 +37,12 @@ export class MyJobsPage implements OnInit {
     this.myPostedJobs = this.jobsService.myPostedJobs
   }
 
+  logout() {
+    this.fireAuth.signOut();
+    firebase.auth().signOut();
+    this.router.navigate(['/login']);
+  }
+  
   async refresh() {
     this.getAcceptedJobs();
     this.jobsService.getPostedJobs();
