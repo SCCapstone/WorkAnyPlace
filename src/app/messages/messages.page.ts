@@ -29,9 +29,13 @@ export class MessagesPage implements OnInit {
   }
 
   logout() {
-    this.fireAuth.signOut();
+    this.fireAuth.signOut().then(() => {
+      console.log("signed out")
+    })
     firebase.auth().signOut();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
   }
   
   async refresh() {

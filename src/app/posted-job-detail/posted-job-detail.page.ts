@@ -51,6 +51,10 @@ export class PostedJobDetailPage implements OnInit {
    this.refresh()
   }
 
+  async editJob(post) {
+    
+  }
+
   getSelectedUser() {
     this.jobsService.getSelectedUser(this.jobsService.selectedjob.uid);
     this.starRating = this.jobsService.selectedUser.starRating;
