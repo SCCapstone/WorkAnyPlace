@@ -281,6 +281,7 @@ export class JobsService {
     this.db.collection("pendingCompletion").doc(this.user.uid+this.jobToPost.title)
     .onSnapshot((doc) => {
       console.log("Trying to complete");
+      console.log(doc.data());
       if(doc.data().attempt == true) {
         alert("HEy is this job really complete?");
       } else {
