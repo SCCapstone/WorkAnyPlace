@@ -280,6 +280,7 @@ export class JobsService {
 
     this.db.collection("pendingCompletion").doc(this.user.uid+this.jobToPost.title)
     .onSnapshot((doc) => {
+      console.log("Trying to complete");
       if(doc.data().attempt == true) {
         alert("HEy is this job really complete?");
       } else {
@@ -544,7 +545,7 @@ export class JobsService {
 
     this.db.collection("pendingCompletion").doc(job.uid+job.title)
     .onSnapshot((doc) => {
-        if(doc.data().confirm = true) {
+        if(doc.data().confirm == true) {
           alert("It has been confirmed");
         }
     });
