@@ -547,11 +547,13 @@ export class JobsService {
     //     }
     // });
      
-    this.db.collection('pendingCompletion').doc(job.uid+job.title).set({
+    await this.db.collection('pendingCompletion').doc(job.uid+job.title).set({
       confirm: true,
-      attempt: true,
+      attempt: false,
       uidToRate: this.user.uid
     })
+
+
     // Removes Job from Firestore from users acceptedJobs array  
     await this.db.collection('users').doc(this.user.uid).update({
       acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
