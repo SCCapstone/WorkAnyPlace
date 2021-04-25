@@ -82,15 +82,16 @@ export class AcceptedJobDetailPage implements OnInit {
       sentMessages: firebase.firestore.FieldValue.arrayUnion(sentMessage)
     });
 
-    var lastIndex;
-    this.db.collection('messages').doc(threadId).get().then(function(doc) {
-      lastIndex = doc.data().sentMessages.length-1
-    });
+   
 
     this.db.collection("messages").doc(threadId)
     .onSnapshot((doc) => {
       var sentMessages = doc.data().sentMessages;
-      console.log("the poster has responded")
+      var lastIndex;
+      this.db.collection('messages').doc(threadId).get().then(function(doc) {
+        lastIndex = doc.data().sentMessages.length-1
+      });
+      
       if(sentMessages[lastIndex].senderId == posterId) {
         if(sentMessages[lastIndex].messageText == "Confirm" || sentMessages[lastIndex].messageText == "confirm") {
           alert("Confirmed!");
@@ -99,7 +100,7 @@ export class AcceptedJobDetailPage implements OnInit {
           alert("Not confirmed");     
       }
       } else {
-          lastIndex++;   
+       
       }
     });
   
