@@ -55,7 +55,8 @@ export class AcceptedJobDetailPage implements OnInit {
     await this.jobsService.completeMyJob(this.jobsService.selectedjob)
     this.jobsService.getCompletedJobs()
     this.refresh()
-  
+    
+    console.log("here is a looooooooog")
     let posterId = this.jobsService.selectedjob.uid;
     //this.messageService.removeConvo(this.user.uid, posterId);
   
@@ -66,22 +67,44 @@ export class AcceptedJobDetailPage implements OnInit {
       threadId = this.user.uid.concat(posterId.toString());
     }
 
-    let sentMessage = [{
-      messageText: "Job has been completed. Can you confirm? Send confirm to close job or decline.",
+    let sentMessage = {
+      messageText: "Job has been completed. Can you confirm? Send confirm to close job or decline request.",
       receiverId: posterId,
       senderId: this.user.uid,
       timestamp: firebase.firestore.Timestamp.fromDate(new Date())
-    }];
+    };
+
+    console.log("thread info right here "+threadId);
 
     this.db.collection('messages').doc(threadId).update({
-      sendMessages: firebase.firestore.FieldValue.arrayUnion(sentMessage)
-    })
+      sentMessages: firebase.firestore.FieldValue.arrayUnion(sentMessage)
+    });
+
+    var lastIndex;
+    this.db.collection('messages').doc(threadId).get().then(function(doc) {
+      lastIndex = doc.data().sentMessages.length-1
+    });
+
+    this.db.collection("messages").doc(threadId)
+    .onSnapshot((doc) => {
+      var sentMessages = doc.data().sentMessages;
+      if(sentMessages[lastIndex].senderId == posterId) {
+        if(sentMessages[lastIndex].messageText == "Confirm"|| sentMessages[lastIndex].messageText == "confirm") {
+          alert("Confirmed!");
+        } else {
+          alert("Not confirmed");     
+      }
+      } else {
+          lastIndex++;   
+      }
+    });
+
 
     var ref = this.db.collection("users").doc(this.user.uid);
   
     this.router.navigate(['/my-jobs']);
     this.router.navigate(['/tabs']);
-    
+
     return ref.update({ 
        jobsCompleted: this.jobsService.currentuser.jobsCompleted+1,
        moneyMade: this.jobsService.currentuser.moneyMade+this.jobsService.selectedjob.pay,
