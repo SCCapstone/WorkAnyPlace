@@ -13,6 +13,7 @@ export class JobsService {
   constructor(public alertController: AlertController,) {
     this.getPostedJobs()
     this.getCompletedJobs()
+    
   }
 
 
@@ -270,6 +271,22 @@ export class JobsService {
     }).catch(function (error) {
       console.log("Error getting document:", error);
     });
+
+
+    await this.db.collection('pendingCompletion').doc(this.user.uid+this.jobToPost.title).set({
+      confirm: false,
+      attempt: false,
+    })
+
+    this.db.collection("pendingCompletion").doc(this.user.uid+this.jobToPost.title)
+    .onSnapshot((doc) => {
+      if(doc.data().attempt == true) {
+        alert("A job was just compleded check your posted jobs to confirm or decline.");
+      } else {
+        
+      }
+    });
+
     this.jobToPost = undefined;
     this.postPicsToUpload = [];
   }
@@ -519,16 +536,30 @@ export class JobsService {
      */
 
 
+    //Add to pendingCompletion and set a listener to it and see 
+    await this.db.collection('pendingCompletion').doc(job.uid+job.title).set({
+      confirm: false,
+      attempt: true,
+    })
+
+    this.db.collection("pendingCompletion").doc(job.uid+job.title)
+    .onSnapshot((doc) => {
+        if(doc.data().confirm == true) {
+          alert("It has been confirmed");
+        }
+    });
     // Removes Job from Firestore from users acceptedJobs array  
     await this.db.collection('users').doc(this.user.uid).update({
       acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)
     });
 
+    //Add to users completed jobs
     await this.db.collection('users').doc(this.user.uid).update({
       completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
     });
 
-    // Add job to completed jobs page
+    // Add job to completed jobs page adds to completed jobs in fire store
+    // ***** Need to fix what this does
     this.addToCompletedJobs(job);
 
     // Refresh Pages

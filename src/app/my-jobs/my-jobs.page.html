@@ -2,6 +2,12 @@
   <ion-toolbar>
     
     <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+
+    <ion-buttons slot="start">
       <ion-button (click)="refresh()">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
@@ -61,7 +67,7 @@
   <ion-list>
     <ion-item *ngFor="let postjob of myPostedJobs">
     <div class="posts">
-    <ion-card>
+    <ion-card (click)="goToPostedDetail(postjob)">
       <ion-slides class="pics" >
         <ion-slide class="post-pic" *ngFor="let pic of postjob.pics">
             <img class="post-pic" src={{pic}}>
@@ -78,9 +84,6 @@
         <p style="color:#101010">{{ postjob.description }}</p>
       </ion-card-content>
 
-      <ion-button style="--background:#1f1f1f" (click)="removeJob(postjob)">
-        Delete
-      </ion-button>
             
     </ion-card>
     </div>

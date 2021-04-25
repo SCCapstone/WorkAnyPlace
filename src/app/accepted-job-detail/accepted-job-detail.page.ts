@@ -23,21 +23,10 @@ export class AcceptedJobDetailPage implements OnInit {
   db = firebase.firestore();
   user = firebase.auth().currentUser;
 
-  username;
+  starRating;
 
   async ngOnInit() {
-    var name = await this.db.collection('users').doc(this.jobsService.selectedjob.uid).get().then(function(doc) {
-      if (doc.exists) {
-         
-         return doc.data().username;
-        } else {
-          // doc.data() will be undefined in this case
-         console.log("No such document!");
-      }
-    }).catch(function(error) {
-      console.log("Error getting document:", error);
-    }); 
-    this.username = name;
+    await this.getSelectedUser();
   }
   refresh() {
     this.getAcceptedJobs();
@@ -61,7 +50,7 @@ export class AcceptedJobDetailPage implements OnInit {
     this.router.navigate(['/tabs']);
     
    }
-  
+
    async completeJob() {
     await this.jobsService.completeMyJob(this.jobsService.selectedjob)
     this.jobsService.getCompletedJobs()
@@ -142,6 +131,12 @@ export class AcceptedJobDetailPage implements OnInit {
     }).then(res => {
       res.present();
     });
+  }
+
+  getSelectedUser() {
+    this.jobsService.getSelectedUser(this.jobsService.selectedjob.uid);
+    this.starRating = this.jobsService.selectedUser.starRating;
+    this.starRating = this.starRating.toFixed(1);
   }
 
 }
