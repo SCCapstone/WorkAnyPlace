@@ -89,7 +89,7 @@ export class AcceptedJobDetailPage implements OnInit {
       var sentMessages = doc.data().sentMessages;
       var lastIndex;
       this.db.collection('messages').doc(threadId).get().then(function(doc) {
-        lastIndex = doc.data().sentMessages.length-1
+        lastIndex = doc.data().sentMessages.length
       });
       
       if(sentMessages[lastIndex].senderId == posterId) {
