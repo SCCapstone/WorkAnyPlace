@@ -281,7 +281,7 @@ export class JobsService {
     this.db.collection("pendingCompletion").doc(this.user.uid+this.jobToPost.title)
     .onSnapshot((doc) => {
       if(doc.data().attempt == true) {
-        alert("A job was just compleded check your messages to confirm or decline.");
+        alert("A job was just completed check your messages to confirm or decline.");
       } else {
         
       }
@@ -537,17 +537,15 @@ export class JobsService {
 
 
     //Add to pendingCompletion and set a listener to it and see 
-    await this.db.collection('pendingCompletion').doc(job.uid+job.title).set({
-      confirm: false,
-      attempt: true,
-    })
+   
 
-    this.db.collection("pendingCompletion").doc(job.uid+job.title)
-    .onSnapshot((doc) => {
-        if(doc.data().confirm == true) {
-          alert("It has been confirmed");
-        }
-    });
+    // this.db.collection("pendingCompletion").doc(job.uid+job.title)
+    // .onSnapshot((doc) => {
+    //     if(doc.data().confirm == true) {
+    //       alert("It has been confirmed");
+    //     }
+    // });
+     
     // Removes Job from Firestore from users acceptedJobs array  
     await this.db.collection('users').doc(this.user.uid).update({
       acceptedJobs: firebase.firestore.FieldValue.arrayRemove(job)

@@ -52,11 +52,15 @@ export class AcceptedJobDetailPage implements OnInit {
    }
 
    async completeJob() {
-    await this.jobsService.completeMyJob(this.jobsService.selectedjob)
-    this.jobsService.getCompletedJobs()
-    this.refresh()
+    await this.db.collection('pendingCompletion').doc(this.jobsService.selectedjob.uid+this.jobsService.selectedjob.title).set({
+      confirm: false,
+      attempt: true,
+    })
+
+  //   await this.jobsService.completeMyJob(this.jobsService.selectedjob)
+  //  //this.jobsService.getCompletedJobs()
+  //   this.refresh()
     
-    console.log("here is a looooooooog")
     let posterId = this.jobsService.selectedjob.uid;
     //this.messageService.removeConvo(this.user.uid, posterId);
   
@@ -74,8 +78,6 @@ export class AcceptedJobDetailPage implements OnInit {
       timestamp: firebase.firestore.Timestamp.fromDate(new Date())
     };
 
-    console.log("thread info right here "+threadId);
-
     this.db.collection('messages').doc(threadId).update({
       sentMessages: firebase.firestore.FieldValue.arrayUnion(sentMessage)
     });
@@ -88,9 +90,11 @@ export class AcceptedJobDetailPage implements OnInit {
     this.db.collection("messages").doc(threadId)
     .onSnapshot((doc) => {
       var sentMessages = doc.data().sentMessages;
+      console.log("the poster has responded")
       if(sentMessages[lastIndex].senderId == posterId) {
-        if(sentMessages[lastIndex].messageText == "Confirm"|| sentMessages[lastIndex].messageText == "confirm") {
+        if(sentMessages[lastIndex].messageText == "Confirm" || sentMessages[lastIndex].messageText == "confirm") {
           alert("Confirmed!");
+          this.hasBeenConfirmed();
         } else {
           alert("Not confirmed");     
       }
@@ -98,8 +102,20 @@ export class AcceptedJobDetailPage implements OnInit {
           lastIndex++;   
       }
     });
+  
+    this.router.navigate(['/my-jobs']);
+    this.router.navigate(['/tabs']);
 
+   }
 
+   async hasBeenConfirmed() {
+    await this.jobsService.completeMyJob(this.jobsService.selectedjob)
+    //this.jobsService.getCompletedJobs()
+     this.refresh()
+
+    let posterId = this.jobsService.selectedjob.uid;
+    this.messageService.removeConvo(this.user.uid, posterId);
+  
     var ref = this.db.collection("users").doc(this.user.uid);
   
     this.router.navigate(['/my-jobs']);
@@ -118,7 +134,6 @@ export class AcceptedJobDetailPage implements OnInit {
       // The document probably doesn't exist.
         console.error("Error updating document: ", error);
     });
-  
    }
   
   
