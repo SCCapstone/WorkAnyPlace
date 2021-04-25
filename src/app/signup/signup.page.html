@@ -10,20 +10,25 @@
 <ion-content>
   <form [formGroup]="new_product_form" (submit)="createAccount(new_product_form.value)">
   <ion-item>
-    <ion-label color="primary-contrast" position="floating">email</ion-label>
+    <ion-label color="primary-contrast" position="floating">Email</ion-label>
     <ion-input type="text" formControlName="email" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label color="primary-contrast" position="floating">password</ion-label>
+    <ion-label color="primary-contrast" position="floating">Password</ion-label>
     <ion-input type="password" formControlName="password" required></ion-input>
   </ion-item>
   <ion-item>
+    <ion-note color="primary-contrast" position="floating">Passwords should be between 6 and 30 characters.</ion-note>
     <ion-label color="primary-contrast" position="floating">Username</ion-label>
     <ion-input type="text" formControlName="username" required></ion-input>
   </ion-item>
   <ion-item>
+    <ion-note color="primary-contrast" position="floating">Usernames should be 30 characters or less.</ion-note>
     <ion-label color="primary-contrast" position="floating">Skill</ion-label>
     <ion-input type="text" formControlName="group" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-note color="primary-contrast" position="floating">What type of jobs do you specialize in?  Skills should be 30 characters or less.</ion-note>
   </ion-item>
   <div style="text-align: left;">
   <ion-button class="submit-btn" type="submit" [disabled]="!new_product_form.valid">Create Account</ion-button>

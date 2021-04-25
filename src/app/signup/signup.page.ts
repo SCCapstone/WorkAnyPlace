@@ -64,9 +64,12 @@ export class SignupPage implements OnInit {
   ngOnInit() {
     this.new_product_form = this.formBuilder.group({
       email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.required),
-      group: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.compose([Validators.minLength(6), Validators.maxLength(30),
+        Validators.required])),
+      username: new FormControl('', Validators.compose([Validators.maxLength(30),
+        Validators.required])),
+      group: new FormControl('', Validators.compose([Validators.maxLength(30),
+        Validators.required])),
     });
 
   }
