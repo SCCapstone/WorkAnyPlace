@@ -4,6 +4,7 @@ import { JobsService } from '../jobs.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-jobs',
@@ -16,7 +17,7 @@ export class JobsPage implements OnInit {
   user = firebase.auth().currentUser;
   
 
-  constructor(private router: Router,public jobsService: JobsService) { }
+  constructor(private router: Router,public jobsService: JobsService, private fireAuth: AngularFireAuth) { }
 
   async ngOnInit() {
 
@@ -40,6 +41,12 @@ export class JobsPage implements OnInit {
 
   goToSettings() {
     this.router.navigate(['../settings'])
+  }
+
+  logout() {
+    this.fireAuth.signOut();
+    firebase.auth().signOut();
+    this.router.navigate(['/login']);
   }
 
   refresh() {
