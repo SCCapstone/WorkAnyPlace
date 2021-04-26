@@ -32,12 +32,22 @@
       <br>
       <ion-item color="white" (click)="openCompletedJobs()">
         <ion-icon name="bag-check-outline" slot="start"></ion-icon>
-        <ion-label>{{ this.jobsService.currentuser.jobsCompleted }} jobs completed</ion-label>
+        <div *ngIf="this.jobsService.currentuser.jobsCompleted == 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCompleted }} job completed</ion-label>
+        </div>
+        <div *ngIf="this.jobsService.currentuser.jobsCompleted != 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCompleted }} jobs completed</ion-label>
+        </div>
       </ion-item>
       <br>
       <ion-item color="white" (click)="openCreatedJobs()">
         <ion-icon name="create-outline" slot="start"></ion-icon>
-        <ion-label>{{ this.jobsService.currentuser.jobsCreated }} jobs created</ion-label>
+        <div *ngIf="this.jobsService.currentuser.jobsCreated == 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCreated }} job created</ion-label>
+        </div>
+        <div *ngIf="this.jobsService.currentuser.jobsCreated != 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCreated }} jobs created</ion-label>
+        </div>
         
       </ion-item>
       <br>
