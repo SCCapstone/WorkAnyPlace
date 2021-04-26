@@ -14,7 +14,8 @@ export class WelcomePage implements OnInit {
   }
 
   goToFindJobs() {
-    this.router.navigate(['../jobs'])
+    this.router.navigate(['/jobs']);
+    this.router.navigate(['/tabs']);
   }
 
 }
