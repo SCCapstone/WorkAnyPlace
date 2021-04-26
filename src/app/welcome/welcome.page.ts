@@ -13,7 +13,7 @@ export class WelcomePage implements OnInit {
   ngOnInit() {
   }
 
-  goToFindJobs() {
+  goToFindJobs() {  // finishes logging in after skip button is clicked
     this.router.navigate(['/jobs']);
     this.router.navigate(['/tabs']);
   }

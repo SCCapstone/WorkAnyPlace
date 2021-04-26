@@ -28,7 +28,7 @@ export class MessagesPage implements OnInit {
     this.getMessagePreviews();
   }
 
-  logout() {
+  logout() {  // logs out, reloading window so previous login information is not retained
     this.fireAuth.signOut().then(() => {
       console.log("signed out")
     })
@@ -38,12 +38,12 @@ export class MessagesPage implements OnInit {
     });
   }
   
-  async refresh() {
+  async refresh() {  // fetches new messages on messages screen
     await this.messageService.fetchThreads();
     this.getMessagePreviews();
   }
 
-  async getMessagePreviews() {
+  async getMessagePreviews() {  // shows most recent message in conversation
     let newPreviews = [];
     let myThreads = this.messageService.getMyThreads();
     for (let i = 0; i < myThreads.length; i++) {
@@ -73,7 +73,7 @@ export class MessagesPage implements OnInit {
     this.previews = newPreviews;
   }
 
-  goToConversation(conversationPreview) {
+  goToConversation(conversationPreview) {  // goes to specific conversation based on thread id
     this.messageService.setCurrentThreadId(conversationPreview.threadId);
     this.router.navigate(['/conversation']);
   }

@@ -65,11 +65,11 @@ export class SignupPage implements OnInit {
     this.new_product_form = this.formBuilder.group({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.compose([Validators.minLength(6), Validators.maxLength(30),
-        Validators.required])),
+        Validators.required])),  // password can only be between 6 and 30 characters
       username: new FormControl('', Validators.compose([Validators.maxLength(30),
-        Validators.required])),
+        Validators.required])),  // username must be 30 characters or less
       group: new FormControl('', Validators.compose([Validators.maxLength(30),
-        Validators.required])),
+        Validators.required])),  // group must be 30 characters or less
     });
 
   }
@@ -80,7 +80,7 @@ export class SignupPage implements OnInit {
       item.password
     ).then(function() {
       var db = firebase.firestore();
-      db.collection("users").doc(firebase.auth().currentUser.uid).set({
+      db.collection("users").doc(firebase.auth().currentUser.uid).set({  // sets defaults for all stats
         acceptedJobs: [],
         postedJobs: [],
         email: item.email,
@@ -112,7 +112,7 @@ export class SignupPage implements OnInit {
      
       // this.router.navigate(['/jobs']);
       // this.router.navigate(['/tabs']);
-      this.router.navigate(['/image-upload']);
+      this.router.navigate(['/image-upload']);  // takes to upload profile picturue page next
   }
   uploadFile(event: FileList) {
     
