@@ -15,9 +15,11 @@ var firebaseConfig = {
     measurementId: "G-B9ZCCZVQE9"
   };
 
-fdescribe('postJob', () => {
+fdescribe('startConvo', () => {
     fit('should add new convo to firebase messages collection', async function() {
-        firebase.initializeApp(firebaseConfig);
+        if (firebase.apps.length === 0) {
+          firebase.initializeApp(firebaseConfig);
+        }
         let db = firebase.firestore();
         let user1Id = 'TEST1';
         let user2Id = 'TEST2';
