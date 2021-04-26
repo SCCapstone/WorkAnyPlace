@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
 
-    this.new_product_form = this.formBuilder.group({
+    this.new_product_form = this.formBuilder.group({  //signin fields of email and password
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
   async login(item) {
     let success: boolean = true;
-    const user = await this.afAuth.signInWithEmailAndPassword(
+    const user = await this.afAuth.signInWithEmailAndPassword(  //Angular way authenticating if account exists
       item.email,
       item.password
     ).catch((error) => {
@@ -45,24 +45,24 @@ export class LoginPage implements OnInit {
 
     console.log(user);
     
-    if (!success) {
+    if (!success) {  // doesn't login if account information is invalid
       return;
     }
 
-    this.router.navigate(['/jobs']);
-    this.router.navigate(['/tabs']);
+    this.router.navigate(['/jobs']);  // logs in to Find Jobs page
+    this.router.navigate(['/tabs']);  // adds tab at bottom
     this.new_product_form.reset();
 }
 
 signup() {
-  this.router.navigate(['/signup']);
+  this.router.navigate(['/signup']);  // takes to signup page for new account
 }
 
 
 
 resetPassword() {
 
-  this.router.navigate(['/reset-password']);
+  this.router.navigate(['/reset-password']);  // take to reset password page if password is forgotten
 /*
 var auth = firebase.auth();
 

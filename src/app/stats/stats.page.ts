@@ -17,7 +17,7 @@ export class StatsPage implements OnInit {
   
   constructor(private router: Router, public jobsService: JobsService, private fireAuth: AngularFireAuth) { }
 
-  logout() {
+  logout() {  // logs out, reloading window so previous login information is not retained
     this.fireAuth.signOut().then(() => {
       console.log("signed out")
     })
@@ -27,7 +27,7 @@ export class StatsPage implements OnInit {
     });
   }
 
-  openSettings() {
+  openSettings() {  // navigates to settings page if icon is clicked
     this.router.navigate(['/settings']);
   }
 
@@ -35,15 +35,15 @@ export class StatsPage implements OnInit {
     await this.jobsService.getUser();
   }
   
-  refresh() {
+  refresh() {  // refreshes stats on dashboard
    this.jobsService.getUser();
   }
 
-  openCompletedJobs() {
+  openCompletedJobs() {  // navigates to completed jobs page if Completed Jobs is clicked
     this.router.navigate(['/completed-jobs'])
   }
 
-  openCreatedJobs() {
+  openCreatedJobs() {  // navigates to created jobs page if Created Jobs is clicked
     this.router.navigate(['/created-jobs'])
   }
 

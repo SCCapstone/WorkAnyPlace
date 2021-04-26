@@ -38,7 +38,7 @@ export class MyJobsPage implements OnInit {
     this.myPostedJobs = this.jobsService.myPostedJobs
   }
 
-  logout() {
+  logout() {  // logs out, reloading window so previous login information is not retained
     this.fireAuth.signOut().then(() => {
       console.log("signed out")
     })
@@ -48,7 +48,7 @@ export class MyJobsPage implements OnInit {
     });
   }
   
-  async refresh() {
+  async refresh() {  // refreshes to see if new jobs have been posted/accepted/deleted/canceled
     this.getAcceptedJobs();
     this.jobsService.getPostedJobs();
     this.jobsService.getMyCompletedJobs();
@@ -101,7 +101,7 @@ export class MyJobsPage implements OnInit {
 //  }
 
  openCreateJob() {
-  this.router.navigate(['/create-job']);
+  this.router.navigate(['/create-job']);  // navigates to create job page when icon is clicked
  }
 
 //  completeJobConfirm(job) {
@@ -156,12 +156,12 @@ export class MyJobsPage implements OnInit {
 //   });
 // }
 
-  async goToAcceptedDetails(post) {
+  async goToAcceptedDetails(post) {  // navigates to job post in accepted jobs based on post uid
     await this.jobsService.getSelectedUser(post.uid);
     this.jobsService.setSelectedJob(post);
     this.router.navigate(['/accepted-job-detail']);
   }
-  async goToPostedDetail(post) {
+  async goToPostedDetail(post) {  // navigates to job post in posted jobs based on post uid
     await this.jobsService.getSelectedUser(post.uid);
     this.jobsService.setSelectedJob(post);
     this.router.navigate(['/posted-job-detail']);

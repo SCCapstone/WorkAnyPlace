@@ -30,20 +30,20 @@ export class JobsPage implements OnInit {
   }
 
   openCreateJob() {
-    this.router.navigate(['/create-job']);
+    this.router.navigate(['/create-job']);  // navigates to create job page when icon is clicked
   }
 
-  async goToJobDetail(post) {
+  async goToJobDetail(post) {  // pulls up individual post based on post uid
     await this.jobsService.getSelectedUser(post.uid);
     this.jobsService.setSelectedJob(post);
     this.router.navigate(['../job-detail']);
   }
 
   goToSettings() {
-    this.router.navigate(['../settings'])
+    this.router.navigate(['../settings'])  // navigates to settings page when icon is clicked
   }
 
-  logout() {
+  logout() {  // logs out, reloading window so previous login information is not retained
     this.fireAuth.signOut().then(() => {
       console.log("signed out")
     })
@@ -53,7 +53,7 @@ export class JobsPage implements OnInit {
     });
   }
 
-  refresh() {
+  refresh() {  // reloads page so either new jobs can appear or jobs that were accepted can disappear
     this.jobsService.getPostedJobs();
     this.jobsService.getProfilePic();
     var img = document.getElementById('profilepic');
@@ -70,7 +70,7 @@ export class JobsPage implements OnInit {
     }
 
     jobList = jobList.filter(currentJob => {
-      if (currentJob.title && searchTerm) {
+      if (currentJob.title && searchTerm) {  // search by title, category, or location
         return (currentJob.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentJob.category.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentJob.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       }
     })
@@ -78,8 +78,8 @@ export class JobsPage implements OnInit {
     this.jobsService.postsNew = jobList;
   }
 
-  async removeJob(post){
-    if (post.uid == this.user.uid) {   
+  async removeJob(post){  // deletes job post from Firebase
+    if (post.uid == this.user.uid) {   // can only delete you own post
       // this.db.collection('users').doc(this.user.uid).update({
       //   postedJobs: firebase.firestore.FieldValue.arrayRemove(post)
       // });
@@ -90,12 +90,12 @@ export class JobsPage implements OnInit {
 
       this.refresh()
    } else {
-      alert("This is not your post");
+      alert("This is not your post");  // error message if you try to delete someone elses post
    }
 
   }
 
-  async addToMyJobs(post){
+  async addToMyJobs(post){  // removes job post from Find Jobs page and adds to your My Jobs page
     this.jobsService.addAcceptedJob(post);
     await this.db.collection('postedJobs').doc('jobs').update({
       postedJobs: firebase.firestore.FieldValue.arrayRemove(post)

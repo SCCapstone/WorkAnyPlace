@@ -26,12 +26,12 @@ export class CreatedJobsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.jobsService.getMyPostedJobs();
+    this.jobsService.getMyPostedJobs();  // shows current jobs that you posted
 
   }
 
   refresh() {
-    this.jobsService.getPostedJobs();
+    this.jobsService.getPostedJobs();  // adds in new jobs that you posted
 
   }
 }
