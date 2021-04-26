@@ -114,7 +114,7 @@ export class AcceptedJobDetailPage implements OnInit {
 
      this.jobsService.rateUser(job.uid);
     let posterId = job.uid;
-    this.messageService.removeConvo(this.user.uid, posterId);
+    //this.messageService.removeConvo(this.user.uid, posterId);
   
     var ref = this.db.collection("users").doc(this.user.uid);
   
