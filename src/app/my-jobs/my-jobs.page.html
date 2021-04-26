@@ -25,8 +25,10 @@
 </ion-header>
 
 <ion-content>
-
-  <h3 style="padding: 10px">Accepted Jobs</h3>
+  <h3 style="padding: 10px; font-size:35px">Accepted Jobs</h3>
+  <div *ngIf="this.jobsService.myjobs.length == 0">
+    <p class="ion-text-center" style="font-size:25px; padding-top:5%">No current accepted jobs</p>
+  </div>
   <ion-list>
 
 
@@ -63,7 +65,10 @@
   </div>
   </ion-item>
   </ion-list>
-  <h3 style="padding: 10px">Posted Jobs</h3>
+  <h3 style="padding: 10px; font-size:35px">Posted Jobs</h3>
+  <div *ngIf="myPostedJobs.length == 0">
+    <p class="ion-text-center" style="font-size:25px; padding-top:5%">No current posted jobs</p>
+  </div>
   <ion-list>
     <ion-item *ngFor="let postjob of myPostedJobs">
     <div class="posts">
