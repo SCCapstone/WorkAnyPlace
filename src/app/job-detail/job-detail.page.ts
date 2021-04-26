@@ -51,6 +51,7 @@ export class JobDetailPage implements OnInit {
 
     let posterId = this.jobsService.selectedjob.uid;
     this.messageService.startNewConvo(this.user.uid, posterId);
+
   }
 
   async removeJob(post){
@@ -84,4 +85,6 @@ export class JobDetailPage implements OnInit {
     this.starRating = this.jobsService.selectedUser.starRating;
     this.starRating = this.starRating.toFixed(1);
   }
+
+
 }

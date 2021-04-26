@@ -35,6 +35,11 @@ export class JobsService {
   selectedUser;
   profilepic = "../../assets/img/work_any_place_logo.png";
   currentuser;
+  editTitle = null;
+  editPay = null;
+  editLocation = null;
+  editCategory = null;
+  editDescription = null;
   //////////////////////////////////////////////////////////////
 
 
@@ -578,6 +583,15 @@ export class JobsService {
     this.getCompletedJobs();
     this.getMyJobs();
   }
+
+  async updateJob(job) {
+    await this.db.collection('users').doc(this.user.uid).update({
+      selectedjob: firebase.firestore.FieldValue.arrayUnion(job)
+    });
+  }
+  
+
+
 
 
 
