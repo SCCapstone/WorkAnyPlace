@@ -570,6 +570,15 @@ export class JobsService {
     this.getMyJobs();
   }
 
+  async updateJob(job) {
+    await this.db.collection('users').doc(this.user.uid).update({
+      selectedjob: firebase.firestore.FieldValue.arrayUnion(job)
+    });
+  }
+  
+
+
+
 
 
 

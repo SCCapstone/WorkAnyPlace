@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../jobs.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { MessageService } from '../message.service';
@@ -15,16 +15,23 @@ export class PostedJobDetailPage implements OnInit {
 
   constructor(public jobsService:JobsService,
     public alertController: AlertController,
+    private route:ActivatedRoute,
     public messageService:MessageService, 
     public router: Router) { }
 
   db = firebase.firestore();
   user = firebase.auth().currentUser;
+  job = null
 
     starRating;
 
   async ngOnInit() {
     await this.getSelectedUser();
+    this.route.params.subscribe(
+  		param=>{
+  			this.job = param;
+  		}
+  	)
   }
   refresh() {
     this.jobsService.getPostedJobs();
@@ -51,17 +58,13 @@ export class PostedJobDetailPage implements OnInit {
    this.refresh()
   }
 
-  async editJob(post) {
-
-  }
-
   getSelectedUser() {
     this.jobsService.getSelectedUser(this.jobsService.selectedjob.uid);
     this.starRating = this.jobsService.selectedUser.starRating;
     this.starRating = this.starRating.toFixed(1);
   }
-  goToEditJob(job) {
-    this.router.navigate(['/edit-job',this.jobsService.selectedjob])
+  goToEditJob() {
+    this.router.navigate(['/edit-job'])
     console.log('should have navigated')
   }
 }
