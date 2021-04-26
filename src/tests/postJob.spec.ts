@@ -1,3 +1,5 @@
+// Tests for successful job posting locally
+
 import { postJob, getPosts } from "./postJob";
 
 fdescribe('postJob', () => {
