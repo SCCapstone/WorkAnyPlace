@@ -64,7 +64,7 @@
       <br>
       <ion-item color="white">
         <ion-icon name="star-outline" slot="start"></ion-icon>
-        <ion-label>{{ this.jobsService.currentuser.starRating }} star rating</ion-label>
+        <ion-label>{{ this.jobsService.currentuser.starRating.toFixed(1) }} star rating</ion-label>
       </ion-item>
       <br>
     </ion-card>
