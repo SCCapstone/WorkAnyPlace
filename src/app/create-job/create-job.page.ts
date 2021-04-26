@@ -26,7 +26,7 @@ export class CreateJobPage implements OnInit {
       title: new FormControl('', Validators.compose([Validators.maxLength(30),
       Validators.required])),
       pay: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.compose([Validators.pattern('^[a-zA-Z ]+,[ ]?([A-Z]{2})'),  Validators.required])),
       category: new FormControl('', Validators.compose([Validators.maxLength(30),
         Validators.required])),
       description: new FormControl('', Validators.compose([Validators.maxLength(300),
@@ -47,6 +47,10 @@ export class CreateJobPage implements OnInit {
     // this.router.navigate(['../tabs']);
     if(value.pay < 0.01 || value.pay > 9999.99) {
       alert('Enter a price between $0.01 and $9999.99');
+      return;
+    }
+    if(value.location != 'AL' && value.location != 'AK' && value.location != 'AS' && value.locatoin != 'AZ' && value.location != 'AR' && value.location != 'CA' && value.location != 'CO' && value.location != 'CT' &&  value.location != 'DE' && value.location != 'DC' && value.location != 'FL' && value.location != 'GA' && value.location != 'HI' && value.location != 'ID' && value.location != 'IL' && value.location != 'IN' && value.location != 'IA' && value.location != 'KS' && value.location != 'KY' && value.location != 'LA' && value.location != 'ME' && value.location != 'MD' && value.location != 'MA' && value.location != 'MI' && value.location != 'MN' && value.location != 'MS' && value.location != 'MO' && value.location != 'MT' && value.location != 'NE' && value.location != 'NV' && value.location != 'NH' && value.location != 'NJ' && value.location != 'NM' && value.location != 'NY' && value.location != 'NC' && value.location != 'ND' && value.location != 'OH' && value.location != 'OK' && value.location != 'OR' && value.location != 'PA' && value.location != 'RI' && value.location != 'SC' && value.location != 'SD' && value.location != 'TN' && value.location != 'TX' && value.location != 'UT' && value.location != 'VT' && value.location != 'VA' && value.location != 'WA' && value.location != 'WV' && value.location != 'WI' && value.location != 'WY') {
+      alert('Enter a valid state abbreviation');
       return;
     }
     this.jobsService.jobToPost = value;
