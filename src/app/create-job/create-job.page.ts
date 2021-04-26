@@ -49,13 +49,18 @@ export class CreateJobPage implements OnInit {
       alert('Enter a price between $0.01 and $9999.99');
       return;
     }
-    if(value.location != 'AL' && value.location != 'AK' && value.location != 'AS' && value.locatoin != 'AZ' && value.location != 'AR' && value.location != 'CA' && value.location != 'CO' && value.location != 'CT' &&  value.location != 'DE' && value.location != 'DC' && value.location != 'FL' && value.location != 'GA' && value.location != 'HI' && value.location != 'ID' && value.location != 'IL' && value.location != 'IN' && value.location != 'IA' && value.location != 'KS' && value.location != 'KY' && value.location != 'LA' && value.location != 'ME' && value.location != 'MD' && value.location != 'MA' && value.location != 'MI' && value.location != 'MN' && value.location != 'MS' && value.location != 'MO' && value.location != 'MT' && value.location != 'NE' && value.location != 'NV' && value.location != 'NH' && value.location != 'NJ' && value.location != 'NM' && value.location != 'NY' && value.location != 'NC' && value.location != 'ND' && value.location != 'OH' && value.location != 'OK' && value.location != 'OR' && value.location != 'PA' && value.location != 'RI' && value.location != 'SC' && value.location != 'SD' && value.location != 'TN' && value.location != 'TX' && value.location != 'UT' && value.location != 'VT' && value.location != 'VA' && value.location != 'WA' && value.location != 'WV' && value.location != 'WI' && value.location != 'WY') {
+
+    var state = value.location.split(", ");
+    var state2 = state[1];
+    if(state2 == 'AL' || state2 == 'AK' || state2 == 'AS' || state2 == 'AZ' || state2 == 'AR' || state2 == 'CA' || state2 == 'CO' || state2 == 'CT' ||  state2 == 'DE' || state2 == 'DC' || state2 == 'FL' || state2 == 'GA' || state2 == 'HI' || state2 == 'ID' || state2 == 'IL' || state2 == 'IN' || state2 == 'IA' || state2 == 'KS' || state2 == 'KY' || state2 == 'LA' || state2 == 'ME' || state2 == 'MD' || state2 == 'MA' || state2 == 'MI' || state2 == 'MN' || state2 == 'MS' || state2 == 'MO' || state2 == 'MT' || state2 == 'NE' || state2 == 'NV' || state2 == 'NH' || state2 == 'NJ' || state2 == 'NM' || state2 == 'NY' || state2 == 'NC' || state2 == 'ND' || state2 == 'OH' || state2 == 'OK' || state2 == 'OR' || state2 == 'PA' || state2 == 'RI' || state2 == 'SC' || state2 == 'SD' || state2 == 'TN' || state2 == 'TX' || state2 == 'UT' || state2 == 'VT' || state2 == 'VA' || state2 == 'WA' || state2 == 'WV' || state2 == 'WI' || state2 == 'WY') {
+     
+      this.jobsService.jobToPost = value;
+      this.router.navigate(['/post-pics']);
+      
+    } else {
       alert('Enter a valid state abbreviation');
       return;
     }
-    this.jobsService.jobToPost = value;
-    this.router.navigate(['/post-pics']);
+    
   }
-
 }
-
