@@ -30,9 +30,7 @@
 <ion-content>
 
 <ion-searchbar (ionInput)="filterList($event)" showCancelButton="focus" placeholder="Search jobs" color="light"></ion-searchbar>
-<div *ngIf="this.jobsService.postsNew.length == 0">
-  <p class="ion-text-center" style="font-size:35px; padding-top:30%">No posted jobs!</p>
-</div>
+
 <ion-list>
   <ion-item class="item" *ngFor="let post of this.jobsService.postsNew">
   <!-- <div tabindex="0"></div> -->
