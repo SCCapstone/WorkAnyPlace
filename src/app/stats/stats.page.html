@@ -24,42 +24,50 @@
 </ion-header>
 
 <ion-content>
-  <ion-avatar >
+  <ion-avatar>
     <img id="profilepic" src="{{this.jobsService.profilepic}}">
   </ion-avatar>
-  <ion-card>
-    
-    <ion-item color="white" (click)="openCompletedJobs()">
-      <ion-icon name="bag-check-outline" slot="start"></ion-icon>
-      <ion-label>Jobs Completed</ion-label>
-      {{ this.jobsService.currentuser.jobsCompleted }}
-    </ion-item>
-  
-    <ion-item color="white" (click)="openCreatedJobs()">
-      <ion-icon name="create-outline" slot="start"></ion-icon>
-      <ion-label>Created Jobs</ion-label>
-      {{ this.jobsService.currentuser.jobsCreated }}
-    </ion-item>
-  
-    <ion-item color="white">
-      <ion-icon name="cash-outline" slot="start"></ion-icon>
-      <ion-label>Money Made</ion-label>
-      ${{ this.jobsService.currentuser.moneyMade }}
-    </ion-item>
-
-    <ion-item color="white">
-      <ion-icon name="people-outline" slot="start"></ion-icon>
-      <ion-label>Group</ion-label>
-      {{ this.jobsService.currentuser.group }}
-    </ion-item>
-
-    <ion-item color="white">
-      <ion-icon name="star-outline" slot="start"></ion-icon>
-      <ion-label>Star Rating</ion-label>
-      {{ this.jobsService.currentuser.starRating }}
-    </ion-item>
-
-  </ion-card>
-
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <ion-card mode="ios" style="width:60%">
+      <br>
+      <ion-item color="white" (click)="openCompletedJobs()">
+        <ion-icon name="bag-check-outline" slot="start"></ion-icon>
+        <div *ngIf="this.jobsService.currentuser.jobsCompleted == 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCompleted }} job completed</ion-label>
+        </div>
+        <div *ngIf="this.jobsService.currentuser.jobsCompleted != 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCompleted }} jobs completed</ion-label>
+        </div>
+      </ion-item>
+      <br>
+      <ion-item color="white" (click)="openCreatedJobs()">
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        <div *ngIf="this.jobsService.currentuser.jobsCreated == 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCreated }} job created</ion-label>
+        </div>
+        <div *ngIf="this.jobsService.currentuser.jobsCreated != 1">
+          <ion-label>{{ this.jobsService.currentuser.jobsCreated }} jobs created</ion-label>
+        </div>
+        
+      </ion-item>
+      <br>
+      <ion-item color="white">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <ion-label>${{ this.jobsService.currentuser.moneyMade }} earned</ion-label>
+        
+      </ion-item>
+      <br>
+      <ion-item color="white">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        <ion-label>{{ this.jobsService.currentuser.group }} group</ion-label>
+      </ion-item>
+      <br>
+      <ion-item color="white">
+        <ion-icon name="star-outline" slot="start"></ion-icon>
+        <ion-label>{{ this.jobsService.currentuser.starRating }} star rating</ion-label>
+      </ion-item>
+      <br>
+    </ion-card>
+  </div>
  
 </ion-content>
