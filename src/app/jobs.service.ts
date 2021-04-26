@@ -564,6 +564,12 @@ export class JobsService {
       completedJobs: firebase.firestore.FieldValue.arrayUnion(job)
     });
 
+    this.db.collection("pendingCompletion").doc(job.uid+job.title).delete().then(() => {
+      
+    }).catch((error) => {
+    
+    });
+  
     // Add job to completed jobs page adds to completed jobs in fire store
     // ***** Need to fix what this does
     this.addToCompletedJobs(job);

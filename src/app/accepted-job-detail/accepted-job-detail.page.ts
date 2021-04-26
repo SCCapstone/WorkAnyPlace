@@ -85,7 +85,7 @@ export class AcceptedJobDetailPage implements OnInit {
     
     // var jobToConfirm = 
     this.jobsService.selectedjob;
-    this.db.collection("messages").doc(threadId)
+    const unsubscribe = this.db.collection("messages").doc(threadId)
     .onSnapshot((doc) => {
       var sentMessages = doc.data().sentMessages;
       var lastIndex = sentMessages.length -1 ;
@@ -95,6 +95,7 @@ export class AcceptedJobDetailPage implements OnInit {
         if(sentMessages[lastIndex].messageText == "Confirm" || sentMessages[lastIndex].messageText == "confirm") {
           alert("Confirmed!");
           this.hasBeenConfirmed(this.jobsService.selectedjob);
+          unsubscribe();
         } else {
           alert("Not confirmed");     
       }
