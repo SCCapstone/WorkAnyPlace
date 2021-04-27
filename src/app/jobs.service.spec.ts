@@ -8,7 +8,7 @@ describe('JobsService', () => {
   beforeEach(() => {
     //TestBed.configureTestingModule({});
     //service = TestBed.inject(JobsService);
-    service = new JobsService();
+    //service = new JobsService();
   });
 
   // fit('should be created', () => {
