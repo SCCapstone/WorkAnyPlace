@@ -1,0 +1,245 @@
+{
+  "id": "06e171b5-e36d-4565-88ea-a24d762d669c",
+  "version": "2.0",
+  "name": "WorkAnyPlace",
+  "url": "http://localhost:8100",
+  "tests": [{
+    "id": "6f2fa7c5-cd77-4c44-9cc9-3097c98c1cf8",
+    "name": "Login-Add-Job",
+    "commands": [{
+      "id": "92f87a2b-c5e2-4db0-9fae-caa6f97b0acb",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0f78f795-a54e-41c6-b001-c1caad344c6e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "248c833e-60d7-4749-8654-215b377d3d1b",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "421fdd3a-3a7c-4c83-a826-0f758c55b8ac",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-0",
+      "targets": [
+        ["name=ion-input-0", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nrabena@gmail.com"
+    }, {
+      "id": "3906234a-897c-40f2-9782-3562bd9bf615",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-1",
+      "targets": [
+        ["name=ion-input-1", "name"],
+        ["css=.ng-untouched > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "Redskins21"
+    }, {
+      "id": "313f95c3-d4be-41ea-93ff-c00737c5ab21",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-btn",
+      "targets": [
+        ["css=.submit-btn", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
+        ["xpath=//ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb6eedea-3fb4-42a0-9962-b91eeda9d738",
+      "comment": "",
+      "command": "click",
+      "target": "css=.searchbar-input",
+      "targets": [
+        ["css=.searchbar-input", "css:finder"],
+        ["xpath=//input[@type='search']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09ad7af1-8dd3-4e90-bb26-bbf591cd7609",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-buttons[3]/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffd1aadf-62ac-41b2-897c-9c0c5f117b57",
+      "comment": "",
+      "command": "click",
+      "target": "name=ion-input-2",
+      "targets": [
+        ["name=ion-input-2", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-2']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item/ion-input/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64a89314-85f1-4751-b5cf-e1ce576792e3",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-2",
+      "targets": [
+        ["name=ion-input-2", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-2']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item/ion-input/input", "xpath:position"]
+      ],
+      "value": "Chalk"
+    }, {
+      "id": "c2c45186-e44e-48dd-95f8-eb9796171736",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-3",
+      "targets": [
+        ["name=ion-input-3", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-3']", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/ion-item[2]/ion-input/input", "xpath:position"]
+      ],
+      "value": "20"
+    }, {
+      "id": "9dcaf982-5e66-4b6b-9a91-661207c36491",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-4",
+      "targets": [
+        ["name=ion-input-4", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-4']", "xpath:attributes"],
+        ["xpath=//ion-item[3]/ion-input/input", "xpath:position"]
+      ],
+      "value": "Newark, NJ"
+    }, {
+      "id": "7fb1ea51-bc59-4b37-86dd-4dd0803110ee",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-5",
+      "targets": [
+        ["name=ion-input-5", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-5']", "xpath:attributes"],
+        ["xpath=//ion-item[4]/ion-input/input", "xpath:position"]
+      ],
+      "value": "Cleaning"
+    }, {
+      "id": "2e2ad90d-2369-41ee-931f-4a774312cb00",
+      "comment": "",
+      "command": "type",
+      "target": "name=ion-input-6",
+      "targets": [
+        ["name=ion-input-6", "name"],
+        ["css=.has-focus > .native-input", "css:finder"],
+        ["xpath=//input[@name='ion-input-6']", "xpath:attributes"],
+        ["xpath=//ion-item[5]/ion-input/input", "xpath:position"]
+      ],
+      "value": "I need someone to clean the chalk from infront of my house, it is a big eyesore."
+    }, {
+      "id": "074bc00f-95e4-48f6-af64-f95d23a72113",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=(//ion-button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//ion-content/ion-content/form/div/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7f54a88-80f2-47b9-b24b-f2ae51d6f375",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//ion-button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2927b5a3-6193-45f0-85c1-cdd972b85161",
+      "comment": "",
+      "command": "click",
+      "target": "css=.searchbar-input",
+      "targets": [
+        ["css=.searchbar-input", "css:finder"],
+        ["xpath=//input[@type='search']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "985ec253-0a55-443f-a342-3c717f1b5146",
+      "comment": "",
+      "command": "type",
+      "target": "css=.searchbar-input",
+      "targets": [
+        ["css=.searchbar-input", "css:finder"],
+        ["xpath=//input[@type='search']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Chalk"
+    }, {
+      "id": "626aac06-ff55-4277-aa19-861c95248494",
+      "comment": "",
+      "command": "click",
+      "target": "css=.item:nth-child(2) > .posts > .md",
+      "targets": [
+        ["css=.item:nth-child(2) > .posts > .md", "css:finder"],
+        ["xpath=//ion-item[2]/div/ion-card", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c05baa90-82ec-4850-a3dd-282947e1a081",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ion-activated",
+      "targets": [
+        ["css=.ion-activated", "css:finder"],
+        ["xpath=//app-job-detail/ion-content/div[3]/ion-button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e529b5bd-e3b0-4a7b-9ea1-498437c6c7fa",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "This is your post!",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d7d64684-5f2a-4011-a7eb-f53c1472fae1",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6f2fa7c5-cd77-4c44-9cc9-3097c98c1cf8"]
+  }],
+  "urls": ["http://localhost:8100/"],
+  "plugins": []
+}
