@@ -39,7 +39,14 @@ In order to run the Unit test, you must access the project directory, WorkAnyPla
 
 The test will then open the karma browser to see the results of your tests. 
 
-In order to run the Behavioral test, you must access the project directory, WorkAnyPlace/src/tests/BehavioralTest and run the command selenium-side-runner WorkAnyPlaceBehavioralTest.side. In order for this test to work the selenium-side-runner must be installed using the command: 
+In order to run the Behavioral test, you must access the project directory, WorkAnyPlace/src/tests/BehavioralTest and run the commands
+*selenium-side-runner WorkAnyPlaceBehavioralTest.side
+*selenium-side-runner Login-Add-Job.side
+*selenium-side-runner Create-New-User.side
+*selenium-side-runner Delete-Jobs.side
+*selenium-side-runner Send-Message-Logout.side
+
+In order for this test to work the selenium-side-runner must be installed using the command: 
 * sudo npm install -g selenium-side-runner
 
 Also, a browser driver must be installed, for chrome use the command: 
