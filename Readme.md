@@ -42,9 +42,13 @@ The test will then open the karma browser to see the results of your tests.
 In order to run the Behavioral test, you must access the project directory, WorkAnyPlace/src/tests/BehavioralTest and run the commands:
 
 *selenium-side-runner WorkAnyPlaceBehavioralTest.side
+
 *selenium-side-runner Login-Add-Job.side
+
 *selenium-side-runner Create-New-User.side
+
 *selenium-side-runner Delete-Jobs.side
+
 *selenium-side-runner Send-Message-Logout.side
 
 In order for this test to work the selenium-side-runner must be installed using the command: 
